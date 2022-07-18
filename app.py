@@ -3,8 +3,6 @@
 import streamlit as st
 from datetime import date
 
-from plotly import graph_objs as go
-
 START = "2015-01-01"
 TODAY = date.today().strftime("%Y-%m-%d")
 
