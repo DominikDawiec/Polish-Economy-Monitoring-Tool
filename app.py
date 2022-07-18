@@ -1,2 +1,9 @@
+#importing streamlit library
 
-st.title('Uber pickups in NYC')
+import streamlit as st
+
+
+
+#writing simple text 
+
+st.text("Hello")
