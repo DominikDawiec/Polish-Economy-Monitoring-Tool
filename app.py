@@ -80,7 +80,6 @@ def filter_data(
     return df
 
 
-def main() -> None:
-    st.header("Fidelity Account Overview :moneybag: :dollar: :bar_chart:")
+st.header("Polish Stock Market Prediction :moneybag: :dollar: :bar_chart:")
 
    
