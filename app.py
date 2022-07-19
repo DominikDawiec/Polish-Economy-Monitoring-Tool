@@ -57,14 +57,3 @@ if search_button:
     
     
     
-st.header('Company overview')
-    overview_index = ['Enterprise value', 'Market cap', 'EV/sales ratio', 'P/E ratio']
-    overview_df = pd.DataFrame(company.overview_dict, index = overview_index)
-    st.line_chart(company.prices)
-    st.table(overview_df)
-
-    with st.beta_expander('Profit margins (as of {})'.format(company.year_end)):
-        profit_margin_index = ['Gross margin', 'Operating margin', 'Net margin']
-        profit_margin_df = pd.DataFrame(company.profit_margin_dict, index = profit_margin_index)
-        st.table(profit_margin_df)
-        st.bar_chart(profit_margin_df)
