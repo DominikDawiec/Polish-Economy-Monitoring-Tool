@@ -1,4 +1,6 @@
-streamlit==0.84.1
+plotly
+streamlit
+streamlit-aggrid
 numpy==1.20.1    
 pandas==1.2.4     
 yfinance   
