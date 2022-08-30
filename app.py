@@ -6,6 +6,13 @@ st.write("""
 Shown are the stock **closing price** and ***volume*** of Google!
 """)
 
+option = st.selectbox(
+     'How would you like to be contacted?',
+     ('Email', 'Home phone', 'Mobile phone'))
+
+st.write('You selected:', option)
+
+
 # https://towardsdatascience.com/how-to-get-stock-data-using-python-c0de1df17e75
 #define the ticker symbol
 tickerSymbol = 'GOOGL'
