@@ -7,9 +7,10 @@ st.write("""
 # Financial App
 """)
 
+list = ('1','2','3')
+
 option = st.selectbox(
-     'How would you like to be contacted?',
-     ('Email', 'Home phone', 'Mobile phone'))
+     'How would you like to be contacted?', list)
 
 
 # We will use Amazon stocks
