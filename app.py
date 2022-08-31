@@ -21,3 +21,9 @@ st.dataframe(df)
 page_names = ['X', 'Y']
 page = st.selectbox('Navigation', page_names)
 st.write('Choosen', page)
+
+if page = 'X':
+  st.write('test X')
+  
+if page = 'Y':
+  st.write('test mest Y')
