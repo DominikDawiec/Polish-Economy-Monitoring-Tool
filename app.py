@@ -18,24 +18,6 @@ df = pd.read_csv('indexData.csv')
 st.dataframe(df)
 
 
-
-
-option = st.selectbox(
-     'How would you like to be contacted?',
-     ('X', 'Y', 'Z'))
-
-
-
-
-
-
-
-
-
-
-  
-
-# source = df
-# all_symbols = source.Index.unique()
-# symbols = st.selectbox("Choose stocks to visualize", all_symbols)
-
+page_names = ['X', 'Y']
+page = st.selectbox('Navigation', page_names)
+st.write('Choosen', page)
