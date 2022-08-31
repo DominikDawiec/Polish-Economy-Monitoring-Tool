@@ -1,5 +1,6 @@
 import yfinance as yf
 import streamlit as st
+import pandas as pd
 
 st.title('This is a title')
 st.header('This is a header')
@@ -22,7 +23,8 @@ if 'Email' in option: # If user selects Email  do 👇
     if email_id: # If user enters email, do 👇
         st.write(f'Please check {email_id} for an email from us!')
      
-
+df = pd.read_csv('indexData.csv')
+df.head()
 
 
 st.write("""
