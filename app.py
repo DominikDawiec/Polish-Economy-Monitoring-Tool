@@ -1,24 +1,42 @@
-import yfinance as yf
 import streamlit as st
+import yfinance as finance
 
+
+def get_ticker(name):
+	company = finance.Ticker(name) # google
+	return company
+
+
+# Project Details
 st.title("Build and Deploy Stock Market App Using Streamlit")
 st.header("A Basic Data Science Web Application")
 st.sidebar.header("Geeksforgeeks \n TrueGeeks")
 
-# https://towardsdatascience.com/how-to-get-stock-data-using-python-c0de1df17e75
-#define the ticker symbol
-tickerSymbol = 'GOOGL'
-#get data on this ticker
-tickerData = yf.Ticker(tickerSymbol)
-#get the historical prices for this ticker
-tickerDf = tickerData.history(period='1d', start='2010-5-31', end='2020-5-31')
-# Open	High	Low	Close	Volume	Dividends	Stock Splits
+company1 = get_ticker("GOOGL")
+company2 = get_ticker("MSFT")
+
+# fetches the data: Open, Close, High, Low and Volume
+google = finance.download("GOOGL", start="2021-10-01", end="2021-10-01")
+microsoft = finance.download("MSFT", start="2021-10-01", end="2021-10-01")
+
+# Valid periods: 1d,5d,1mo,3mo,6mo,1y,2y,5y,10y,ytd,max
+data1 = company1.history(period="3mo")
+data2 = company2.history(period="3mo")
+
+# markdown syntax
+st.write("""
+### Google
+""")
+
+# detailed summary on Google
+st.write(company1.info['longBusinessSummary'])
+st.write(google)
+
+# plots the graph
+st.line_chart(data1.values)
 
 st.write("""
-## Closing Price
+### Microsoft
 """)
-st.line_chart(tickerDf.Close)
-st.write("""
-## Volume Price
-""")
-st.line_chart(tickerDf.Volume)
+st.write(company2.info['longBusinessSummary'], "\n", microsoft)
+st.line_chart(data2.values)
