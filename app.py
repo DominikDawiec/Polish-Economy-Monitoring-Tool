@@ -11,7 +11,11 @@ st.metric(label="Temperature", value="70 °F", delta="1.2 °F")
 st.metric(label="Gas price", value=4, delta=-0.5,
      delta_color="inverse")
 
+option = st.selectbox(
+     'How would you like to be contacted?',
+     ('Email', 'Home phone', 'Mobile phone'))
 
+st.write('You selected:', option)
 
 
 st.write("""
