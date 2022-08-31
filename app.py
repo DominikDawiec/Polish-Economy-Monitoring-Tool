@@ -18,8 +18,8 @@ df = pd.read_csv('indexData.csv')
 st.dataframe(df)
 
 NYA = df[df.Index.isin(['NYA'])]
-NYA = NYA["Date", "Close"]
-st.dataframe(NYA)
+NYA1 = NYA["Date", "Close"]
+st.dataframe(NYA1)
 
 
 
