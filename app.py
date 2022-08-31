@@ -1,10 +1,9 @@
 import yfinance as yf
 import streamlit as st
 
-st.write("""
-# Simple Stock Price App
-Shown are the stock **closing price** and ***volume*** of Google!
-""")
+st.title("Build and Deploy Stock Market App Using Streamlit")
+st.header("A Basic Data Science Web Application")
+st.sidebar.header("Geeksforgeeks \n TrueGeeks")
 
 # https://towardsdatascience.com/how-to-get-stock-data-using-python-c0de1df17e75
 #define the ticker symbol
