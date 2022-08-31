@@ -31,7 +31,8 @@ if page == 'X':
   st.write('test X')
   
 if page == 'Y':
-  fig_corr = go.Figure(data=NYA1.Scatter(x="Date", y="Close"))
+  fig = px.line(NYa1, x='Date', y="Close")
+  fig.show()
   
 if page == 'NYA':
   st.line_chart(NYA1.Close)
