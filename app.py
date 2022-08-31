@@ -17,8 +17,12 @@ st.caption('This is a string that explains something above.')
 df = pd.read_csv('indexData.csv')
 st.dataframe(df)
 
+NYA = df[df.Index.isin(['NYA'])]
+st.dataframe(NYA)
 
-page_names = ['X', 'Y']
+
+
+page_names = ['X', 'Y', 'NYA']
 page = st.selectbox('Navigation', page_names)
 st.write('Choosen', page)
 
