@@ -26,6 +26,10 @@ if 'Email' in option: # If user selects Email  do 👇
 df = pd.read_csv('indexData.csv')
 st.dataframe(df)
 
+source = df
+all_symbols = source.Index.unique()
+symbols = st.multiselect("Choose stocks to visualize", all_symbols, all_symbols[:3])
+
 
 st.write("""
 # Simple Stock Price App
