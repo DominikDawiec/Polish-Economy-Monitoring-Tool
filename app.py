@@ -24,7 +24,7 @@ if 'Email' in option: # If user selects Email  do 👇
         st.write(f'Please check {email_id} for an email from us!')
      
 df = pd.read_csv('indexData.csv')
-st.dataframe(date=df)
+st.dataframe(df)
 
 
 st.write("""
