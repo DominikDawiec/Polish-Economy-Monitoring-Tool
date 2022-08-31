@@ -22,9 +22,8 @@ if 'Email' in option: # If user selects Email  do 👇
     if email_id: # If user enters email, do 👇
         st.write(f'Please check {email_id} for an email from us!')
      
- if 'Home Phone' in option: # If user selects Email  do 👇
-    st.line_chart(tickerDf.Close)
-
+ if 'Home Phone' in option:
+    print('x')
      
 
 st.write("""
