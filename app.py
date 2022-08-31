@@ -11,10 +11,6 @@ option = st.selectbox(
      'How would you like to be contacted?',
      ('Email', 'Home phone', 'Mobile phone'))
 
-if option = 'Email':
-     print('x')
-     else:
-          print('y')
 
 # We will use Amazon stocks
 stock = 'AMZN'
