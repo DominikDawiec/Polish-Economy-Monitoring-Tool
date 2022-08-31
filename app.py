@@ -31,7 +31,8 @@ if page == 'X':
   st.write('test X')
   
 if page == 'Y':
-  st.write('test mest Y')
+  fig_corr = go.Figure(data=NYA1.Scatter(x=NYA1.Date, y=NYA1.CLose))
+  st.plotly_chart(fig_corr)
   
 if page == 'NYA':
   st.line_chart(NYA1.Close)
