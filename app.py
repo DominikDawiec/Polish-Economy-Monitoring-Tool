@@ -20,7 +20,7 @@ st.dataframe(df)
 NYA = df[df.Index.isin(['NYA'])]
 NYA1 = NYA[["Date", "Close"]]
 st.dataframe(NYA1)
-
+df = NYA1
 
 
 page_names = ['X', 'Y', 'NYA']
@@ -31,8 +31,13 @@ if page == 'X':
   st.write('test X')
   
 if page == 'Y':
-  fig = px.line(NYA1, x='Date', y="Close")
-  fig.show()
+  plt.fill_between(df.Date, df.Close, color='skyblue', alpha=0.3)
+  plt.plot(df.Date, df.Close, color='skyblue', alpha=0.8)
+  plt.xticks(rotation=90)
+  plt.title(symbol, fontweight='bold')
+  plt.xlabel('Date', fontweight='bold')
+  plt.ylabel('Closing Price', fontweight='bold')
+  return st.pyplot()
   
 if page == 'NYA':
   st.line_chart(NYA1.Close)
