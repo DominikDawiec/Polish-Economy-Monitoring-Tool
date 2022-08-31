@@ -12,6 +12,9 @@ list = ('1','2','3')
 option = st.selectbox(
      'How would you like to be contacted?', list)
 
+if st.button('show indicator'):
+     choosen_indicator = get_indicators(option)
+
 
 # We will use Amazon stocks
 stock = 'AMZN'
