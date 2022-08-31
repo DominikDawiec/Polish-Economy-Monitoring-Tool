@@ -28,12 +28,12 @@ st.dataframe(df)
 
 source = df
 all_symbols = source.Index.unique()
-symbols = st.multiselect("Choose stocks to visualize", all_symbols, all_symbols[:3])
+symbols = st.selectbox("Choose stocks to visualize", all_symbols)
 
 
-source = source[source.symbol.isin(symbols)]
-chart = chart.get_chart(source)
 
+if 'NYA' in symbols: # If user selects Email  do 👇
+    st.line_chart(data=df, x=Date, y=Close)
 
 
 st.write("""
