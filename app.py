@@ -21,10 +21,6 @@ if 'Email' in option: # If user selects Email  do 👇
     email_id = st.text_input('Enter the email address we should contact: ')
     if email_id: # If user enters email, do 👇
         st.write(f'Please check {email_id} for an email from us!')
-     
- if 'Home Phone' in option:
-    print('x')
-     
 
 st.write("""
 # Simple Stock Price App
