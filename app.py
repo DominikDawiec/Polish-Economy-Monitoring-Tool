@@ -37,7 +37,7 @@ if page == 'Y':
   plt.title(symbol, fontweight='bold')
   plt.xlabel('Date', fontweight='bold')
   plt.ylabel('Closing Price', fontweight='bold')
-  return st.pyplot()
+  st.pyplot()
   
 if page == 'NYA':
   st.line_chart(NYA1.Close)
