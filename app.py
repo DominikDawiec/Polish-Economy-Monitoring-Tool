@@ -31,7 +31,7 @@ if page == 'X':
   st.write('test X')
   
 if page == 'Y':
-  fig = px.line(NYa1, x='Date', y="Close")
+  fig = px.line(NYA1, x='Date', y="Close")
   fig.show()
   
 if page == 'NYA':
