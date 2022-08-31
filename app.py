@@ -1,6 +1,19 @@
 import yfinance as yf
 import streamlit as st
 
+st.title('This is a title')
+st.header('This is a header')
+st.subheader('This is a subheader')
+st.caption('This is a string that explains something above.')
+
+st.metric(label="Temperature", value="70 °F", delta="1.2 °F")
+
+st.metric(label="Gas price", value=4, delta=-0.5,
+     delta_color="inverse")
+
+
+
+
 st.write("""
 # Simple Stock Price App
 Shown are the stock **closing price** and ***volume*** of Google!
