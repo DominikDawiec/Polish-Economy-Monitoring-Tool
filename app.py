@@ -23,7 +23,6 @@ if 'Email' in option: # If user selects Email  do 👇
         st.write(f'Please check {email_id} for an email from us!')
      
 
-from vega_datasets import data
 
 
 st.write("""
