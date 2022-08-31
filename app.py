@@ -34,4 +34,4 @@ if page == 'Y':
   st.write('test mest Y')
   
 if page == 'NYA':
-  st.line_chart(NYA1.Close)
+  st.line_chart(NYA1.Close, NYA1.Date)
