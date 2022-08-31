@@ -14,8 +14,6 @@ st.caption('This is a string that explains something above.')
 # st.metric(label="Temperature", value="70 °F", delta="1.2 °F")
 
 
-3 st.metric(label="Gas price", value=4, delta=-0.5, delta_color="inverse")
-
 df = pd.read_csv('indexData.csv')
 st.dataframe(df)
 
