@@ -31,11 +31,8 @@ all_symbols = source.Index.unique()
 symbols = st.multiselect("Choose stocks to visualize", all_symbols, all_symbols[:3])
 
 
-
 source = source[source.symbol.isin(symbols)]
 chart = chart.get_chart(source)
-st.altair_chart(chart, use_container_width=True)
-
 
 
 
