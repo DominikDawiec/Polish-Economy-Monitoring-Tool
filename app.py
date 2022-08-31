@@ -24,9 +24,7 @@ option = st.selectbox(
      'How would you like to be contacted?',
      ('X', 'Y', 'Z'))
 
-If option == X:
-     st.header('X')
-     
+
 
 
 
