@@ -69,6 +69,7 @@ def main_plot(fname):
   st.write('Last Value:', last_value)
   st.write('Penultimate Value:', penultimate_value)
   st.write('MoM Change:', momdiff, "%")
+  st.write('notes:', ghb['notes'].iat[-1])
 
   #st.dataframe(dfx)
   #st.dataframe(df)
@@ -78,13 +79,13 @@ dfz = pd.DataFrame.from_dict(dfz['seriess'])
 dfz['name'] = dfz['title'] + " (" + dfz['id'] + ")"
 dfz.sort_values(by='popularity')
 
-categories = dfz.id.unique()
-choose_category = st.selectbox("Choose an economic indicator:", categories)
+# categories = dfz.id.unique()
+# choose_category = st.selectbox("Choose an economic indicator:", categories)
 
-main_plot(choose_category)
+# main_plot(choose_category)
 
 
-dfz.loc[dfz["name"] =="Harmonized Index of Consumer Prices: Overall Index Excluding Energy, Food, Alcohol, and Tobacco for Poland (00XEFDPLM086NEST)", ["id", "name", "notes"]]
+# dfz.loc[dfz["name"] =="Harmonized Index of Consumer Prices: Overall Index Excluding Energy, Food, Alcohol, and Tobacco for Poland (00XEFDPLM086NEST)", ["id", "name", "notes"]]
 categories2 = dfz.name.unique()
 choose_category2 = st.selectbox("Choose an economic indicator:", categories2)
 
@@ -95,5 +96,5 @@ def testfunction(x):
  
 testfunction(choose_category2)
 
-st.dataframe(dfz)
+# st.dataframe(dfz)
 
