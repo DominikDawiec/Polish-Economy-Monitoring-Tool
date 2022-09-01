@@ -24,7 +24,7 @@ df = NYA1
 dfx = NYA1
 
 most_recent = df['Close'].iat[-1]
-st.caption(most_recent)
+st.caption("The most recent value is", most_recent)
 
 
 page_names = ['X', 'Y', 'NYA']
