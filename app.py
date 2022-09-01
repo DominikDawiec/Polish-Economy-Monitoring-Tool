@@ -25,10 +25,9 @@ Y = "CIVPART"
 
 def main_plot(fname):
   st.title("test function")
-  df = fred.observations(fname)
+  dfx = fred.observations(fname)
   
-  #dfx = pd.DataFrame.from_dict(df['observations'])
-  dfx=df
+  dfx = pd.DataFrame.from_dict(df['observations'])
   dfx['date'] = pd.to_datetime(dfx['date'])
   dfx['value'] = pd.to_numeric(dfx['value'],errors = 'coerce')
   
