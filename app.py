@@ -59,20 +59,17 @@ def fred(fname):
   df = fred.observations(fname)
   st.dataframe(df)
 
-fred(page)
 
 
-#if page == 'X':
-  #st.write('test X')
+if page == 'X':
+  fred(X)
   
-#if page == 'Y':
- # plt.plot(df.Date, df.Close)
- # st.pyplot()
+if page == 'Y':
+ fred(Y)
   
-#if page == 'Inflation':
-  #main_plot(Inflation)
+if page == 'Inflation':
+  fred(Inflation)
   
-#main_plot(page)
 
 
   
