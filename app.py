@@ -94,12 +94,9 @@ st.dataframe(categories)
 
 
 
-for variable in choose_category:
-  rslt = dfz.loc[dfz['name'] == variable ]
-  st.dataframe(rslt)
-
-
-
+for x in choose_category:
+  dfb = dfz.loc[dfz['name'] == x]
+  st.dataframe(dfb)
   
 
 
