@@ -55,20 +55,20 @@ page_names = ['X', 'Y', 'Inflation']
 page = st.selectbox('Navigation', page_names)
 st.write('Wybrany wskaźnik: ', page)
 
-def fred(fname):
+def fredx(fname):
   df = fred.observations(fname)
   st.dataframe(df)
 
 
 
 if page == 'X':
-  fred(X)
+  fredx(X)
   
 if page == 'Y':
- fred(Y)
+ fredx(Y)
   
 if page == 'Inflation':
-  fred(Inflation)
+  fredx(Inflation)
   
 
 
