@@ -82,7 +82,17 @@ dfz = pd.DataFrame.from_dict(dfz['seriess'])
 st.dataframe(dfz)
 
 
-categories
+
+
+fname = 'NGDPRSAXDCPLQ'
+
+inner_join = pd.merge(fname, 
+                      dfz, 
+                      on ='id', 
+                      how ='inner')
+
+st.dataframe(inner_join)
+
 
 #page_names = ['X', 'Y', 'Inflation']
 #page = st.selectbox('Navigation', page_names)
