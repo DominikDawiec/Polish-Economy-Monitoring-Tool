@@ -82,13 +82,14 @@ main_plot(RGDP)
 
 dfz = fred.category_series(32339)
 dfz = pd.DataFrame.from_dict(dfz['seriess'])
-dfz = dfz['id'] == 'NGDPRSAXDCPLQ'
 st.dataframe(dfz)
 
 
+options = 'NGDPRSAXDCPLQ'
+rslt_df = dfz.loc[dfz['Stream'].isin(options)] 
+st.dataframe(rslt_df)
 
 
-fname = 'NGDPRSAXDCPLQ'
 
 
 
