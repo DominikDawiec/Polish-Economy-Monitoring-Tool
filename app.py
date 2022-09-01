@@ -57,4 +57,14 @@ st.line_chart(chart_data)
 
 
 import matplotlib.pyplot as plt
+plt.plot(NYA1.Date, NYA1.Close, label='blogs_read', linewidth=3)
 
+plt.title('Blogs by Date')
+plt.xlabel('Date')
+plt.ylabel('Blogs')
+
+plt.legend()
+
+plt.tight_layout()
+
+plt.show() 
