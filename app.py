@@ -73,31 +73,16 @@ def main_plot(fname):
   #st.dataframe(dfx)
   #st.dataframe(df)
 
-
-main_plot(RGDP)
-
-
-
-
-
 dfz = fred.category_series(32339)
 dfz = pd.DataFrame.from_dict(dfz['seriess'])
-dfz.loc[dfz['id'] == 'DDDI10PLA156NWDB']
-
 dfz['name'] = dfz['title'] + " (" + dfz['id'] + ")"
 dfz.sort_values(by='popularity')
-categories = dfz.name.unique()
+
+categories = dfz.id.unique()
 choose_category = st.selectbox("Choose an economic indicator:", categories)
 
-st.dataframe(dfz)
-st.dataframe(categories)
 
-
-
-for choose_category:
-  dfb = dfz.loc[dfz['name'] == choose_category]
-  st.dataframe(dfb)
-  
+main_plot(choose_category)
 
 
 
