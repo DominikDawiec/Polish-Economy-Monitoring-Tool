@@ -7,6 +7,7 @@ import fred
 import plotly.graph_objects as go
 import pandas as pd
 import matplotlib.pyplot as plt
+fred.key('8c3b945500069081b94040df2da12df7')
 
 #page setup
 st.set_page_config(page_title="A/B Testing App", page_icon="📊", initial_sidebar_state="expanded")
@@ -18,7 +19,26 @@ st.caption('Kod z każdym zapytaniem łączy się z API w celu pobrania aktualne
 
 # st.metric(label="Temperature", value="70 °F", delta="1.2 °F")
 
+Inflation = CP0452PLM086NEST
 
+def main_plot(fname):
+  st.title("test function")
+  df = fred.observations(fname)
+  dfx = pd.DataFrame.from_dict(df['observations'])
+  dfx['date'] = pd.to_datetime(dfx['date'])
+  dfx['value'] = pd.to_numeric(dfx['value'],errors = 'coerce')
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
 df = pd.read_csv('indexData.csv')
 # st.dataframe(df)   dziala
 df["Date"] = df["Date"].astype("datetime64")
@@ -67,12 +87,7 @@ ax.hist(arr, bins=20)
 
 
 
-fred.key('8c3b945500069081b94040df2da12df7')
-df = fred.observations('CP0452PLM086NEST')
-Inflacja = pd.DataFrame.from_dict(df['observations'])
-Inflacja['date'] = pd.to_datetime(Inflacja['date'])
-Inflacja['value'] = pd.to_numeric(Inflacja['value'],errors = 'coerce')
-Inflacja.to_csv('plik2.csv')
+
 
 
 df1 = Inflacja
