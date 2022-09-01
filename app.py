@@ -27,23 +27,32 @@ RegisteredUnemploymentRate = 'LMUNRRTTPLM156S'
 
 
 def main_plot(fname):
-  dfx = fred.observations(fname)
+  # downloading timeseries data from API
+  df = fred.observations(fname)
   
-  dfx = pd.DataFrame.from_dict(dfx['observations'])
-  dfx['date'] = pd.to_datetime(dfx['date'])
-  dfx['value'] = pd.to_numeric(dfx['value'],errors = 'coerce')
+  # cleaning the dataset with timeseries
+  df = pd.DataFrame.from_dict(df['observations'])
+  df['date'] = pd.to_datetime(df['date'])
+  df['value'] = pd.to_numeric(df['value'],errors = 'coerce')
   
-  fig = px.line(dfx, x='date', y='value', title='Time Series with Range Slider and Selectors')
+  # downloading detailed data from API
+  dfx = fred.search(fname)
+  
+  # cleaning detailed data from API
+  dfx = pd.DataFrame.from_dict(dfx['seriess'])
+ 
+  # creating plot with timeseries
+  fig = px.line(df, x='date', y='value', title='Time Series with Range Slider and Selectors')
   st.plotly_chart(fig, use_container_width=True)
     
-  most_recent = dfx['value'].iat[-1]
-  deltax = most_recent-1
-  st.metric(label="Most Recent Value", value=most_recent, delta=deltax)
+  #most_recent = dfx['value'].iat[-1]
+  #deltax = most_recent-1
+  #st.metric(label="Most Recent Value", value=most_recent, delta=deltax)
   
   #dfxz = dfx[["date","value"]]
   #st.dataframe(dfxz)
   
-
+main_plot(RGDP)
 
 #page_names = ['X', 'Y', 'Inflation']
 #page = st.selectbox('Navigation', page_names)
