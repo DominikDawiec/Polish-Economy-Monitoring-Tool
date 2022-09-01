@@ -24,8 +24,9 @@ df = NYA1
 dfx = NYA1
 
 most_recent = df['Close'].iat[-1]
+deltax = most_recent-1
 st.caption(most_recent)
-st.metric(label="Most Recent Value", value=most_recent)
+st.metric(label="Most Recent Value", value=most_recent, delta=deltax)
 
 
 page_names = ['X', 'Y', 'NYA']
