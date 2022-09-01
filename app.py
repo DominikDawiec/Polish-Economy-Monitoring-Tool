@@ -92,4 +92,6 @@ def filter(z):
   rslt = dfz.loc[dfz['title'] == z]
   st.dataframe(rslt)
 
-
+  meh = "Harmonized Index of Consumer Prices: Overall Index Excluding Alcohol and Tobacco for Poland (00XALCPLM086NEST)"
+  filter(meh)
+filter
