@@ -92,17 +92,13 @@ choose_category = st.selectbox("Choose an economic indicator:", categories)
 st.dataframe(dfz)
 st.dataframe(categories)
 
-for choose_category:
-  df1 = dfz[dfz['name'] == choose_category]
-  st.dataframe(df1)
 
 
-#page_names = ['X', 'Y', 'Inflation']
-#page = st.selectbox('Navigation', page_names)
-#st.write('Wybrany wskaźnik: ', page)
+for variable in choose_category:
+  print(variable)
 
-#if page == 'X':
- # main_plot(X)
+
+
   
 
 
