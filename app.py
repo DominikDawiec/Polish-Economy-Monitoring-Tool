@@ -82,7 +82,7 @@ main_plot(RGDP)
 
 dfz = fred.category_series(32339)
 dfz = pd.DataFrame.from_dict(dfz['seriess'])
-dfz = dfz[dfz['id'] = 'NGDPRSAXDCPLQ']
+dfz = dfz[dfz['id'] == 'NGDPRSAXDCPLQ']
 st.dataframe(dfz)
 
 
