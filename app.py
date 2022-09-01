@@ -24,14 +24,22 @@ Inflation = "CP0452PLM086NEST"
 def main_plot(fname):
   st.title("test function")
   df = fred.observations(fname)
+  
   dfx = pd.DataFrame.from_dict(df['observations'])
   dfx['date'] = pd.to_datetime(dfx['date'])
   dfx['value'] = pd.to_numeric(dfx['value'],errors = 'coerce')
   
-  
   fig = px.line(dfx, x='date', y='value', title='Time Series with Range Slider and Selectors')
   st.plotly_chart(fig, use_container_width=True)
+  
   st.title("end function")
+  
+  most_recent = dfx['Close'].iat[-1]
+  deltax = most_recent-1
+  st.caption(most_recent)
+  st.metric(label="Most Recent Value", value=most_recent, delta=deltax)
+
+
   
   
   
