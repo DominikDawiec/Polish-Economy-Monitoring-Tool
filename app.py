@@ -21,9 +21,9 @@ NYA = df[df.Index.isin(['NYA'])]
 NYA1 = NYA[["Date", "Close"]]
 st.dataframe(NYA1)
 df = NYA1
+dfx = NYA1
 
-
-most_recent = df.tail(1).Close.item()
+most_recent = dfx['Close'].tail(1)
 st.caption("the most recent value is", most_recent)
 
 
