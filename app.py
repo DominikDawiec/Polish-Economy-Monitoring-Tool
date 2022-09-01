@@ -27,8 +27,11 @@ def main_plot(fname):
   dfx = pd.DataFrame.from_dict(df['observations'])
   dfx['date'] = pd.to_datetime(dfx['date'])
   dfx['value'] = pd.to_numeric(dfx['value'],errors = 'coerce')
-
+  st.title("end function")
   
+  
+  
+main_plot(Inflation)
 
   
   
