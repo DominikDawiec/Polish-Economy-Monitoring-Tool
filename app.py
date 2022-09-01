@@ -3,10 +3,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
-import fred
 import plotly.graph_objects as go
-import pandas as pd
-import matplotlib.pyplot as plt
+import fred
 fred.key('8c3b945500069081b94040df2da12df7')
 
 #page setup
