@@ -59,7 +59,7 @@ main_plot(RGDP)
 #st.write('Wybrany wskaźnik: ', page)
 
 #if page == 'X':
-  main_plot(X)
+ # main_plot(X)
   
 df = fred.search('NGDPRSAXDCPLQ')
 dfx = pd.DataFrame.from_dict(df['seriess'])
