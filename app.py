@@ -93,8 +93,8 @@ st.dataframe(dfz)
 st.dataframe(categories)
 
 for x in choose_category:
-  st.write(x)
-
+  df1 = dfz[dfz['name'] == x]
+  st.dataframe(df1)
 
 
 #page_names = ['X', 'Y', 'Inflation']
