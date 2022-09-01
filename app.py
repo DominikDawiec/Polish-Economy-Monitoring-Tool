@@ -27,6 +27,10 @@ def main_plot(fname):
   dfx = pd.DataFrame.from_dict(df['observations'])
   dfx['date'] = pd.to_datetime(dfx['date'])
   dfx['value'] = pd.to_numeric(dfx['value'],errors = 'coerce')
+  
+  
+  fig = px.line(dfx, x='date', y='value', title='Time Series with Range Slider and Selectors')
+  st.plotly_chart(fig, use_container_width=True)
   st.title("end function")
   
   
