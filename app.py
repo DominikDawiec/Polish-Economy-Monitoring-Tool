@@ -77,21 +77,12 @@ dfz = fred.category_series(32339)
 dfz = pd.DataFrame.from_dict(dfz['seriess'])
 dfz['name'] = dfz['title'] + " (" + dfz['id'] + ")"
 dfz.sort_values(by='popularity')
-st.dataframe(dfz)
 
 categories = dfz.id.unique()
 choose_category = st.selectbox("Choose an economic indicator:", categories)
 
-
 main_plot(choose_category)
 
 
+st.dataframe(dfz)
 
-
-def filter(z):
-  rslt = dfz.loc[dfz['title'] == z]
-  st.dataframe(rslt)
-
-  meh = "Harmonized Index of Consumer Prices: Overall Index Excluding Alcohol and Tobacco for Poland (00XALCPLM086NEST)"
-  filter(meh)
-filter
