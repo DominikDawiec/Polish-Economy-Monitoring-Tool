@@ -2,6 +2,7 @@ import yfinance as yf
 import streamlit as st
 import pandas as pd
 import numpy as np
+import plotly.express as px
 
 st.set_page_config(page_title="A/B Testing App", page_icon="📊", initial_sidebar_state="expanded")
 
