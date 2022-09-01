@@ -1,3 +1,4 @@
+# importing all required libraries
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -7,14 +8,13 @@ import plotly.graph_objects as go
 import pandas as pd
 import matplotlib.pyplot as plt
 
+#page setup
 st.set_page_config(page_title="A/B Testing App", page_icon="📊", initial_sidebar_state="expanded")
 
-
-
-st.title('This is a title')
-st.header('This is a header')
-st.subheader('This is a subheader')
-st.caption('This is a string that explains something above.')
+# title
+st.title('Polish economy viewer')
+st.subheader('Ta strona ma na celu przdstawienie wskaźników ekonomicznych dla Polski w czasie rzeczywistym')
+st.caption('Kod z każdym zapytaniem łączy się z API w celu pobrania aktualnego df a następnie zwizualizowania go')
 
 # st.metric(label="Temperature", value="70 °F", delta="1.2 °F")
 
