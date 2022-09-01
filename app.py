@@ -89,7 +89,8 @@ categories2 = dfz.name.unique()
 choose_category2 = st.selectbox("Choose an economic indicator:", categories2)
 
 def testfunction(x):
-  dfz.loc[dfz["name"] ==x, ["id", "name", "notes"]]
+  ghb = dfz.loc[dfz["name"] ==x, ["id", "name", "notes"]]
+  st.dataframe(ghb)
  
 testfunction(choose_category2)
 
