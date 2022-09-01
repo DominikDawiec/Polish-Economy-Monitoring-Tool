@@ -83,6 +83,6 @@ st.plotly_chart(fig, use_container_width=True)
 
 import plotly.graph_objects as go
 
-fig1 = go.Figure(df1)
+fig1 = go.Figure(data=[go.Table(df1)])
 st.plotly_chart(fig1, use_container_width=True)
 
