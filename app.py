@@ -95,7 +95,7 @@ st.dataframe(categories)
 
 
 for variable in choose_category:
-  rslt = dfz.loc[dfz['name'].isin(variable)]
+  rslt = dfz.loc[dfz['name'] == variable ]
   st.dataframe(rslt)
 
 
