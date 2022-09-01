@@ -86,7 +86,7 @@ st.dataframe(dfz)
 
 
 options = 'NGDPRSAXDCPLQ'
-rslt_df = dfz.loc[dfz['Stream'].isin(options)] 
+rslt_df = dataframe[(dataframe['Age'] == options)
 st.dataframe(rslt_df)
 
 
