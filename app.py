@@ -61,7 +61,8 @@ def main_plot(fname):
   # creating KPIs
   st.write('Last Value:', last_value)
   st.write('Penultimate Value:', penultimate_value)
-  
+  st.write('MoM Change:', momdiff)
+
   #st.dataframe(dfx)
   #st.dataframe(df)
 
