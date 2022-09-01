@@ -87,7 +87,7 @@ dfz.loc[dfz['id'] == 'DDDI10PLA156NWDB']
 dfz['name'] = dfz['title'] + " (" + dfz['id'] + ")"
 dfz.sort_values(by='popularity')
 categories = dfz.name.unique()
-
+choose_category = st.selectbox("Choose an economic indicator:", categories)
 
 st.dataframe(dfz)
 st.dataframe(categories)
