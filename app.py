@@ -77,3 +77,12 @@ Inflacja.to_csv('plik2.csv')
 df1 = Inflacja
 fig = px.line(df1, x='date', y='value', title='Time Series with Range Slider and Selectors')
 st.plotly_chart(fig, use_container_width=True)
+
+
+
+
+import plotly.graph_objects as go
+
+fig1 = go.Figure(data=Inflacja)
+st.plotly_chart(fig1, use_container_width=True)
+
