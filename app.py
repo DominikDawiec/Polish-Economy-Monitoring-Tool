@@ -20,6 +20,8 @@ st.caption('Kod z każdym zapytaniem łączy się z API w celu pobrania aktualne
 # st.metric(label="Temperature", value="70 °F", delta="1.2 °F")
 
 Inflation = "CP0452PLM086NEST"
+X = "A261RL1Q225SBEA"
+Y = "CIVPART"
 
 def main_plot(fname):
   st.title("test function")
@@ -52,15 +54,17 @@ page_names = ['X', 'Y', 'Inflation']
 page = st.selectbox('Navigation', page_names)
 st.write('Wybrany wskaźnik: ', page)
 
-if page == 'X':
-  st.write('test X')
+#if page == 'X':
+  #st.write('test X')
   
-if page == 'Y':
-  plt.plot(df.Date, df.Close)
-  st.pyplot()
+#if page == 'Y':
+ # plt.plot(df.Date, df.Close)
+ # st.pyplot()
   
-if page == 'Inflation':
-  main_plot(Inflation)
+#if page == 'Inflation':
+  #main_plot(Inflation)
+  
+main_plot(page)
 
 
   
