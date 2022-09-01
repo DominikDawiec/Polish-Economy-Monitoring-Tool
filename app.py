@@ -77,8 +77,12 @@ def main_plot(fname):
 main_plot(RGDP)
 
 
+
+
+
 dfz = fred.category_series(32339)
 dfz = pd.DataFrame.from_dict(dfz['seriess'])
+dfz = dfz[dfz['id'] = 'NGDPRSAXDCPLQ']
 st.dataframe(dfz)
 
 
@@ -86,12 +90,8 @@ st.dataframe(dfz)
 
 fname = 'NGDPRSAXDCPLQ'
 
-inner_join = pd.merge(fname, 
-                      dfz, 
-                      on ='id', 
-                      how ='inner')
 
-st.dataframe(inner_join)
+
 
 
 #page_names = ['X', 'Y', 'Inflation']
