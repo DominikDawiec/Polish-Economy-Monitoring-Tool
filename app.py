@@ -1,8 +1,11 @@
-import yfinance as yf
 import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
+import fred
+import plotly.graph_objects as go
+import pandas as pd
+import matplotlib.pyplot as plt
 
 st.set_page_config(page_title="A/B Testing App", page_icon="📊", initial_sidebar_state="expanded")
 
@@ -57,7 +60,6 @@ chart_data = pd.DataFrame(
 st.line_chart(chart_data)
 
 
-import matplotlib.pyplot as plt
 arr = np.random.normal(1, 1, size=100)
 fig, ax = plt.subplots()
 ax.hist(arr, bins=20)
@@ -65,7 +67,6 @@ ax.hist(arr, bins=20)
 
 
 
-import fred
 fred.key('8c3b945500069081b94040df2da12df7')
 df = fred.observations('CP0452PLM086NEST')
 Inflacja = pd.DataFrame.from_dict(df['observations'])
@@ -86,8 +87,7 @@ st.plotly_chart(fig, use_container_width=True)
 
 
 
-import plotly.graph_objects as go
-import pandas as pd
+
 
 df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_usa_states.csv')
 
