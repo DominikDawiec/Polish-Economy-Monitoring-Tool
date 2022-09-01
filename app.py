@@ -86,7 +86,7 @@ st.dataframe(dfz)
 
 
 options = 'NGDPRSAXDCPLQ'
-rslt_df = dataframe[(dataframe['Age'] == options)
+rslt_df = dfz[(dfz['id'] == options)
 st.dataframe(rslt_df)
 
 
