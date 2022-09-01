@@ -42,7 +42,7 @@ def main_plot(fname):
   dfx = pd.DataFrame.from_dict(dfx['seriess'])
  
   # creating plot with timeseries
-  fig = px.line(df, x='date', y='value', title='xxx')
+  fig = px.line(df, x='date', y='value', title= dfx['title'].iat[-1])
   st.plotly_chart(fig, use_container_width=True)
     
   #most_recent = dfx['value'].iat[-1]
