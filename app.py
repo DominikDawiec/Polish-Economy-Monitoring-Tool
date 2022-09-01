@@ -53,9 +53,13 @@ def main_plot(fname):
   st.write('Seasonal Adjustment:', dfx['seasonal_adjustment'].iat[-1])
   st.write('Last Updated:', dfx['last_updated'].iat[-1])
 
+  #Calculations for KPIs
   last_value = df['value'].iat[-1]
   penultimate_value = df['value'].iat[-2]
-  fig1 = go.Figure(go.Indicator(mode = "number+delta",value = last_value,number = {'prefix': "Last Value"},delta = {'position': "top", 'reference': 320},domain = {'x': [0, 1], 'y': [0, 1]}))
+  momdiff = ((last_value - penultimate_value)/penultimate_value)*100%
+  
+  # creating KPIs
+  fig1 = go.Figure(go.Indicator(mode = "number+delta",value = last_value,title = {"text": "Last Value<br><span style='font-size:0.8em;color:gray'>>"},delta = {'reference': 400, 'relative': True},domain = {'x': [0.6, 1], 'y': [0, 1]})
   st.plotly_chart(fig1, use_container_width=True)
 
   
