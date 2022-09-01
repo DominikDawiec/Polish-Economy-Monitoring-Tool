@@ -41,6 +41,12 @@ def main_plot(fname):
   # cleaning detailed data from API
   dfx = pd.DataFrame.from_dict(dfx['seriess'])
  
+  # downloading data about source
+  dfa = fred.series(fname, release=True)
+  
+  # cleaning detailed about source
+  dfa = pd.DataFrame.from_dict(dfa['releases'])
+ 
   # creating plot with timeseries
   fig = px.line(df, x='date', y='value', title= dfx['title'].iat[-1])
   st.plotly_chart(fig, use_container_width=True)
@@ -52,6 +58,7 @@ def main_plot(fname):
   st.write('Unit:', dfx['units'].iat[-1])
   st.write('Seasonal Adjustment:', dfx['seasonal_adjustment'].iat[-1])
   st.write('Last Updated:', dfx['last_updated'].iat[-1])
+  st.write('Source Link:', dfa['link'].iat[-1])
 
   # Calculations for KPIs
   last_value = df['value'].iat[-1]
