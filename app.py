@@ -44,7 +44,11 @@ def main_plot(fname):
   # creating plot with timeseries
   fig = px.line(df, x='date', y='value', title= dfx['title'].iat[-1])
   st.plotly_chart(fig, use_container_width=True)
-    
+  
+  # creating KPIs
+  fig1 = go.Figure(go.Indicator(mode = "number+delta", value = df['value'].iat[-1], number = {'prefix': "$"}, delta = {'position': "top", 'reference': 320}, domain = {'x': [0, 1], 'y': [0, 1]}))
+  st.plotly_chart(fig1, use_container_width=True)
+  
   #most_recent = dfx['value'].iat[-1]
   #deltax = most_recent-1
   #st.metric(label="Most Recent Value", value=most_recent, delta=deltax)
