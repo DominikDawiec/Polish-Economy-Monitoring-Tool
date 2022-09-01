@@ -5,6 +5,9 @@ import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 import fred
+from fredapi import Fred
+
+# key
 fred.key('8c3b945500069081b94040df2da12df7')
 
 # page setup
@@ -49,3 +52,7 @@ def main_plot(fname):
 #if page == 'X':
   main_plot(X)
   
+df = fred.search('NGDPRSAXDCPLQ')
+dfx = pd.DataFrame.from_dict(df['seriess'])
+st.dataframe(dfx)
+
