@@ -20,7 +20,7 @@ df = pd.read_csv('indexData.csv')
 NYA = df[df.Index.isin(['NYA'])]
 NYA1 = NYA[["Date", "Close"]]
 # st.dataframe(NYA1)   dziala
-st.table(NYA1)
+# st.table(NYA1)    dziala ale pokazuje cala dlugosc
 df = NYA1
 dfx = NYA1
 
