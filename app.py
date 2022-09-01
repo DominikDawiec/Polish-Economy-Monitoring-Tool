@@ -85,7 +85,7 @@ dfz = pd.DataFrame.from_dict(dfz['seriess'])
 dfz.loc[dfz['id'] == 'DDDI10PLA156NWDB']
 
 dfz['name'] = dfz['title'] + " (" + dfz['id'] + ")"
-dfz.sort_values('popularity')
+dfz.sort_values(by='popularity')
 st.dataframe(dfz)
 
 
