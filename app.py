@@ -86,3 +86,9 @@ main_plot(choose_category)
 
 
 
+
+def filter(z):
+  rslt_df = dfz.loc[dfz['title'] == z]
+  st.write(z)
+
+
