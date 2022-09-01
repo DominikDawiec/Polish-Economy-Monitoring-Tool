@@ -69,6 +69,14 @@ def main_plot(fname):
 
 main_plot(RGDP)
 
+
+dfz = fred.category_series(32339)
+dfz = pd.DataFrame.from_dict(dfz['seriess'])
+st.dataframe(dfz)
+
+
+categories
+
 #page_names = ['X', 'Y', 'Inflation']
 #page = st.selectbox('Navigation', page_names)
 #st.write('Wybrany wskaźnik: ', page)
