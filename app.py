@@ -47,11 +47,11 @@ def main_plot(fname):
   
   # creating KPIs
   st.write('Observation Start:', dfx['observation_start'].iat[-1])
-  st.subheader('Observation End:', dfx['observation_end'].iat[-1])
-  st.subheader('Frequency:', dfx['frequency'].iat[-1])
-  st.subheader('Unit:', dfx['units'].iat[-1])
-  st.subheader('Seasonal Adjustment:', dfx['seasonal_adjustment'].iat[-1])
-  st.subheader('Last Updated:', dfx['last_updated'].iat[-1])
+  st.write('Observation End:', dfx['observation_end'].iat[-1])
+  st.write('Frequency:', dfx['frequency'].iat[-1])
+  st.write('Unit:', dfx['units'].iat[-1])
+  st.write('Seasonal Adjustment:', dfx['seasonal_adjustment'].iat[-1])
+  st.write('Last Updated:', dfx['last_updated'].iat[-1])
 
   #most_recent = dfx['value'].iat[-1]
   #deltax = most_recent-1
