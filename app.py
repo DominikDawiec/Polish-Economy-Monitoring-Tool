@@ -19,7 +19,7 @@ st.caption('Kod z każdym zapytaniem łączy się z API w celu pobrania aktualne
 
 # st.metric(label="Temperature", value="70 °F", delta="1.2 °F")
 
-Inflation = CP0452PLM086NEST
+Inflation = "CP0452PLM086NEST"
 
 def main_plot(fname):
   st.title("test function")
