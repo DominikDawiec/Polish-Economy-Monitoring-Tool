@@ -56,7 +56,7 @@ def main_plot(fname):
   # Calculations for KPIs
   last_value = df['value'].iat[-1]
   penultimate_value = df['value'].iat[-2]
-  momdiff = ((last_value - penultimate_value):penultimate_value)*100
+  momdiff = ((last_value - penultimate_value)/penultimate_value)*100
   
   # creating KPIs
   st.write('Last Value:', last_value)
