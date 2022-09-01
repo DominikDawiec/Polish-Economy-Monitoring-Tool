@@ -94,8 +94,8 @@ st.dataframe(categories)
 
 
 
-for x in choose_category:
-  dfb = dfz.loc[dfz['name'] == x]
+for choose_category:
+  dfb = dfz.loc[dfz['name'] == choose_category]
   st.dataframe(dfb)
   
 
