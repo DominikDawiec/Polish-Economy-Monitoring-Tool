@@ -82,6 +82,8 @@ main_plot(RGDP)
 
 dfz = fred.category_series(32339)
 dfz = pd.DataFrame.from_dict(dfz['seriess'])
+dfz.loc[dfz['id'] == 'POLCPIALLMINMEI']
+
 st.dataframe(dfz)
 
 
