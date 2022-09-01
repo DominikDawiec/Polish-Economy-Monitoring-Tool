@@ -45,21 +45,12 @@ def main_plot(fname):
   
   
   
-main_plot(Inflation)
-
-  
-  
-  
-  
   
   
 
-
-
-
-page_names = ['X', 'Y', 'NYA']
+page_names = ['X', 'Y', 'Inflation']
 page = st.selectbox('Navigation', page_names)
-st.write('Choosen', page)
+st.write('Wybrany wskaźnik: ', page)
 
 if page == 'X':
   st.write('test X')
@@ -68,8 +59,9 @@ if page == 'Y':
   plt.plot(df.Date, df.Close)
   st.pyplot()
   
-if page == 'NYA':
-  st.line_chart(NYA1.Close)
+if page == 'Inflation':
+  main_plot(Inflation)
+
 
   
   
