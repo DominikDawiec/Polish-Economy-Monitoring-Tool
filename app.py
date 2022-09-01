@@ -44,12 +44,6 @@ def main_plot(fname):
 
 
 
-  
-  
-  
-  
-  
-
 page_names = ['X', 'Y', 'Inflation']
 page = st.selectbox('Navigation', page_names)
 st.write('Wybrany wskaźnik: ', page)
@@ -62,49 +56,3 @@ if page == 'Y':
   
 if page == 'Inflation':
   main_plot(Inflation)
-  
-  
-  
-chart_data = pd.DataFrame(
-     np.random.randn(20, 3),
-     columns=['a', 'b', 'c'])
-
-st.line_chart(chart_data)
-
-
-arr = np.random.normal(1, 1, size=100)
-fig, ax = plt.subplots()
-ax.hist(arr, bins=20)
-
-
-
-
-
-
-
-df1 = Inflacja
-fig = px.line(df1, x='date', y='value', title='Time Series with Range Slider and Selectors')
-st.plotly_chart(fig, use_container_width=True)
-
-
-
-
-
-
-
-
-
-
-
-df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_usa_states.csv')
-
-fig = go.Figure(data=[go.Table(
-    header=dict(values=list(df.columns),
-                fill_color='paleturquoise',
-                align='left'),
-    cells=dict(values=[df.Rank, df.State, df.Postal, df.Population],
-               fill_color='lavender',
-               align='left'))
-])
-
-st.plotly_chart(fig, use_container_width=True)
