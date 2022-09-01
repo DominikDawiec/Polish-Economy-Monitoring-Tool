@@ -69,7 +69,6 @@ def main_plot(fname):
   st.write('Last Value:', last_value)
   st.write('Penultimate Value:', penultimate_value)
   st.write('MoM Change:', momdiff, "%")
-  st.write('notes:', ghb['notes'].iat[-1])
 
   #st.dataframe(dfx)
   #st.dataframe(df)
@@ -93,6 +92,8 @@ def testfunction(x):
   ghb = dfz.loc[dfz["name"] ==x, ["id", "name", "notes"]]
   st.dataframe(ghb)
   main_plot(ghb['id'].iat[-1])
+  st.write("notes:", ghb['notes'].iat[-1])
+
  
 testfunction(choose_category2)
 
