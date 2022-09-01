@@ -86,7 +86,11 @@ dfz.loc[dfz['id'] == 'DDDI10PLA156NWDB']
 
 dfz['name'] = dfz['title'] + " (" + dfz['id'] + ")"
 dfz.sort_values(by='popularity')
+categories = dfz.name.unique()
+
+
 st.dataframe(dfz)
+st.dataframe(categories)
 
 
 
