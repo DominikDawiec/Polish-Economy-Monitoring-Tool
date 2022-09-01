@@ -53,9 +53,11 @@ def main_plot(fname):
   st.write('Seasonal Adjustment:', dfx['seasonal_adjustment'].iat[-1])
   st.write('Last Updated:', dfx['last_updated'].iat[-1])
 
-  #most_recent = dfx['value'].iat[-1]
-  #deltax = most_recent-1
-  #st.metric(label="Most Recent Value", value=most_recent, delta=deltax)
+  last_value = df['value'].iat[-1]
+  penultimate_value = df['value'].iat[-2]
+  fig1 = go.Figure(go.Indicator(mode = "number+delta",value = last_value,number = {'prefix': "Last Value"},delta = {'position': "top", 'reference': 320},domain = {'x': [0, 1], 'y': [0, 1]}))
+  st.plotly_chart(fig1, use_container_width=True)
+
   
   #dfxz = dfx[["date","value"]]
   #st.dataframe(dfxz)
