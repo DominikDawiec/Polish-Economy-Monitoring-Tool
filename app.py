@@ -42,7 +42,7 @@ def main_plot(fname):
   dfx = pd.DataFrame.from_dict(dfx['seriess'])
  
   # creating plot with timeseries
-  fig = px.line(df, x='date', y='value', title=dfx['title'])
+  fig = px.line(df, x='date', y='value', title='xxx')
   st.plotly_chart(fig, use_container_width=True)
     
   #most_recent = dfx['value'].iat[-1]
@@ -52,6 +52,10 @@ def main_plot(fname):
   #dfxz = dfx[["date","value"]]
   #st.dataframe(dfxz)
   
+  st.dataframe(dfx)
+  st.dataframe(df)
+
+
 main_plot(RGDP)
 
 #page_names = ['X', 'Y', 'Inflation']
@@ -61,7 +65,6 @@ main_plot(RGDP)
 #if page == 'X':
  # main_plot(X)
   
-df = fred.search('NGDPRSAXDCPLQ')
-dfx = pd.DataFrame.from_dict(df['seriess'])
-st.dataframe(dfx)
+
+
 
