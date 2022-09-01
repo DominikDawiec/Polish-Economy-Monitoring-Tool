@@ -23,6 +23,10 @@ st.dataframe(NYA1)
 df = NYA1
 
 
+most_recent = df.tail(1).Close.item()
+st.caption("the most recent value is", most_recent)
+
+
 page_names = ['X', 'Y', 'NYA']
 page = st.selectbox('Navigation', page_names)
 st.write('Choosen', page)
