@@ -92,8 +92,8 @@ choose_category = st.selectbox("Choose an economic indicator:", categories)
 st.dataframe(dfz)
 st.dataframe(categories)
 
-for x in choose_category:
-  df1 = dfz[dfz['name'] == x]
+for choose_category:
+  df1 = dfz[dfz['name'] == choose_category]
   st.dataframe(df1)
 
 
