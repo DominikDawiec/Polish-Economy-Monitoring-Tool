@@ -46,4 +46,4 @@ if page == 'NYA':
 
   
   
-st.line_chart(data=NYA1, x=NYA1.Date, y=NYA1.Close)
+st.line_chart(data=NYA1, x=NYA1['Date'], y=NYA1['Close'])
