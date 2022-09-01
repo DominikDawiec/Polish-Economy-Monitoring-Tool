@@ -46,12 +46,12 @@ def main_plot(fname):
   st.plotly_chart(fig, use_container_width=True)
   
   # creating KPIs
-  st.subheader('Observation Start:', title= dfx['observation_start'].iat[-1])
-  st.subheader('Observation End:', title= dfx['observation_end'].iat[-1])
-  st.subheader('Frequency:', title= dfx['frequency'].iat[-1])
-  st.subheader('Unit:', title= dfx['units'].iat[-1])
-  st.subheader('Seasonal Adjustment:', title= dfx['seasonal_adjustment'].iat[-1])
-  st.subheader('Last Updated:', title= dfx['last_updated'].iat[-1])
+  st.subheader('Observation Start:', dfx['observation_start'].iat[-1])
+  st.subheader('Observation End:', dfx['observation_end'].iat[-1])
+  st.subheader('Frequency:', dfx['frequency'].iat[-1])
+  st.subheader('Unit:', dfx['units'].iat[-1])
+  st.subheader('Seasonal Adjustment:', dfx['seasonal_adjustment'].iat[-1])
+  st.subheader('Last Updated:', dfx['last_updated'].iat[-1])
 
   #most_recent = dfx['value'].iat[-1]
   #deltax = most_recent-1
