@@ -28,6 +28,7 @@ def main_plot(fname):
   df = fred.observations(fname)
   
   #dfx = pd.DataFrame.from_dict(df['observations'])
+  dfx=df
   dfx['date'] = pd.to_datetime(dfx['date'])
   dfx['value'] = pd.to_numeric(dfx['value'],errors = 'coerce')
   
