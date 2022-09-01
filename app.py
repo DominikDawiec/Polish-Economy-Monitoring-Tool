@@ -62,13 +62,13 @@ def fred(fname):
 
 
 if page == 'X':
-  fred.observations(X)
+  fred(X)
   
 if page == 'Y':
- fred.observations(Y)
+ fred(Y)
   
 if page == 'Inflation':
-  fred.observations(Inflation)
+  fred(Inflation)
   
 
 
