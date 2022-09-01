@@ -46,7 +46,7 @@ def main_plot(fname):
   st.plotly_chart(fig, use_container_width=True)
   
   # creating KPIs
-  st.subheader('Observation Start:', dfx['observation_start'].iat[-1])
+  st.write('Observation Start:', dfx['observation_start'].iat[-1])
   st.subheader('Observation End:', dfx['observation_end'].iat[-1])
   st.subheader('Frequency:', dfx['frequency'].iat[-1])
   st.subheader('Unit:', dfx['units'].iat[-1])
