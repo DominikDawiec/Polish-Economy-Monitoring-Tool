@@ -20,6 +20,7 @@ st.dataframe(df)
 NYA = df[df.Index.isin(['NYA'])]
 NYA1 = NYA[["Date", "Close"]]
 st.dataframe(NYA1)
+st.table(df)
 df = NYA1
 dfx = NYA1
 
