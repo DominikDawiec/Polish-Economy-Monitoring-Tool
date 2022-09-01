@@ -38,6 +38,8 @@ def main_plot(fname):
   deltax = most_recent-1
   st.caption(most_recent)
   st.metric(label="Most Recent Value", value=most_recent, delta=deltax)
+  
+  st.dataframe(dfx)
 
 
   
@@ -51,25 +53,8 @@ main_plot(Inflation)
   
   
   
-  
-  
-  
-df = pd.read_csv('indexData.csv')
-# st.dataframe(df)   dziala
-df["Date"] = df["Date"].astype("datetime64")
 
 
-NYA = df[df.Index.isin(['NYA'])]
-NYA1 = NYA[["Date", "Close"]]
-# st.dataframe(NYA1)   dziala
-# st.table(NYA1)    dziala ale pokazuje cala dlugosc
-df = NYA1
-dfx = NYA1
-
-most_recent = df['Close'].iat[-1]
-deltax = most_recent-1
-st.caption(most_recent)
-st.metric(label="Most Recent Value", value=most_recent, delta=deltax)
 
 
 page_names = ['X', 'Y', 'NYA']
