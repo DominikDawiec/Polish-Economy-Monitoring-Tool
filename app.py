@@ -89,5 +89,4 @@ fig.update_xaxes(
         ])
     )
 )
-fig.show()
 st.pyplot(fig)
