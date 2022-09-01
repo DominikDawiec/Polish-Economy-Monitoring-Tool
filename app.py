@@ -91,7 +91,7 @@ choose_category2 = st.selectbox("Choose an economic indicator:", categories2)
 def testfunction(x):
   ghb = dfz.loc[dfz["name"] ==x, ["id", "name", "notes"]]
   st.dataframe(ghb)
-  main_plot(ghb.id)
+  main_plot(ghb['id'].iat[-1])
  
 testfunction(choose_category2)
 
