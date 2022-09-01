@@ -53,18 +53,14 @@ def main_plot(fname):
   st.write('Seasonal Adjustment:', dfx['seasonal_adjustment'].iat[-1])
   st.write('Last Updated:', dfx['last_updated'].iat[-1])
 
-  #Calculations for KPIs
+  # Calculations for KPIs
   last_value = df['value'].iat[-1]
   penultimate_value = df['value'].iat[-2]
   momdiff = ((last_value - penultimate_value)/penultimate_value)*100%
   
   # creating KPIs
-  fig = go.Figure(go.Indicator(
-    mode = "number+delta",
-    value = last_value,
-    number = {'text': "Previous Value"},
-    delta = {'position': "top", 'reference': 320},
-    domain = {'x': [0, 1], 'y': [0, 1]}))
+  st.write('Last Value:', last_value)
+  st.write('Penultimate Value:', penultimate_value)
   
   #st.dataframe(dfx)
   #st.dataframe(df)
