@@ -85,13 +85,6 @@ dfz = pd.DataFrame.from_dict(dfz['seriess'])
 st.dataframe(dfz)
 
 
-options = 'NGDPRSAXDCPLQ'
-rslt_df = dfz[(dfz['id'] == options)
-st.dataframe(rslt_df)
-
-
-
-
 
 
 
