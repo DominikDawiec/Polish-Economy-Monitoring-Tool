@@ -17,6 +17,8 @@ st.caption('This is a string that explains something above.')
 
 df = pd.read_csv('indexData.csv')
 # st.dataframe(df)   dziala
+df["Date"] = df["Date"].astype("datetime64")
+
 
 NYA = df[df.Index.isin(['NYA'])]
 NYA1 = NYA[["Date", "Close"]]
