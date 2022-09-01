@@ -17,22 +17,11 @@ st.caption('Kod z każdym zapytaniem łączy się z API w celu pobrania aktualne
 
 # st.metric(label="Temperature", value="70 °F", delta="1.2 °F")
 
-Real Gross Domestic Product for Poland = 'NGDPRSAXDCPLQ'
-Consumer Price Index: All Items for Poland = 'POLCPIALLMINMEI'
-3-Month or 90-day Rates and Yields: Interbank Rates for Poland = 'IR3TIB01PLM156N'
-Harmonized Index of Consumer Prices: Gas for Poland = 'CP0452PLM086NEST'
-Long-Term Government Bond Yields: 10-year: Main (Including Benchmark) for Poland = 'IRLTLT01PLM156N'
-Gross Domestic Product for Poland = 'MKTGDPPLA646NWDB'
-Real Residential Property Prices for Poland = 'QPLR628BIS'
-Consumer Price Index: Energy for Poland = 'POLCPIENGQINMEI'
-Current Price Gross Domestic Product in Poland = 'POLGDPNADSMEI'
-Working Age Population: Aged 15-64: All Persons for Poland = 'LFWA64TTPLQ647N'
-Registered Unemployment Rate for Poland = 'LMUNRRTTPLM156S'
-M3 for Poland = 'MABMM301PLA189S'
-Domestic Producer Prices Index: Manufacturing for Poland = 'POLPPDMMINMEI'
-Constant GDP per capita for Poland = 'NYGDPPCAPKDPOL'
-Household Debt to GDP for Poland = 'HDTGPDPLQ163N'
-National Currency to US Dollar Exchange Rate: Average of Daily Rates for Poland = 'CCUSMA02PLM618N'
+RGDP = 'NGDPRSAXDCPLQ'
+CPI = 'POLCPIALLMINMEI'
+CPIEnergy = 'POLCPIENGQINMEI'
+Working_Age_Population = 'LFWA64TTPLQ647N'
+RegisteredUnemploymentRate = 'LMUNRRTTPLM156S'
   
 def main_plot(fname):
   dfx = fred.observations(fname)
