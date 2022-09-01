@@ -36,7 +36,8 @@ def main_plot(fname):
   deltax = most_recent-1
   st.metric(label="Most Recent Value", value=most_recent, delta=deltax)
   
-  st.dataframe(dfx)
+  dfxz = dfx("date","value")
+  st.dataframe(dfxz)
   
   st.title("end function")
 
