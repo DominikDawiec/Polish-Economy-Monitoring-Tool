@@ -43,3 +43,8 @@ if page == 'Y':
   
 if page == 'NYA':
   st.line_chart(NYA1.Close)
+
+  
+  
+fig = px.line(NYA1)
+
