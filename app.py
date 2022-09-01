@@ -15,12 +15,12 @@ st.caption('This is a string that explains something above.')
 
 
 df = pd.read_csv('indexData.csv')
-st.dataframe(df)
+# st.dataframe(df)   dziala
 
 NYA = df[df.Index.isin(['NYA'])]
 NYA1 = NYA[["Date", "Close"]]
-st.dataframe(NYA1)
-st.table(df)
+# st.dataframe(NYA1)   dziala
+st.table(NYA1)
 df = NYA1
 dfx = NYA1
 
