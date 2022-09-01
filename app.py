@@ -61,16 +61,16 @@ def fredx(fname):
 
 
 
-if page == 'X':
+#if page == 'X':
   fredx(X)
   
-if page == 'Y':
+#if page == 'Y':
  fredx(Y)
   
-if page == 'Inflation':
+#if page == 'Inflation':
   fredx(Inflation)
   
-
+fredx(page)
 
   
   
