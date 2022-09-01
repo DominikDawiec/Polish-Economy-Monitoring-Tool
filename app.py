@@ -24,7 +24,7 @@ df = NYA1
 dfx = NYA1
 
 most_recent = df[len(df) -1:].index[0]
-st.caption("the most recent value is", most_recent)
+st.caption(most_recent)
 
 
 page_names = ['X', 'Y', 'NYA']
