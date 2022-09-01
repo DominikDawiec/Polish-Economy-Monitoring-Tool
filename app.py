@@ -46,9 +46,13 @@ def main_plot(fname):
   st.plotly_chart(fig, use_container_width=True)
   
   # creating KPIs
-  fig1 = go.Figure(go.Indicator(mode = "number+delta", value = df['value'].iat[-1], number = {'prefix': "$"}, delta = {'position': "top", 'reference': 320}, domain = {'x': [0, 1], 'y': [0, 1]}))
-  st.plotly_chart(fig1, use_container_width=True)
-  
+  st.subheader('Observation Start:', title= dfx['observation_start'].iat[-1])
+  st.subheader('Observation End:', title= dfx['observation_end'].iat[-1])
+  st.subheader('Frequency:', title= dfx['frequency'].iat[-1])
+  st.subheader('Unit:', title= dfx['units'].iat[-1])
+  st.subheader('Seasonal Adjustment:', title= dfx['seasonal_adjustment'].iat[-1])
+  st.subheader('Last Updated:', title= dfx['last_updated'].iat[-1])
+
   #most_recent = dfx['value'].iat[-1]
   #deltax = most_recent-1
   #st.metric(label="Most Recent Value", value=most_recent, delta=deltax)
