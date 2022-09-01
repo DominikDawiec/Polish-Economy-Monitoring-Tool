@@ -95,7 +95,7 @@ st.dataframe(categories)
 
 
 for variable in choose_category:
-  st.write(variable)
+  st.caption(variable)
 
 
 
