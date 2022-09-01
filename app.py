@@ -84,7 +84,7 @@ choose_category = st.selectbox("Choose an economic indicator:", categories)
 main_plot(choose_category)
 
 
-dfz.loc[dfz["name"] =="Harmonized Index of Consumer Prices: Overall Index Excluding Alcohol and Tobacco for Poland", ["id", "name", "notes"]]
+dfz.loc[dfz["name"] =="Harmonized Index of Consumer Prices: Overall Index Excluding Energy, Food, Alcohol, and Tobacco for Poland (00XEFDPLM086NEST)", ["id", "name", "notes"]]
 
 
 
