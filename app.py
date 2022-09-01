@@ -23,7 +23,7 @@ st.dataframe(NYA1)
 df = NYA1
 dfx = NYA1
 
-most_recent = df[len(df) -1:].index[0]
+most_recent = df[len(df) -1:].Close[0]
 st.caption(most_recent)
 
 
