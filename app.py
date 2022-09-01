@@ -27,7 +27,7 @@ def main_plot(fname):
   st.title("test function")
   dfx = fred.observations(fname)
   
-  dfx = pd.DataFrame.from_dict(df['observations'])
+  dfx = pd.DataFrame.from_dict(dfx['observations'])
   dfx['date'] = pd.to_datetime(dfx['date'])
   dfx['value'] = pd.to_numeric(dfx['value'],errors = 'coerce')
   
