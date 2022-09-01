@@ -92,7 +92,8 @@ choose_category = st.selectbox("Choose an economic indicator:", categories)
 st.dataframe(dfz)
 st.dataframe(categories)
 
-
+for x in choose_category:
+  st.write(x)
 
 
 
