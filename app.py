@@ -34,7 +34,6 @@ def main_plot(fname):
     
   most_recent = dfx['value'].iat[-1]
   deltax = most_recent-1
-  st.caption(most_recent)
   st.metric(label="Most Recent Value", value=most_recent, delta=deltax)
   
   st.dataframe(dfx)
