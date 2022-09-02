@@ -90,6 +90,7 @@ def subcategory(y):
   ghb = dfz.loc[dfz["name"] ==y, ["id", "title", "name"]]
   st.dataframe(ghb)
 
+ 
 categories3 = ('x', 'y')
 choose_category3 = st.selectbox("Available variances:", categories3)
 
@@ -105,4 +106,4 @@ testfunction(choose_category2)
 
 st.dataframe(dfz)
 
-st.dataframe(ghb)
+subcategory(choose_category2)
