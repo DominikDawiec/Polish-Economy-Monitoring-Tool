@@ -18,12 +18,6 @@ st.title('Polish Macroeconomic Indicators')
 st.subheader('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')
 st.caption('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')
 
-# avaiable variables
-RGDP = 'NGDPRSAXDCPLQ'
-CPI = 'POLCPIALLMINMEI'
-CPIEnergy = 'POLCPIENGQINMEI'
-Working_Age_Population = 'LFWA64TTPLQ647N'
-RegisteredUnemploymentRate = 'LMUNRRTTPLM156S'
 
 
 def main_plot(fname):
@@ -78,7 +72,7 @@ dfz = pd.DataFrame.from_dict(dfz['seriess'])
 dfz['name'] = dfz['title'] + " (" + dfz['id'] + ")"
 dfz.sort_values(by='title')
 
-# categories = dfz.id.unique()
+# categories = dfz.title.unique()
 # choose_category = st.selectbox("Choose an economic indicator:", categories)
 
 # main_plot(choose_category)
