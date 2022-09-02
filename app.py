@@ -82,6 +82,16 @@ dfz.sort_values(by='title')
 categories2 = dfz.name.unique()
 choose_category2 = st.selectbox("Choose an economic indicator:", categories2)
 
+def testfunctionggg(x):
+  ghb = dfz.loc[dfz["name"] ==x, ["id", "name", "notes"]]
+  main_plot(ghb['id'].iat[-1])
+  st.write("notes:", ghb['notes'].iat[-1])
+
+categories3
+choose_category3 = st.selectbox("Available variances:", categories3)
+
+
+
 def testfunction(x):
   ghb = dfz.loc[dfz["name"] ==x, ["id", "name", "notes"]]
   main_plot(ghb['id'].iat[-1])
@@ -92,3 +102,4 @@ testfunction(choose_category2)
 
 st.dataframe(dfz)
 
+st.dataframe(ghb)
