@@ -79,7 +79,7 @@ dfz.sort_values(by='title')
 
 
 # dfz.loc[dfz["name"] =="Harmonized Index of Consumer Prices: Overall Index Excluding Energy, Food, Alcohol, and Tobacco for Poland (00XEFDPLM086NEST)", ["id", "name", "notes"]]
-categories2 = dfz.name.unique()
+categories2 = dfz.title.unique()
 choose_category2 = st.selectbox("Choose an economic indicator:", categories2)
 
 
@@ -87,7 +87,7 @@ choose_category2 = st.selectbox("Choose an economic indicator:", categories2)
 
 
 def subcategory(y):
-  ghb = dfz.loc[dfz["name"] ==y, ["id", "title", "name"]]
+  ghb = dfz.loc[dfz["title"] ==y, ["id", "title", "name"]]
   st.dataframe(ghb)
 
  
