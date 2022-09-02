@@ -87,7 +87,7 @@ def testfunctionggg(x):
   main_plot(ghb['id'].iat[-1])
   st.write("notes:", ghb['notes'].iat[-1])
 
-categories3
+categories3 = ('x', 'y')
 choose_category3 = st.selectbox("Available variances:", categories3)
 
 
