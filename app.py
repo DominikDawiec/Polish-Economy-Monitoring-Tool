@@ -97,7 +97,7 @@ choose_category3 = st.selectbox("Available variances:", categories3)
 
 
 def testfunction(x):
-  ghb = dfz.loc[dfz["name"] ==x, ["id", "name", "notes"]]
+  ghb = dfz.loc[dfz["title"] ==x, ["id", "name", "notes"]]
   main_plot(ghb['id'].iat[-1])
   st.write("notes:", ghb['notes'].iat[-1])
 
