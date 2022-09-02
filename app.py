@@ -102,11 +102,10 @@ def testfunction(x):
   st.write("notes:", ghb['notes'].iat[-1])
 
  
-testfunction(choose_category2)
+# testfunction(choose_category2)
 
 st.dataframe(dfz)
 
-subcategory(choose_category2)
 
 st.title("NEW START")
 
