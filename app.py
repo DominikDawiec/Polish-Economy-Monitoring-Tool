@@ -96,5 +96,5 @@ def testfunction(x):
  
 testfunction(choose_category2)
 
-# st.dataframe(dfz)
+st.dataframe(dfz)
 
