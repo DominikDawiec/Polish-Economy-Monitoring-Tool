@@ -111,12 +111,14 @@ subcategory(choose_category2)
 st.title("NEW START")
 
 categories3 = dfz.title.unique()
-choose_category3 = st.selectbox("Choose an economic indicator:", categories3)
+st.dataframe(categories3)
 
-def subcategory5(x):
-  hjk = dfz.loc[dfz['title'] ==x]
-  st.dataframe(hjk)
+#choose_category3 = st.selectbox("Choose an economic indicator:", categories3)
+
+#def subcategory5(x):
+ # hjk = dfz.loc[dfz['title'] ==x]
+  #st.dataframe(hjk)
                 
-subcategory5(choose_category3)   
+#subcategory5(choose_category3)   
 
 
