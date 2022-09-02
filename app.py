@@ -76,7 +76,7 @@ def main_plot(fname):
 dfz = fred.category_series(32339)
 dfz = pd.DataFrame.from_dict(dfz['seriess'])
 dfz['name'] = dfz['title'] + " (" + dfz['id'] + ")"
-dfz.sort_values(by='popularity')
+dfz.sort_values(by='title')
 
 # categories = dfz.id.unique()
 # choose_category = st.selectbox("Choose an economic indicator:", categories)
