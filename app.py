@@ -71,4 +71,4 @@ st.write('after doing both functions I have got')
 st.write('variable id', id)
 
 
-
+timeseries(id)
