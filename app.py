@@ -35,11 +35,9 @@ def function1(x):
     dfhx = st.selectbox('The selected indicator has more variants to choose from:', dfxg)
     hjkl = dfz.loc[dfz["subtitle"] ==dfhx]
     function1.bye = hjkl['id'].iat[-1]
-    st.write(function1.bye) # checker to delete
   else:
     hjkl = dfz.loc[dfz["title"] ==x]
     function1.bye = hjkl['id'].iat[-1]
-    st.write(function1.bye) # checker to delete
 
 # creting a function downloading timeseries
 def timeseries(x):
@@ -73,9 +71,6 @@ with st.container():
 function1(fname)
 
 id = function1.bye
-
-st.write('after doing both functions I have got')
-st.write('variable id', id)
 
 timeseries(id)
 
