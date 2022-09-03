@@ -23,7 +23,7 @@ fred.key('8c3b945500069081b94040df2da12df7')
 # downloading list of avaiable variables concerning Poland
 dfz = fred.category_series(32339)
 dfz = pd.DataFrame.from_dict(dfz['seriess'])
-dfz['subtitle'] = dfz['title'] + ", FREQ.:" + dfz['frequency'] + ', UNIT:' + dfz['units'] + ', SEAS. ADJ.:' + dfz['seasonal_adjustment']
+dfz['subtitle'] = dfz['title'] + ", FREQUENCY:" + dfz['frequency'] + ', UNIT:' + dfz['units'] + ', SEASONAL ADJUSTMENT:' + dfz['seasonal_adjustment']
 
 # creating list of variables' names for selectbox
 dfx = dfz.title.unique()
@@ -143,7 +143,35 @@ with st.container():
                                ])
           st.plotly_chart(fig, use_container_width=True)
           
+with st.container():
+     st.header("KPIs")
+     ultimate_value = df['value'].iat[-1]
+     preultimate_value = df['value'].iat[-2]
+     percentage_change = ((ultimate_value - preultimate_value) / preultimate_value) * 100
+     
+     col1, col2, col3 = st.columns(3)
+     with col1:
+          fig = go.Figure(go.Indicator(
+               mode = "number",
+               value = ultimate_value,
+               title = {"text": "Ultimate Value<br><span style='font-size:0.8em;color:gray'>"},
+               domain = {'x': [1, 1], 'y': [1, 1]}))
+          st.plotly_chart(fig, use_container_width=True)
+     with col2:
+          fig = go.Figure(go.Indicator(
+               mode = "number",
+               value = preultimate_value,
+               title = {"text": "Preultimate Value<br><span style='font-size:0.8em;color:gray'>"},
+               domain = {'x': [1, 1], 'y': [1, 1]}))
+          st.plotly_chart(fig, use_container_width=True)
 
+     with col3:
+          fig = go.Figure(go.Indicator(
+               mode = "number",
+               value = percentage_change,
+               title = {"text": "Percentage Change<br><span style='font-size:0.8em;color:gray'>"},
+               domain = {'x': [1, 1], 'y': [1, 1]}))
+          st.plotly_chart(fig, use_container_width=True)
     
 with st.container():
      st.header("Detailed informations")
