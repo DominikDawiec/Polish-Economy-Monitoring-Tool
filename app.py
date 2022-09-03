@@ -49,15 +49,15 @@ def timeseries(x):
   df['date'] = df['date'].dt.date
   df['value'] = pd.to_numeric(df['value'],errors = 'coerce')
   df = df.drop(['realtime_start', 'realtime_end'], axis=1)
-  plotting.df = df
+  timeseries.df = df
 
   dfw = fred.search(id)
   dfw = pd.DataFrame.from_dict(dfw['seriess'])
-  plotting.dfw = dfw
+  timeseries.dfw = dfw
   
   dfa = fred.series(id, release=True)
   dfa = pd.DataFrame.from_dict(dfa['releases'])
-  plotting.dfa = dfa
+  timeseries.dfa = dfa
  
      
 # creating a selectbox
