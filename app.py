@@ -193,6 +193,6 @@ data = {'x':['title', 'observation_start', 'observation_end', 'frequency', 'unit
          dfa['link'].iat[-1],
          dfw['notes'].iat[-1]]}
 
-df = pd.DataFrame(data)
+df = df.style.hide_index()
 
-st.table(df.to_string(index=False))
+st.table(df)
