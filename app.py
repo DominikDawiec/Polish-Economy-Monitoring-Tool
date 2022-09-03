@@ -59,6 +59,9 @@ def timeseries(x):
      
   st.success('Data Successfully dowloaded!', icon="✅")
 
+  st.info('You mey choose between three kinds of showing timeseries', icon="ℹ️")
+
+
      
  
 with st.container():
