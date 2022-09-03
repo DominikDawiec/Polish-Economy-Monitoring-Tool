@@ -57,8 +57,6 @@ def timeseries(x):
   dfa = pd.DataFrame.from_dict(dfa['releases'])
   timeseries.dfa = dfa
      
-  st.success('Data Successfully dowloaded!', icon="✅")
-
   st.info('You mey choose between three kinds of showing timeseries', icon="ℹ️")
 
 
@@ -180,5 +178,8 @@ with st.container():
       )
   ])
   fig.update_layout(height=550)
+
+  st.info('You may see more details about choosen variable below', icon="ℹ️")
+
   st.plotly_chart(fig, use_container_width=True)
   
