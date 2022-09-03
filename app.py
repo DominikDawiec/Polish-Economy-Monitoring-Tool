@@ -80,9 +80,26 @@ with st.container():
      tab1, tab2, tab3 = st.tabs(["📈 Chart", "🗃 Data", "Data 2"])
 
      with tab1:
-          st.header("A cat")
-          st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
+          st.header("First plot")
+          fig = px.line(df, x='date', y='value')
 
+            fig.update_xaxes(rangeslider_visible=True)
+
+            fig.update_xaxes(
+                rangeslider_visible=True,
+                rangeselector=dict(
+                    buttons=list([
+                        dict(count=6, label="6m", step="month", stepmode="backward"),
+                        dict(count=1, label="1y", step="year", stepmode="backward"),
+                        dict(count=5, label="5y", step="year", stepmode="backward"),
+                        dict(count=10, label="10y", step="year", stepmode="backward"),
+                        dict(step="all")
+                    ])
+                )
+            )
+          
+            st.plotly_chart(fig, use_container_width=True)
+               
      with tab2:
           st.header("A dog")
           st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
