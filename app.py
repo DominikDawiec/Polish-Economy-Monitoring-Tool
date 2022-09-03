@@ -194,5 +194,6 @@ data = {'x':['title', 'observation_start', 'observation_end', 'frequency', 'unit
          dfw['notes'].iat[-1]]}
 
 df = pd.DataFrame(data)
+df = df.to_string(index=False)
 
 st.table(df)
