@@ -25,3 +25,21 @@ all_variables['subtitle'] = all_variables['title'] + ", FREQUENCY.:" + all_varia
 
 # creating a list of variables to select 
 all_variables_to_select = all_variables.title.unique()
+
+# defining a function downloading data about choosen variable
+def getdata(choosenvariable):
+     choosen_variable_name = all_variables.loc[all_variables["title"] == choosenvariable]
+     
+     # if there is more varians of choosen variable I would like to let user be able to choose one one of them 
+     if choosen_variable_name.shape[0] > 1:
+          choosen_variable_id = choosen_variable_name.unique()
+          choosen_subvariable = st.selectbox('The selected indicator has more variants to choose from:', choosen_variable_id)
+          final_variable_id = dfz.loc[dfz["subtitle"] == choosen_subvariable]
+        else:
+          final_variable_id = dfz.loc[dfz["title"] ==choosenvariable]
+
+          
+# creating a selectbox
+fname = st.selectbox('Please select an indicator', all_variables_to_select)
+
+choosenvariable(fname)
