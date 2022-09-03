@@ -143,43 +143,38 @@ with st.container():
     
 with st.container():
      st.header("Detailed informations")
-       values = [['title', 'observation_start', 'observation_end', 'frequency', 'units', 'seasonal_adjustment', 'last_updated', 'link', 'notes'], #1st col
-         [dfw['title'].iat[-1],
-         dfw['observation_start'].iat[-1],
-         dfw['observation_end'].iat[-1],
-         dfw['frequency'].iat[-1],
-         dfw['units'].iat[-1],
-         dfw['seasonal_adjustment'].iat[-1],
-         dfw['last_updated'].iat[-1],
-         dfa['link'].iat[-1],
-         dfw['notes'].iat[-1]]]
-
-
-       fig = go.Figure(data=[go.Table(
-         columnorder = [1,2],
-         columnwidth = [100,450],
-         header = dict(
-           values = [['<b>CATEGORY</b>'],
-                         ['<b>DESCRIPTION</b>']],
-           line_color='black',
-           fill_color='#636EFA',
-           align=['left'],
-           font=dict(color='white', size=12),
-           height=40
-         ),
-         cells=dict(
-           values=values,
-           line_color='black',
-           fill=dict(color=['white', 'white']),
-           align=['left'],
-           font=dict(color='black'),
-           font_size=12,
-           height=30)
-           )
-       ])
-       fig.update_layout(height=550)
-
-       st.info('You may see more details about choosen variable below', icon="ℹ️")
-
-       st.plotly_chart(fig, use_container_width=True)
+     values = [['title', 'observation_start', 'observation_end', 'frequency', 'units', 'seasonal_adjustment', 'last_updated', 'link', 'notes'], #1st col
+               [dfw['title'].iat[-1],
+               dfw['observation_start'].iat[-1],
+               dfw['observation_end'].iat[-1],
+                dfw['frequency'].iat[-1],
+                dfw['units'].iat[-1],
+                dfw['seasonal_adjustment'].iat[-1],
+                dfw['last_updated'].iat[-1],
+                dfa['link'].iat[-1],
+                dfw['notes'].iat[-1]]]
+     fig = go.Figure(data=[go.Table(
+          columnorder = [1,2],
+          columnwidth = [100,450],
+          header = dict(
+               values = [['<b>CATEGORY</b>'],['<b>DESCRIPTION</b>']],
+               line_color='black',
+               fill_color='#636EFA',
+               align=['left'],
+               font=dict(color='white', size=12),
+               height=40
+          ),
+          cells=dict(
+          values=values,
+          line_color='black',
+          fill=dict(color=['white', 'white']),
+          align=['left'],
+          font=dict(color='black'),
+          font_size=12,
+          height=30)
+     )
+                          ])
+     fig.update_layout(height=550)
+     st.info('You may see more details about choosen variable below', icon="ℹ️")
+     st.plotly_chart(fig, use_container_width=True)
   
