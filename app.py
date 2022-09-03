@@ -181,16 +181,18 @@ with st.container():
 
 
 
-values = [['title', 'observation_start', 'observation_end', 'frequency', 'units', 'seasonal_adjustment', 'last_updated', 'link', 'notes'], #1st col
-               [dfw['title'].iat[-1],
-               dfw['observation_start'].iat[-1],
-               dfw['observation_end'].iat[-1],
-                dfw['frequency'].iat[-1],
-                dfw['units'].iat[-1],
-                dfw['seasonal_adjustment'].iat[-1],
-                dfw['last_updated'].iat[-1],
-                dfa['link'].iat[-1],
-                dfw['notes'].iat[-1]]]
+data = {'x':['title', 'observation_start', 'observation_end', 'frequency', 'units', 'seasonal_adjustment', 'last_updated', 'link', 'notes'], 
+        'Description':
+        [dfw['title'].iat[-1],
+         dfw['observation_start'].iat[-1],
+         dfw['observation_end'].iat[-1],
+         dfw['frequency'].iat[-1],
+         dfw['units'].iat[-1],
+         dfw['seasonal_adjustment'].iat[-1],
+         dfw['last_updated'].iat[-1],
+         dfa['link'].iat[-1],
+         dfw['notes'].iat[-1]]}
 
-dfadd = pd.DataFrame(values, columns=['Category', 'Description'])
-st.dataframe(dfadd)
+df = pd.DataFrame(data)
+
+st.dataframe(df)
