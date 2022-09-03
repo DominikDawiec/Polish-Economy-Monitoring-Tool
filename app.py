@@ -182,6 +182,8 @@ with st.container():
   
 with st.container():
      st.header("Download data")
+     st.info('You download data regarding choosed variable', icon="ℹ️")
+
      # creating excel file
      buffer = io.BytesIO()
      
