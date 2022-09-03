@@ -195,4 +195,4 @@ data = {'x':['title', 'observation_start', 'observation_end', 'frequency', 'unit
 
 df = pd.DataFrame(data)
 
-st.dataframe(df)
+st.table(df)
