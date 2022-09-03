@@ -178,3 +178,24 @@ with st.container():
      st.info('You may see more details about choosen variable below', icon="ℹ️")
      st.plotly_chart(fig, use_container_width=True)
   
+with st.container():
+     st.header("Download data")
+     # creating excel file
+     buffer = io.BytesIO()
+     
+     # Create a Pandas Excel writer using XlsxWriter as the engine.
+     with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+          # Write each dataframe to a different worksheet.
+          df.to_excel(writer, sheet_name='Sheet1')
+          dfw.to_excel(writer, sheet_name='Sheet2')
+          dfa.to_excel(writer, sheet_name='Sheet3')
+          # Close the Pandas Excel writer and output the Excel file to the buffer
+          writer.save()
+          
+          st.download_button(
+               label="Download Excel worksheets",
+               data=buffer,
+               file_name="pandas_multiple.xlsx",
+               mime="application/vnd.ms-excel"
+          )
+
