@@ -67,24 +67,8 @@ function1(fname)
 
 id = function1.bye
 
-timeseries(id)
-
-
-df = plotting.df 
-dfw = plotting.dfw
-dfa = plotting.dfa
-
 st.write('after doing both functions I have got')
-st.write('variable id', function1.bye)
-st.dataframe(df)
-st.dataframe(dfw)
-st.dataframe(dfa)
+st.write('variable id', id)
 
-ultimate_value = df['value'].iat[-1]
-preultimate_value = df['value'].iat[-2]
-percentage_change = ((ultimate_value - preultimate_value) / preultimate_value) * 100
 
-st.write('ultimate_value ', ultimate_value)
-st.write('preultimate_value', preultimate_value)
-st.write('percentage_change', percentage_change)
 
