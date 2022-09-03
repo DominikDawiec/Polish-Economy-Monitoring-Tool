@@ -138,27 +138,8 @@ with st.container():
      percentage_change = ((ultimate_value - preultimate_value) / preultimate_value) * 100
      
      col1, col2, col3 = st.columns(3)
+     col1.metric("Ultimate Value", ultimate_value)
+     col2.metric("Preultimate Value", preultimate_value)
+     col3.metric("Percentage Change", percentage_change)
      
-     with col1:
-          fig = go.Figure(go.Indicator(
-          mode = "number",
-          value = ultimate_value,
-          title = {"text": "Ultimate Value<br><span style='font-size:0.8em;color:gray'>"},
-          domain = {'x': [1, 1], 'y': [1, 1]}))
-          st.plotly_chart(fig, use_container_width=True)
-
-     with col2:
-          fig = go.Figure(go.Indicator(
-          mode = "number",
-          value = preultimate_value,
-          title = {"text": "Preultimate Value<br><span style='font-size:0.8em;color:gray'>"},
-          domain = {'x': [1, 1], 'y': [1, 1]}))
-          st.plotly_chart(fig, use_container_width=True)
-
-     with col3:
-          fig = go.Figure(go.Indicator(
-          mode = "number",
-          value = percentage_change,
-          title = {"text": "Percentage Change<br><span style='font-size:0.8em;color:gray'>"},
-          domain = {'x': [1, 1], 'y': [1, 1]}))
-          st.plotly_chart(fig, use_container_width=True)
+    
