@@ -59,6 +59,9 @@ def timeseries(x):
   dfa = pd.DataFrame.from_dict(dfa['releases'])
   timeseries.dfa = dfa
      
+  st.success('Data Successfully dowloaded!', icon="✅")
+
+     
  
 with st.container():
      with st.expander("How to use this web application"):
