@@ -41,12 +41,24 @@ def function1(x):
     function1.bye = hjkl['id'].iat[-1]
     st.write(function1.bye) # checker to delete
 
-# creting a function creating first plot
-          
-# creting a function creating first plot
+# creting a function downloading timeseries
+def timeseries(x):
+  df = fred.observations(x)
+  df = pd.DataFrame.from_dict(df['observations'])
+  df['date'] = pd.to_datetime(df['date'])
+  df['date'] = df['date'].dt.date
+  df['value'] = pd.to_numeric(df['value'],errors = 'coerce')
+  df = df.drop(['realtime_start', 'realtime_end'], axis=1)
+  plotting.df = df
 
-# creting a function creating first plot
-
+  dfw = fred.search(id)
+  dfw = pd.DataFrame.from_dict(dfw['seriess'])
+  plotting.dfw = dfw
+  
+  dfa = fred.series(id, release=True)
+  dfa = pd.DataFrame.from_dict(dfa['releases'])
+  plotting.dfa = dfa
+ 
           
 # creating a selectbox
 fname = st.selectbox('Please select an indicator', dfx)
