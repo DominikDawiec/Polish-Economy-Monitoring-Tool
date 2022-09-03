@@ -75,3 +75,15 @@ timeseries(id)
 df = timeseries.df
 dfw = timeseries.dfw
 dfa = timeseries.dfa
+
+with st.container():
+     tab1, tab2, tab3 = st.tabs(["📈 Chart", "🗃 Data", "Data 2"])
+
+     tab1.subheader("A tab with a chart")
+     tab1.line_chart(data)
+
+     tab2.subheader("A tab with the data")
+     tab2.write(data)
+     
+     tab3.subheader("A tab with a chart")
+     tab3.write(data)
