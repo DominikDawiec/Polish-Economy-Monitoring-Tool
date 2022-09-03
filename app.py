@@ -6,6 +6,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 import fred
 from fredapi import Fred
+import xlsxwriter
+import io
 
 # setting the website
 st.set_page_config(
