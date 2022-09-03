@@ -95,13 +95,39 @@ with st.container():
                     ])
                )
           )
+          
           st.plotly_chart(fig, use_container_width=True)
           
-               
      with tab2:
-          st.header("A dog")
-          st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+          st.header("Second plot")
+          fig = px.bar(df, x='date', y='value')
+          fig.update_xaxes(rangeslider_visible=True)
+          fig.update_xaxes(
+               rangeslider_visible=True,
+               rangeselector=dict(
+                    buttons=list([
+                         dict(count=6, label="6m", step="month", stepmode="backward"),
+                         dict(count=1, label="1y", step="year", stepmode="backward"),
+                         dict(count=5, label="5y", step="year", stepmode="backward"),
+                         dict(count=10, label="10y", step="year", stepmode="backward"),
+                         dict(step="all")
+                    ])
+               )
+          )
+          st.plotly_chart(fig, use_container_width=True)
 
      with tab3:
-          st.header("An owl")
-          st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
+          st.header("Data")
+          fig = go.Figure(data=[go.Table(header=dict(values=['<b>DATE<b>', '<b>VALUE<b>'], 
+                                                     line_color='black',
+                                                     font=dict(color='white'),
+                                                     align=['left'],
+                                                     fill_color='#636EFA'),
+                                         cells=dict(values=[df['date'], df['value']], 
+                                                    font=dict(color='black'),
+                                                    align=['left'],
+                                                    line_color='black',
+                                                    fill_color='white'))
+                                                    fill_color='white'))
+                               ])
+          st.plotly_chart(fig, use_container_width=True)
