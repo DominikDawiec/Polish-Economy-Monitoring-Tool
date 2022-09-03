@@ -7,3 +7,4 @@ yfinance
 matplotlib==3.3.4  
 fred
 fredapi
+xlsxwriter
