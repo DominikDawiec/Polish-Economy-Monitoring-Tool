@@ -59,7 +59,7 @@ def timeseries(x):
   dfa = pd.DataFrame.from_dict(dfa['releases'])
   timeseries.dfa = dfa
      
-  st.success('Successfully choosen',dfw['title'].iat[-1] ,icon="✅")
+  st.success('Successfully choosen variable',icon="✅")
  
 with st.container():
      # creating a selectbox
