@@ -100,7 +100,7 @@ with st.container():
           fig.update_xaxes(visible=False)
 
           #y axis    
-f         ig.update_yaxes(visible=False)
+          fig.update_yaxes(visible=False)
 
           st.plotly_chart(fig, use_container_width=True)
           
