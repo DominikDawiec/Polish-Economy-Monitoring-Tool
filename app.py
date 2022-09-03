@@ -59,9 +59,21 @@ def timeseries(x):
   dfa = pd.DataFrame.from_dict(dfa['releases'])
   plotting.dfa = dfa
  
-          
+id = function1.bye
+     
 # creating a selectbox
 fname = st.selectbox('Please select an indicator', dfx)
 
 function1(fname)
-id = function1.bye
+timeseries(id)
+
+
+df = plotting.df 
+dfw = plotting.dfw
+dfa = plotting.dfa
+
+st.write('after doing both functions I have got')
+st.write('variable id', function1.bye)
+st.dataframe(df)
+st.dataframe(dfw)
+st.dataframe(dfa)
