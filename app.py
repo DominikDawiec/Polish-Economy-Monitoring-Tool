@@ -35,7 +35,7 @@ def getdata(choosenvariable):
           choosen_variable_id = choosen_variable_name.unique()
           choosen_subvariable = st.selectbox('The selected indicator has more variants to choose from:', choosen_variable_id)
           final_variable_id = dfz.loc[dfz["subtitle"] == choosen_subvariable]
-        else:
+       else:
           final_variable_id = dfz.loc[dfz["title"] ==choosenvariable]
 
           
