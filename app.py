@@ -128,6 +128,5 @@ with st.container():
                                                     align=['left'],
                                                     line_color='black',
                                                     fill_color='white'))
-                                                    fill_color='white'))
                                ])
           st.plotly_chart(fig, use_container_width=True)
