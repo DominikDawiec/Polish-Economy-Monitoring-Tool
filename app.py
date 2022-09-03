@@ -19,27 +19,37 @@ st.set_page_config(
 fred.key('8c3b945500069081b94040df2da12df7')
 
 # downloading list of avaiable variables concerning Poland
-all_variables = fred.category_series(32339)
-all_variables = pd.DataFrame.from_dict(all_variables['seriess'])
-all_variables['subtitle'] = all_variables['title'] + ", FREQUENCY.:" + all_variables['frequency'] + ', UNIT:' + all_variables['units'] + ', SEASONAL ADJUSTMENT:' + all_variables['seasonal_adjustment']
+dfz = fred.category_series(32339)
+dfz = pd.DataFrame.from_dict(dfz['seriess'])
+dfz['subtitle'] = dfz['title'] + ", FREQ.:" + dfz['frequency'] + ', UNIT:' + dfz['units'] + ', SEAS. ADJ.:' + dfz['seasonal_adjustment']
 
-# creating a list of variables to select 
-all_variables_to_select = all_variables.title.unique()
+# creating list of variables' names for selectbox
+dfx = dfz.title.unique()
 
-# defining a function downloading data about choosen variable
-def getdata(choosenvariable):
-     choosen_variable_name = all_variables.loc[all_variables["title"] == choosenvariable]
-     
-     # if there is more varians of choosen variable I would like to let user be able to choose one one of them 
-     if choosen_variable_name.shape[0] > 1:
-          choosen_variable_id = choosen_variable_name.unique()
-          choosen_subvariable = st.selectbox('The selected indicator has more variants to choose from:', choosen_variable_id)
-          final_variable_id = dfz.loc[dfz["subtitle"] == choosen_subvariable]
-       else:
-          final_variable_id = dfz.loc[dfz["title"] ==choosenvariable]
+# creating a function returning variable ID of choosen variable 
+def function1(x):
+  dfh = dfz.loc[dfz["title"] ==x]
+  
+  if dfh.shape[0] > 1:
+    dfxg = dfh.subtitle.unique()
+    dfhx = st.selectbox('The selected indicator has more variants to choose from:', dfxg)
+    hjkl = dfz.loc[dfz["subtitle"] ==dfhx]
+    function1.bye = hjkl['id'].iat[-1]
+    st.write(function1.bye) # checker to delete
+  else:
+    hjkl = dfz.loc[dfz["title"] ==x]
+    function1.bye = hjkl['id'].iat[-1]
+    st.write(function1.bye) # checker to delete
+
+# creting a function creating first plot
+          
+# creting a function creating first plot
+
+# creting a function creating first plot
 
           
 # creating a selectbox
-fname = st.selectbox('Please select an indicator', all_variables_to_select)
+fname = st.selectbox('Please select an indicator', dfx)
 
-choosenvariable(fname)
+function1(fname)
+id = function1.bye
