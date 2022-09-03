@@ -58,6 +58,8 @@ def timeseries(x):
   dfa = fred.series(id, release=True)
   dfa = pd.DataFrame.from_dict(dfa['releases'])
   timeseries.dfa = dfa
+     
+  st.success('Successfully downloaded variable!', icon="✅")
  
 with st.container():
      # creating a selectbox
