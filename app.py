@@ -237,3 +237,4 @@ with st.container():
   
 with st.container():
      st.header("FORECAST")
+     st.dataframe(df)
