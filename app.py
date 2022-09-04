@@ -234,7 +234,15 @@ with st.container():
           )
 
           
-  
+from pycaret.regression import *
+s = setup(data = train, test_data = test, target = 'Passengers', fold_strategy = 'timeseries', numeric_features = ['Year', 'Series'], fold = 3, transform_target = True, session_id = 123)
+
+
+
+
 with st.container():
      st.header("FORECAST")
      st.dataframe(df)
+
+     
+   
