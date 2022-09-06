@@ -70,7 +70,7 @@ def download_data(variable):
     download_data.info_2 = info_2
 
 # Setting function Creating Plot
-def plot(variable):
+def plot():
     with st.container():
          tab1, tab2 = st.tabs(["Historical Chart 📈", "Historical Data 💾"])
          with tab1:
@@ -163,6 +163,4 @@ ultimate_value = timeseries['value'].iat[-1]
 preultimate_value = timeseries['value'].iat[-2]
 percentage_change = ((ultimate_value - preultimate_value) / preultimate_value) * 100
 
-st.write(ultimate_value)
-st.write(preultimate_value)
-st.write(percentage_change)
+plot()
