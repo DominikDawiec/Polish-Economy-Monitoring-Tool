@@ -188,7 +188,7 @@ def analitical_insights():
                fig.add_vrect(x0="2020-02-01", x1="2020-04-31", 
                              annotation_text="Covid-19 Crisis", annotation_position="top left",
                              annotation=dict(font_size=12, font_family="Times New Roman"),
-                             fillcolor="grey", opacity=0.5, line_width=0)
+                             fillcolor="grey", opacity=1, line_width=0.5)
                
                fig.add_vrect(x0="2007-12-01", x1="2009-06-31", 
                              annotation_text="Global Crisis", annotation_position="top left",
