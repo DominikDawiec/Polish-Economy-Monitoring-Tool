@@ -475,6 +475,8 @@ Results_Summary = forecast.Results_Summary # st write
 
 forecast_plot()
 
-download()
+# download()
+
+St.write('Next steps: download button & report a bug form')
 
 
