@@ -184,7 +184,9 @@ def analitical_insights():
           
           if vrect == 'none (default)':
                st.plotly_chart(fig, use_container_width=True)
+               
           elif vrect == 'economic crises':
+               
                fig.add_vrect(x0="2020-02-01", x1="2020-04-31", 
                              annotation_text="Covid-19 Crisis", annotation_position="top left",
                              annotation=dict(font_size=12, font_family="Times New Roman"),
@@ -199,14 +201,19 @@ def analitical_insights():
                              annotation_text="Internet Bubble Crisis", annotation_position="top left",
                              annotation=dict(font_size=12, font_family="Times New Roman"),
                              fillcolor="red", opacity=0.25, line_width=0)
-              
                
-               st.plotly_chart(fig, use_container_width=True)
-          elif vrect == 'political parties':
                st.plotly_chart(fig, use_container_width=True)
                
           elif vrect == 'political parties':
+               
+               fig.add_vrect(x0="2006-01-01", x1="2007-12-31", 
+                             annotation_text="PIS", annotation_position="top left",
+                             annotation=dict(font_size=20, font_family="Times New Roman"),
+                             fillcolor="blue", opacity=0.25, line_width=0)
+               
                st.plotly_chart(fig, use_container_width=True)
+               
+        
 
           
 # =========================================================================================================
