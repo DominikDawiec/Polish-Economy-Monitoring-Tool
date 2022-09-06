@@ -9,6 +9,8 @@ import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 
+from datetime import date
+
 # setting the website details
 st.set_page_config(
      page_title="Polish Economic Indicators",
@@ -189,26 +191,56 @@ def analitical_insights():
                
                fig.add_vrect(x0="2020-02-01", x1="2020-04-31", 
                              annotation_text="Covid-19 Crisis", annotation_position="top left",
-                             annotation=dict(font_size=20, font_family="Times New Roman"),
+                             annotation=dict(font_size=10, font_family="Times New Roman"),
                              fillcolor="blue", opacity=0.25, line_width=0)
                
                fig.add_vrect(x0="2007-12-01", x1="2009-06-31", 
                              annotation_text="Global Crisis", annotation_position="top left",
-                             annotation=dict(font_size=20, font_family="Times New Roman"),
+                             annotation=dict(font_size=10, font_family="Times New Roman"),
                              fillcolor="blue", opacity=0.25, line_width=0)
                
                fig.add_vrect(x0="2001-03-01", x1="2001-11-31", 
                              annotation_text="Internet Bubble Crisis", annotation_position="top left",
-                             annotation=dict(font_size=20, font_family="Times New Roman"),
+                             annotation=dict(font_size=10, font_family="Times New Roman"),
                              fillcolor="blue", opacity=0.25, line_width=0)
                
                st.plotly_chart(fig, use_container_width=True)
                
           elif vrect == 'political parties':
                
-               fig.add_vrect(x0="2006-01-01", x1="2007-12-31", 
-                             annotation_text="PIS", annotation_position="top left",
-                             annotation=dict(font_size=20, font_family="Times New Roman"),
+               fig.add_vrect(x0="1995-03-07", x1="1997-10-31", 
+                             annotation_text="SLD-PSL", annotation_position="top left",
+                             annotation=dict(font_size=10, font_family="Times New Roman"),
+                             fillcolor="blue", opacity=0.25, line_width=0)
+               
+              fig.add_vrect(x0="1997-11-01", x1="2001-10-19", 
+                             annotation_text="AWS-UW", annotation_position="top left",
+                             annotation=dict(font_size=10, font_family="Times New Roman"),
+                             fillcolor="blue", opacity=0.25, line_width=0)
+          
+              fig.add_vrect(x0="2001-10-19", x1="2004-05-02", 
+                             annotation_text="SLD-UP-PSL", annotation_position="top left",
+                             annotation=dict(font_size=10, font_family="Times New Roman"),
+                             fillcolor="blue", opacity=0.25, line_width=0)
+          
+              fig.add_vrect(x0="2004-05-02", x1="2005-10-19", 
+                             annotation_text="SLD-UP", annotation_position="top left",
+                             annotation=dict(font_size=10, font_family="Times New Roman"),
+                             fillcolor="blue", opacity=0.25, line_width=0)
+          
+              fig.add_vrect(x0="2005-10-31", x1="2007-11-16", 
+                             annotation_text="PiS-SO-LPR", annotation_position="top left",
+                             annotation=dict(font_size=10, font_family="Times New Roman"),
+                             fillcolor="blue", opacity=0.25, line_width=0)
+          
+              fig.add_vrect(x0="2007-11-06", x1="2014-11-13", 
+                             annotation_text="PO-PSL", annotation_position="top left",
+                             annotation=dict(font_size=10, font_family="Times New Roman"),
+                             fillcolor="blue", opacity=0.25, line_width=0)
+          
+              fig.add_vrect(x0="2015-11-14", x1=date.today(), 
+                             annotation_text="PiS", annotation_position="top left",
+                             annotation=dict(font_size=10, font_family="Times New Roman"),
                              fillcolor="blue", opacity=0.25, line_width=0)
                
                st.plotly_chart(fig, use_container_width=True)
