@@ -374,18 +374,18 @@ def forecast_plot():
                     line=dict(color='green'),
                ),
                go.Scatter(
-                    name='Upper Bound',
+                    name='training upper value',
                     x=pred_ci_1.index,
-                    y=pred_ci_1['training upper value'],
+                    y=pred_ci_1['upper value'],
                     mode='lines',
                     marker=dict(color="grey"),
                     line=dict(width=0),
                     showlegend=False
                ),
                go.Scatter(
-                    name='Lower Bound',
+                    name='training lower value',
                     x=pred_ci_1.index,
-                    y=pred_ci_1['training lower value'],
+                    y=pred_ci_1['lower value'],
                     marker=dict(color="grey"),
                     line=dict(width=0),
                     mode='lines',
