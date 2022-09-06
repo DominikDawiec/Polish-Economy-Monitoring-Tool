@@ -185,14 +185,33 @@ def analitical_insights():
           if vrect == 'none (default)':
                st.plotly_chart(fig, use_container_width=True)
           elif vrect == 'economic crises':
-               fig.add_vrect(x0="2001-01-01", x1="2005-12-31", 
-                             annotation_text="SLD", annotation_position="top left",
-                             annotation=dict(font_size=20, font_family="Times New Roman"),
-                             fillcolor="yellow", opacity=0.25, line_width=0)
+               fig.add_vrect(x0="2020-02-01", x1="2020-04-31", 
+                             annotation_text="Covid-19 Crisis", annotation_position="top left",
+                             annotation=dict(font_size=12, font_family="Times New Roman"),
+                             fillcolor="lightgrey", opacity=0.25, line_width=0)
+               
+               fig.add_vrect(x0="2007-12-01", x1="2009-06-31", 
+                             annotation_text="Global Crisis", annotation_position="top left",
+                             annotation=dict(font_size=12, font_family="Times New Roman"),
+                             fillcolor="lightgrey", opacity=0.25, line_width=0)
+               
+               fig.add_vrect(x0="2001-03-01", x1="2001-11-31", 
+                             annotation_text="Internet Bubble Crisis", annotation_position="top left",
+                             annotation=dict(font_size=12, font_family="Times New Roman"),
+                             fillcolor="lightgrey", opacity=0.25, line_width=0)
+               
+               fig.add_vrect(x0="1990-07-01", x1="1991-03-31", 
+                             annotation_text="Oil Crisis", annotation_position="top left",
+                             annotation=dict(font_size=12, font_family="Times New Roman"),
+                             fillcolor="lightgrey", opacity=0.25, line_width=0)
                
                st.plotly_chart(fig, use_container_width=True)
           elif vrect == 'political parties':
                st.plotly_chart(fig, use_container_width=True)
+               
+          elif vrect == 'political parties':
+               st.plotly_chart(fig, use_container_width=True)
+
           
 # =========================================================================================================
 
