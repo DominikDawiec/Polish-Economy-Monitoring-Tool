@@ -79,7 +79,6 @@ def plot():
           fig.update_layout(
                yaxis_title='Value',
                xaxis_title='Date',
-               title='To be updated xyz',
                hovermode="x")
           
           fig.update_xaxes(rangeslider_visible=True)
@@ -103,7 +102,7 @@ def plot():
                                                 font=dict(color='white'),
                                                 align=['left'],
                                                 fill_color='#636EFA'),
-                                    cells=dict(values=[df['date'], df['value']], 
+                                    cells=dict(values=[timeseries['date'], timeseries['value']], 
                                                font=dict(color='black'),
                                                align=['left'],
                                                line_color='black',
@@ -151,6 +150,20 @@ def plot():
           fig.update_layout(height=550)
           st.plotly_chart(fig, use_container_width=True)
 
+def data_analitics():
+     timeseries['natural_log'] = np.log(timeseries['value'])
+     timeseries['values'] = timeseries['value']
+     timeseries['percentage change'] = timeseries['value'].pct_change().mul(100)
+     timeseries['value difference'] = timeseries['value'].diff()
+     data_analitics.timeseries = timeseries
+
+def analitical_insights():
+     with st.container():
+          st.header("Analitical Insights ✨")
+          
+          unit = st.selectbox('Please select unit', ['values','natural_log','percentage change','value difference'])
+# =========================================================================================================
+
 download_data(variable_ID)
 
 # saving attributes outside functions
@@ -164,3 +177,8 @@ preultimate_value = timeseries['value'].iat[-2]
 percentage_change = ((ultimate_value - preultimate_value) / preultimate_value) * 100
 
 plot()
+
+data_analitics()
+
+# saving attribute outside function
+timeseries = timeseries = data_analitics.timeseries
