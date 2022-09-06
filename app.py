@@ -162,7 +162,8 @@ def analitical_insights():
           st.header("Analitical Insights ✨")
           
           unit = st.selectbox('Please select unit', ['values','natural_log','percentage change','value difference'])
-          
+          vrect = st.selectbox('Please select vrect', ['none (default)', 'economic crises','political parties'])
+
           fig = px.line(timeseries, x='date', y=unit)
           fig.update_layout(
                yaxis_title='Value',
@@ -180,6 +181,7 @@ def analitical_insights():
                          dict(count=5, label="5y", step="year", stepmode="backward"),
                          dict(count=10, label="10y", step="year", stepmode="backward"),
                          dict(step="all")])))
+          
           st.plotly_chart(fig, use_container_width=True)
 # =========================================================================================================
 
