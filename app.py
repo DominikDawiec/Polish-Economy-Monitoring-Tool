@@ -162,6 +162,25 @@ def analitical_insights():
           st.header("Analitical Insights ✨")
           
           unit = st.selectbox('Please select unit', ['values','natural_log','percentage change','value difference'])
+          
+          fig = px.line(timeseries, x='date', y=unit)
+          fig.update_layout(
+               yaxis_title='Value',
+               xaxis_title='Date',
+               hovermode="x")
+          
+          fig.update_xaxes(rangeslider_visible=True)
+          
+          fig.update_xaxes(
+               rangeslider_visible=True,
+               rangeselector=dict(
+                    buttons=list([
+                         dict(count=6, label="6m", step="month", stepmode="backward"),
+                         dict(count=1, label="1y", step="year", stepmode="backward"),
+                         dict(count=5, label="5y", step="year", stepmode="backward"),
+                         dict(count=10, label="10y", step="year", stepmode="backward"),
+                         dict(step="all")])))
+          st.plotly_chart(fig, use_container_width=True)
 # =========================================================================================================
 
 download_data(variable_ID)
@@ -182,3 +201,5 @@ data_analitics()
 
 # saving attribute outside function
 timeseries = timeseries = data_analitics.timeseries
+
+analitical_insights()
