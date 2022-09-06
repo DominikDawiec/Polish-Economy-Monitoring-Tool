@@ -424,9 +424,8 @@ def download():
           # Create a Pandas Excel writer using XlsxWriter as the engine.
           with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
           # Write each dataframe to a different worksheet.
-          df.to_excel(writer, sheet_name='Sheet1')
-          dfw.to_excel(writer, sheet_name='Sheet2')
-          dfa.to_excel(writer, sheet_name='Sheet3')
+          timeseries.to_excel(writer, sheet_name='Sheet1')
+          Test_Stationary.to_excel(writer, sheet_name='Sheet2')
           # Close the Pandas Excel writer and output the Excel file to the buffer
           writer.save()
           
