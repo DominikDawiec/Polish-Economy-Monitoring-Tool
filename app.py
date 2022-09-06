@@ -337,10 +337,11 @@ timeseries = data_analitics.timeseries
 
 analitical_insights()
 
+# cleaning timeseries df before forecast
 timeseries = timeseries.set_index(['date'])
 timeseries = timeseries.drop(columns=['values','natural_log','percentage change','value difference'])
-st.dataframe(timeseries)
-# forecast()
+
+forecast()
 
 pred_ci_1 = forecast.prec_ci_1
 pred_ci = forecast.prec_ci 
