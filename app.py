@@ -8,8 +8,23 @@ import streamlit as st
      
 import plotly.express as px
 import plotly.graph_objects as go
+from plotly.offline import init_notebook_mode, iplot
+import plotly.graph_objs as go
 
 from datetime import date
+
+import matplotlib.pyplot as plt
+import warnings
+
+from pylab import rcParams  
+
+import cufflinks
+
+from statsmodels.tsa.stattools import adfuller
+import statsmodels.api as sm
+
+# import warnings
+warnings.filterwarnings('ignore')
 
 # setting the website details
 st.set_page_config(
@@ -248,8 +263,57 @@ def analitical_insights():
                
                st.plotly_chart(fig, use_container_width=True)
                
+               
         
+def forecast():
+     st.header("Forecasts 🔮")
+     init_notebook_mode(connected=True)
+     timeseries = timeseries.set_index(['date'])
+     timeseries = timeseries.drop(columns=['values','natural_log','percentage change','value difference'])
+     def testStationarity(ts):
+          dftest = adfuller(ts)
+          dfoutput = pd.Series(dftest[0:4], index=['Test Statistic','p-value','#Lags Used','Number of Observations Used'])
+          for key,value in dftest[4].items():
+               dfoutput['Critical Value (%s)'%key] = value
+          return dfoutput
+     
+     testStationarity(timeseries.value)
+     
+     mod = sm.tsa.statespace.SARIMAX(timeseries,
+                                     order=(1, 1, 0),
+                                     seasonal_order=(0, 1, 1, 12),
+                                     enforce_stationarity=False,
+                                     enforce_invertibility=False)
+     results = mod.fit()
+     
+     pred = results.get_prediction(start=pd.to_datetime('2016-01-01'), dynamic=False)
+     pred_ci = pred.conf_int()
+     
+     pred_ci['predicted'] = (pred_ci['lower value'] + pred_ci['upper value'])/2
+     pred_ci['observed'] = df['value']
+     pred_ci['diff, %%'] = ((pred_ci['predicted'] / pred_ci['observed'])-1) * 100
+     
+     forecast.prec_ci_1 = pred_ci
+     
+     # Get forecast 3 years ahead in future
+     pred_uc = results.get_forecast(steps=36)
+     
+     # Get confidence intervals of forecasts
+     pred_ci = pred_uc.conf_int()
+     
+     pred_ci['Mean'] = (pred_ci['lower value'] + pred_ci['upper value'])/2
+     
+     forecast.prec_ci = pred_ci
+     
+     st.dataframe(testStationarity(df.value))
+     
+     st.write(results.summary())
 
+def forecast_plot()
+
+
+
+          
           
 # =========================================================================================================
 
@@ -273,3 +337,9 @@ data_analitics()
 timeseries = timeseries = data_analitics.timeseries
 
 analitical_insights()
+
+
+forecast()
+
+pred_ci_1 = forecast.prec_ci_1
+pred_ci = forecast.prec_ci 
