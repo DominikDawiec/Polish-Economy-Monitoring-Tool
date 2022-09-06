@@ -303,12 +303,52 @@ def forecast():
      
      forecast.prec_ci = pred_ci
      
-     st.dataframe(testStationarity(timeseries.value))
+     forecast.Test_Stationary = testStationarity(timeseries.value)
      
-     st.write(results.summary())
+     forecast.Results_Summary = results.summary()
 
 def forecast_plot():
-     st.write('pum pum pum')
+     fig = go.Figure([
+          go.Scatter(
+               name='predicted value',
+               x=pred_ci['Unnamed: 0'],
+               y=pred_ci['Mean'],
+               mode='lines',
+               line=dict(color='rgb(31, 119, 180)'),
+          ),
+          go.Scatter(
+               name='upper bound',
+               x=pred_ci['Unnamed: 0'],
+               y=pred_ci['upper value'],
+               mode='lines',
+               marker=dict(color="#444"),
+               line=dict(width=0),
+               showlegend=False
+          ),
+          go.Scatter(
+               name='lower bound',
+               x=pred_ci['Unnamed: 0'],
+               y=pred_ci['lower value'],
+               marker=dict(color="#444"),
+               line=dict(width=0),
+               mode='lines',
+               fillcolor='rgba(68, 68, 68, 0.3)',
+               fill='tonexty',
+               showlegend=False
+          ),
+          go.Scatter(
+               name='historical value',
+               x=df['date'],
+               y=df['value'],
+               mode='lines',
+               line=dict(color='rgb(31, 119, 180)'),
+          )
+     ])
+     fig.update_layout(
+          yaxis_title='Value',
+          hovermode="x")
+     
+     st.plotly_chart(fig, use_container_width=True)
 
 
 
@@ -345,3 +385,5 @@ forecast()
 
 pred_ci_1 = forecast.prec_ci_1
 pred_ci = forecast.prec_ci 
+Test_Stationary = forecast.Test_Stationary # dataframe
+Results_Summary = forecast.Results_Summary # st write
