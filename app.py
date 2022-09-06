@@ -216,22 +216,22 @@ def analitical_insights():
                fig.add_vrect(x0="1997-11-01", x1="2001-10-19", 
                              annotation_text="AWS-UW", annotation_position="top left",
                              annotation=dict(font_size=10, font_family="Times New Roman"),
-                             fillcolor="blue", opacity=0.25, line_width=0)
+                             fillcolor="green", opacity=0.25, line_width=0)
           
                fig.add_vrect(x0="2001-10-19", x1="2004-05-02", 
                              annotation_text="SLD-UP-PSL", annotation_position="top left",
                              annotation=dict(font_size=10, font_family="Times New Roman"),
-                             fillcolor="blue", opacity=0.25, line_width=0)
+                             fillcolor="red", opacity=0.25, line_width=0)
           
                fig.add_vrect(x0="2004-05-02", x1="2005-10-19", 
                              annotation_text="SLD-UP", annotation_position="top left",
                              annotation=dict(font_size=10, font_family="Times New Roman"),
-                             fillcolor="blue", opacity=0.25, line_width=0)
+                             fillcolor="yellow", opacity=0.25, line_width=0)
           
                fig.add_vrect(x0="2005-10-31", x1="2007-11-16", 
                              annotation_text="PiS-SO-LPR", annotation_position="top left",
                              annotation=dict(font_size=10, font_family="Times New Roman"),
-                             fillcolor="blue", opacity=0.25, line_width=0)
+                             fillcolor="grey", opacity=0.25, line_width=0)
           
                fig.add_vrect(x0="2007-11-17", x1="2015-11-13", 
                              annotation_text="PO-PSL", annotation_position="top left",
@@ -244,7 +244,7 @@ def analitical_insights():
                fig.add_vrect(x0="2015-11-14", x1=d1, 
                              annotation_text="PiS", annotation_position="top left",
                              annotation=dict(font_size=10, font_family="Times New Roman"),
-                             fillcolor="blue", opacity=0.25, line_width=0)
+                             fillcolor="red", opacity=0.25, line_width=0)
                
                st.plotly_chart(fig, use_container_width=True)
                
