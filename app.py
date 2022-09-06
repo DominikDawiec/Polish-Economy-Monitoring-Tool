@@ -409,7 +409,7 @@ def forecast_plot():
           st.plotly_chart(fig, use_container_width=True)
           
           with st.expander("See model details"):
-               st.write(Results_Summary)
+               st.write("work in progress")
 
           
 
@@ -451,6 +451,6 @@ Results_Summary = forecast.Results_Summary # st write
 
 forecast_plot()
 
-St.write('Next steps: download button & report a bug form')
+St.write('Next steps: model details, download button & report a bug form')
 
 
