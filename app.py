@@ -233,7 +233,7 @@ def analitical_insights():
                              annotation=dict(font_size=10, font_family="Times New Roman"),
                              fillcolor="blue", opacity=0.25, line_width=0)
           
-               fig.add_vrect(x0="2007-11-06", x1="2014-11-13", 
+               fig.add_vrect(x0="2007-11-17", x1="2015-11-13", 
                              annotation_text="PO-PSL", annotation_position="top left",
                              annotation=dict(font_size=10, font_family="Times New Roman"),
                              fillcolor="blue", opacity=0.25, line_width=0)
