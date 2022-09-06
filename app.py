@@ -388,4 +388,7 @@ pred_ci = forecast.prec_ci
 Test_Stationary = forecast.Test_Stationary # dataframe
 Results_Summary = forecast.Results_Summary # st write
 
-forecast_plot()
+st.dataframe(pred_ci_1)
+st.dataframe(pred_ci)
+
+# forecast_plot()
