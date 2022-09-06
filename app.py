@@ -23,6 +23,8 @@ import cufflinks
 from statsmodels.tsa.stattools import adfuller
 import statsmodels.api as sm
 
+import xlsxwriter
+
 # import warnings
 warnings.filterwarnings('ignore')
 
