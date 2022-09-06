@@ -338,8 +338,8 @@ def forecast_plot():
           ),
           go.Scatter(
                name='historical value',
-               x=df['date'],
-               y=df['value'],
+               x=timeseries.index,
+               y=timeseries['value'],
                mode='lines',
                line=dict(color='rgb(31, 119, 180)'),
           )
