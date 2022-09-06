@@ -311,14 +311,14 @@ def forecast_plot():
      fig = go.Figure([
           go.Scatter(
                name='predicted value',
-               x=pred_ci['Unnamed: 0'],
+               x=pred_ci.index,
                y=pred_ci['Mean'],
                mode='lines',
                line=dict(color='rgb(31, 119, 180)'),
           ),
           go.Scatter(
                name='upper bound',
-               x=pred_ci['Unnamed: 0'],
+               x=pred_ci.index,
                y=pred_ci['upper value'],
                mode='lines',
                marker=dict(color="#444"),
@@ -327,7 +327,7 @@ def forecast_plot():
           ),
           go.Scatter(
                name='lower bound',
-               x=pred_ci['Unnamed: 0'],
+               x=pred_ci.index,
                y=pred_ci['lower value'],
                marker=dict(color="#444"),
                line=dict(width=0),
@@ -391,4 +391,4 @@ Results_Summary = forecast.Results_Summary # st write
 st.dataframe(pred_ci_1)
 st.dataframe(pred_ci)
 
-# forecast_plot()
+forecast_plot()
