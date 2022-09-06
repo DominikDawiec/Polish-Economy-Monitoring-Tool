@@ -73,8 +73,7 @@ def download_data(variable):
 def plot(variable):
     with st.container():
          tab1, tab2 = st.tabs(["Historical Chart 📈", "Historical Data 💾"])
-            
-            with tab1:
+          with tab1:
                 st.header("Historical Chart 📈")
                 
                 fig = px.line(timeseries, x='date', y="value")
