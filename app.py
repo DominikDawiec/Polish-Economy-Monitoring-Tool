@@ -311,9 +311,7 @@ def forecast():
      forecast.Results_Summary = results.summary()
 
 def forecast_plot():
-     
-     agree = st.checkbox('Show line')
-          
+               
      fig = go.Figure([
           go.Scatter(
                name='predicted value',
@@ -412,7 +410,6 @@ def forecast_plot():
           
           with st.expander("See model details"):
                st.dataframe(Test_Stationary)
-               st.write(Results_Summary)
 
           
 
