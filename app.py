@@ -448,6 +448,6 @@ Results_Summary = forecast.Results_Summary # st write
 
 forecast_plot()
 
-St.write('Next steps: model details, download button & report a bug form')
+st.write('Next steps: model details, download button & report a bug form')
 
 
