@@ -430,7 +430,7 @@ def download():
           #pred_ci_1.to_excel(writer, sheet_name='Sheet1')
           #Test_Stationary.to_excel(writer, sheet_name='Sheet2')
           # Close the Pandas Excel writer and output the Excel file to the buffer
-          writer.save()
+          # writer.save()
           
           st.download_button(
                label="Download Excel Worksheet",
