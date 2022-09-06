@@ -416,28 +416,7 @@ def forecast_plot():
 
           
 
-def download():
-     with st.container():
-          st.header("Download data 📥")
-          st.info('Work in progress - not ready YET', icon="ℹ️")
-          
-          # creating excel file
-          buffer = io.BytesIO()
-          
-          # Create a Pandas Excel writer using XlsxWriter as the engine.
-          with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
-          # Write each dataframe to a different worksheet.
-          #pred_ci_1.to_excel(writer, sheet_name='Sheet1')
-          #Test_Stationary.to_excel(writer, sheet_name='Sheet2')
-          # Close the Pandas Excel writer and output the Excel file to the buffer
-          # writer.save()
-          
-          st.download_button(
-               label="Download Excel Worksheet",
-               data=buffer,
-               file_name="pandas_multiple.xlsx",
-               mime="application/vnd.ms-excel"
-          )
+
           
 # =========================================================================================================
 
@@ -474,8 +453,6 @@ Test_Stationary = forecast.Test_Stationary # dataframe
 Results_Summary = forecast.Results_Summary # st write
 
 forecast_plot()
-
-# download()
 
 St.write('Next steps: download button & report a bug form')
 
