@@ -237,8 +237,11 @@ def analitical_insights():
                              annotation_text="PO-PSL", annotation_position="top left",
                              annotation=dict(font_size=10, font_family="Times New Roman"),
                              fillcolor="blue", opacity=0.25, line_width=0)
+               
+               today = date.today()
+               d1 = today.strftime("%Y-%m-%d")
           
-               fig.add_vrect(x0="2015-11-14", x1=date.today(), 
+               fig.add_vrect(x0="2015-11-14", x1=d1, 
                              annotation_text="PiS", annotation_position="top left",
                              annotation=dict(font_size=10, font_family="Times New Roman"),
                              fillcolor="blue", opacity=0.25, line_width=0)
