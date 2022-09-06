@@ -309,7 +309,8 @@ def forecast():
      
      st.write(results.summary())
 
-def forecast_plot()
+def forecast_plot():
+     st.write('pum pum pum')
 
 
 
