@@ -308,6 +308,9 @@ def forecast():
      forecast.Results_Summary = results.summary()
 
 def forecast_plot():
+     
+     agree = st.checkbox('Show line')
+          
      fig = go.Figure([
           go.Scatter(
                name='predicted value',
@@ -359,9 +362,12 @@ def forecast_plot():
                     dict(count=10, label="10y", step="year", stepmode="backward"),
                     dict(step="all")])))
      
-     st.plotly_chart(fig, use_container_width=True)
-
-
+     if agree:
+          line = timeseries.iloc[-1]['date']
+          fig.add_vline(x=line, line_width=1, line_dash="line", line_color="black")
+          st.plotly_chart(fig, use_container_width=True)
+     else:
+          st.plotly_chart(fig, use_container_width=True)
 
           
           
