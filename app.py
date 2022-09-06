@@ -339,7 +339,8 @@ timeseries = data_analitics.timeseries
 
 analitical_insights()
 
-forecast()
+st.dataframe(timeseries)
+# forecast()
 
 pred_ci_1 = forecast.prec_ci_1
 pred_ci = forecast.prec_ci 
