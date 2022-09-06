@@ -408,7 +408,6 @@ def forecast_plot():
           st.plotly_chart(fig, use_container_width=True)
 
           
-with st.expander("See model details"):
 
           
           
