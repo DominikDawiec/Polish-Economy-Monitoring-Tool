@@ -339,6 +339,7 @@ timeseries = data_analitics.timeseries
 
 analitical_insights()
 
+timeseries = timeseries.set_index(['date'])
 st.dataframe(timeseries)
 # forecast()
 
