@@ -213,32 +213,32 @@ def analitical_insights():
                              annotation=dict(font_size=10, font_family="Times New Roman"),
                              fillcolor="blue", opacity=0.25, line_width=0)
                
-              fig.add_vrect(x0="1997-11-01", x1="2001-10-19", 
+               fig.add_vrect(x0="1997-11-01", x1="2001-10-19", 
                              annotation_text="AWS-UW", annotation_position="top left",
                              annotation=dict(font_size=10, font_family="Times New Roman"),
                              fillcolor="blue", opacity=0.25, line_width=0)
           
-              fig.add_vrect(x0="2001-10-19", x1="2004-05-02", 
+               fig.add_vrect(x0="2001-10-19", x1="2004-05-02", 
                              annotation_text="SLD-UP-PSL", annotation_position="top left",
                              annotation=dict(font_size=10, font_family="Times New Roman"),
                              fillcolor="blue", opacity=0.25, line_width=0)
           
-              fig.add_vrect(x0="2004-05-02", x1="2005-10-19", 
+               fig.add_vrect(x0="2004-05-02", x1="2005-10-19", 
                              annotation_text="SLD-UP", annotation_position="top left",
                              annotation=dict(font_size=10, font_family="Times New Roman"),
                              fillcolor="blue", opacity=0.25, line_width=0)
           
-              fig.add_vrect(x0="2005-10-31", x1="2007-11-16", 
+               fig.add_vrect(x0="2005-10-31", x1="2007-11-16", 
                              annotation_text="PiS-SO-LPR", annotation_position="top left",
                              annotation=dict(font_size=10, font_family="Times New Roman"),
                              fillcolor="blue", opacity=0.25, line_width=0)
           
-              fig.add_vrect(x0="2007-11-06", x1="2014-11-13", 
+               fig.add_vrect(x0="2007-11-06", x1="2014-11-13", 
                              annotation_text="PO-PSL", annotation_position="top left",
                              annotation=dict(font_size=10, font_family="Times New Roman"),
                              fillcolor="blue", opacity=0.25, line_width=0)
           
-              fig.add_vrect(x0="2015-11-14", x1=date.today(), 
+               fig.add_vrect(x0="2015-11-14", x1=date.today(), 
                              annotation_text="PiS", annotation_position="top left",
                              annotation=dict(font_size=10, font_family="Times New Roman"),
                              fillcolor="blue", opacity=0.25, line_width=0)
