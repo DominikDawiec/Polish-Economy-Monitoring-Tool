@@ -44,3 +44,5 @@ def choose_variable(variable):
 chosen_variable_name = st.selectbox('Please select an indicator', list_of_available_variables)
 choose_variable(chosen_variable_name)
 variable_ID = choose_variable.ID
+
+st.write(variable_ID)
