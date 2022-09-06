@@ -268,8 +268,6 @@ def analitical_insights():
 def forecast():
      st.header("Forecasts 🔮")
      init_notebook_mode(connected=True)
-     timeseries = timeseries.set_index(['date'])
-     timeseries = timeseries.drop(columns=['values','natural_log','percentage change','value difference'])
      def testStationarity(ts):
           dftest = adfuller(ts)
           dfoutput = pd.Series(dftest[0:4], index=['Test Statistic','p-value','#Lags Used','Number of Observations Used'])
@@ -340,6 +338,7 @@ timeseries = data_analitics.timeseries
 analitical_insights()
 
 timeseries = timeseries.set_index(['date'])
+timeseries = timeseries.drop(columns=['values','natural_log','percentage change','value difference'])
 st.dataframe(timeseries)
 # forecast()
 
