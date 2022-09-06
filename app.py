@@ -193,7 +193,7 @@ def analitical_insights():
                fig.add_vrect(x0="2007-12-01", x1="2009-06-31", 
                              annotation_text="Global Crisis", annotation_position="top left",
                              annotation=dict(font_size=12, font_family="Times New Roman"),
-                             fillcolor="grey", opacity=0.25, line_width=0)
+                             fillcolor="grey", opacity=0, line_width=5)
                
                fig.add_vrect(x0="2001-03-01", x1="2001-11-31", 
                              annotation_text="Internet Bubble Crisis", annotation_position="top left",
