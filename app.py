@@ -314,7 +314,7 @@ def forecast_plot():
                x=pred_ci.index,
                y=pred_ci['Mean'],
                mode='lines',
-               line=dict(color='rgb(31, 119, 180)'),
+               line=dict(color='red'),
           ),
           go.Scatter(
                name='upper bound',
@@ -347,6 +347,17 @@ def forecast_plot():
      fig.update_layout(
           yaxis_title='Value',
           hovermode="x")
+     
+     fig.update_xaxes(rangeslider_visible=True)
+     fig.update_xaxes(
+          rangeslider_visible=True,
+          rangeselector=dict(
+               buttons=list([
+                    dict(count=6, label="6m", step="month", stepmode="backward"),
+                    dict(count=1, label="1y", step="year", stepmode="backward"),
+                    dict(count=5, label="5y", step="year", stepmode="backward"),
+                    dict(count=10, label="10y", step="year", stepmode="backward"),
+                    dict(step="all")])))
      
      st.plotly_chart(fig, use_container_width=True)
 
@@ -387,8 +398,5 @@ pred_ci_1 = forecast.prec_ci_1
 pred_ci = forecast.prec_ci 
 Test_Stationary = forecast.Test_Stationary # dataframe
 Results_Summary = forecast.Results_Summary # st write
-
-st.dataframe(pred_ci_1)
-st.dataframe(pred_ci)
 
 forecast_plot()
