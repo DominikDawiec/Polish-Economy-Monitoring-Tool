@@ -77,6 +77,7 @@ def download_data(variable):
     timeseries['date'] = timeseries['date'].dt.date
     timeseries['value'] = pd.to_numeric(timeseries['value'],errors = 'coerce')
     timeseries = timeseries.drop(['realtime_start', 'realtime_end'], axis=1)
+    timeseries.dropna(axis=0,how='any',thresh=None,subset=None,inplace=True)
     download_data.timeseries = timeseries
     
     info_1 = fred.search(variable)
