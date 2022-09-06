@@ -303,7 +303,7 @@ def forecast():
      
      forecast.prec_ci = pred_ci
      
-     st.dataframe(testStationarity(df.value))
+     st.dataframe(testStationarity(timeseries.value))
      
      st.write(results.summary())
 
