@@ -182,7 +182,18 @@ def analitical_insights():
                          dict(count=10, label="10y", step="year", stepmode="backward"),
                          dict(step="all")])))
           
-          st.plotly_chart(fig, use_container_width=True)
+          if vrect == 'none (default)':
+               st.plotly_chart(fig, use_container_width=True)
+          elif vrect == 'economic crises':
+               fig.add_vrect(x0="2001-01-01", x1="2005-12-31", 
+                             annotation_text="SLD", annotation_position="top left",
+                             annotation=dict(font_size=20, font_family="Times New Roman"),
+                             fillcolor="yellow", opacity=0.25, line_width=0)
+               
+               st.plotly_chart(fig, use_container_width=True)
+          elif vrect == 'political parties':
+               st.plotly_chart(fig, use_container_width=True)
+          
 # =========================================================================================================
 
 download_data(variable_ID)
