@@ -96,61 +96,60 @@ def plot(variable):
           st.plotly_chart(fig, use_container_width=True)
                 
     with tab2:
-                st.header("Historical Data 💾")
-                
-                fig = go.Figure(data=[go.Table(header=dict(values=['<b>DATE<b>', '<b>VALUE<b>'], 
-                                                           line_color='black',
-                                                           font=dict(color='white'),
-                                                           align=['left'],
-                                                           fill_color='#636EFA'),
-                                               cells=dict(values=[df['date'], df['value']], 
-                                                          font=dict(color='black'),
-                                                          align=['left'],
-                                                          line_color='black',
-                                                          fill_color='white'))])
-                st.plotly_chart(fig, use_container_width=True)
+     st.header("Historical Data 💾")
+     
+     fig = go.Figure(data=[go.Table(header=dict(values=['<b>DATE<b>', '<b>VALUE<b>'], 
+                                                line_color='black',
+                                                font=dict(color='white'),
+                                                align=['left'],
+                                                fill_color='#636EFA'),
+                                    cells=dict(values=[df['date'], df['value']], 
+                                               font=dict(color='black'),
+                                               align=['left'],
+                                               line_color='black',
+                                               fill_color='white'))])
+     st.plotly_chart(fig, use_container_width=True)
     
     with st.container():
-        st.header("KPIs 📟")
-        col1, col2, col3 = st.columns(3)
-        col1.metric("Ultimate value", ultimate_value)
-        col2.metric("Preultimate value", preultimate_value)
-        col3.metric("Percentage change", percentage_change)
+          st.header("KPIs 📟")
+          col1, col2, col3 = st.columns(3)
+          col1.metric("Ultimate value", ultimate_value)
+          col2.metric("Preultimate value", preultimate_value)
+          col3.metric("Percentage change", percentage_change)
         
     with st.container():
-        st.header("Details 📇")
+          st.header("Details 📇")
         
-        values = [['title', 'observation_start', 'observation_end', 'frequency', 'units', 'seasonal_adjustment', 'last_updated', 'link', 'notes'], #1st col
-                  [info_1['title'].iat[-1],
-                   info_1['observation_start'].iat[-1],
-                   info_1['observation_end'].iat[-1],
-                   info_1['frequency'].iat[-1],
-                   info_1['units'].iat[-1],
-                   info_1['seasonal_adjustment'].iat[-1],
-                   info_1['last_updated'].iat[-1],
-                   info_2['link'].iat[-1],
-                   info_1['notes'].iat[-1]]]
-        fig = go.Figure(data=[go.Table(
-            columnorder = [1,2],
-            columnwidth = [100,450],
-            header = dict(
-                values = [['<b>CATEGORY</b>'],['<b>DESCRIPTION</b>']],
-                line_color='black',
-                fill_color='#636EFA',
-                align=['left'],
-                font=dict(color='white', size=12),
-                height=40),
-            cells=dict(
-            values=values,
-            line_color='black',
-            fill=dict(color=['white', 'white']),
-            align=['left'],
-            font=dict(color='black'),
-            font_size=12,
-            height=30))])
-        fig.update_layout(height=550)
-        st.plotly_chart(fig, use_container_width=True)
-
+          values = [['title', 'observation_start', 'observation_end', 'frequency', 'units', 'seasonal_adjustment', 'last_updated', 'link', 'notes'], #1st col
+                    [info_1['title'].iat[-1],
+                    info_1['observation_start'].iat[-1],
+                    info_1['observation_end'].iat[-1],
+                    info_1['frequency'].iat[-1],
+                    info_1['units'].iat[-1],
+                    info_1['seasonal_adjustment'].iat[-1],
+                    info_1['last_updated'].iat[-1],
+                    info_2['link'].iat[-1],
+                    info_1['notes'].iat[-1]]]
+          fig = go.Figure(data=[go.Table(
+               columnorder = [1,2],
+               columnwidth = [100,450],
+               header = dict(
+                    values = [['<b>CATEGORY</b>'],['<b>DESCRIPTION</b>']],
+                    line_color='black',
+                    fill_color='#636EFA',
+                    align=['left'],
+                    font=dict(color='white', size=12),
+                    height=40),
+               cells=dict(
+                    values=values,
+                    line_color='black',
+                    fill=dict(color=['white', 'white']),
+                    align=['left'],
+                    font=dict(color='black'),
+                    font_size=12,
+                    height=30))])
+          fig.update_layout(height=550)
+          st.plotly_chart(fig, use_container_width=True)
 
 download_data(variable_ID)
 
@@ -164,4 +163,6 @@ ultimate_value = timeseries['value'].iat[-1]
 preultimate_value = timeseries['value'].iat[-2]
 percentage_change = ((ultimate_value - preultimate_value) / preultimate_value) * 100
 
-plot()
+st.write(ultimate_value)
+st.write(preultimate_value)
+st.write(percentage_change)
