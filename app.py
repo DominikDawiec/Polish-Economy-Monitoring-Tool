@@ -288,7 +288,7 @@ def forecast():
      pred_ci = pred.conf_int()
      
      pred_ci['predicted'] = (pred_ci['lower value'] + pred_ci['upper value'])/2
-     pred_ci['observed'] = df['value']
+     pred_ci['observed'] = timeseries['value']
      pred_ci['diff, %%'] = ((pred_ci['predicted'] / pred_ci['observed'])-1) * 100
      
      forecast.prec_ci_1 = pred_ci
