@@ -406,6 +406,10 @@ def forecast_plot():
                hovermode="x")
           
           st.plotly_chart(fig, use_container_width=True)
+          
+          with st.expander("See model details"):
+               st.dataframe(Test_Stationary)
+               st.write(Results_Summary)
 
           
 
