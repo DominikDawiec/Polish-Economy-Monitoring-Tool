@@ -362,12 +362,53 @@ def forecast_plot():
                     dict(count=10, label="10y", step="year", stepmode="backward"),
                     dict(step="all")])))
      
-     if agree:
-          line = timeseries.iloc[-1]['date']
-          fig.add_vline(x=line, line_width=1, line_dash="line", line_color="black")
+     st.plotly_chart(fig, use_container_width=True)
+     
+     with st.expander("See training plot"):
+          fig = go.Figure([
+               go.Scatter(
+                    name='Training Details',
+                    x=pred_ci_1.index,
+                    y=pred_ci_1['predicted'],
+                    mode='markers',
+                    line=dict(color='green'),
+               ),
+               go.Scatter(
+                    name='Upper Bound',
+                    x=pred_ci_1.index,
+                    y=pred_ci_1['training upper value'],
+                    mode='lines',
+                    marker=dict(color="grey"),
+                    line=dict(width=0),
+                    showlegend=False
+               ),
+               go.Scatter(
+                    name='Lower Bound',
+                    x=pred_ci_1.index,
+                    y=pred_ci_1['training lower value'],
+                    marker=dict(color="grey"),
+                    line=dict(width=0),
+                    mode='lines',
+                    fillcolor='rgba(68, 68, 68, 0.3)',
+                    fill='tonexty',
+                    showlegend=False
+               ),
+               go.Scatter(
+                    name='historical value',
+                    x=timeseries.index,
+                    y=timeseries['value'],
+                    mode='lines',
+                    line=dict(color='blue'),
+               )
+          ])
+          fig.update_layout(
+               yaxis_title='Value',
+               hovermode="x")
+          
           st.plotly_chart(fig, use_container_width=True)
-     else:
-          st.plotly_chart(fig, use_container_width=True)
+
+          
+with st.expander("See model details"):
 
           
           
