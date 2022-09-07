@@ -537,9 +537,15 @@ with st.container():
           
           
           
-st.dataframe(timeseries)
 
 
-table = ff.create_table(timeseries)
 
-st.plotly_chart(py.iplot(table), use_container_width=True)
+
+fig = go.Figure(go.Indicator(
+    mode = "number",
+    value = ultimate_value,
+    title = {'text': "Ultimate Value"},
+    domain = {'x': [0, 1], 'y': [0, 1]}
+))
+
+fig.show()
