@@ -102,6 +102,7 @@ def plot():
           fig.update_layout(
                yaxis_title='Value',
                xaxis_title='Date',
+               template=diamond_template,
                hovermode="x")
           
           fig.update_xaxes(rangeslider_visible=True)
