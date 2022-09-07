@@ -384,7 +384,7 @@ def forecast_plot():
           yaxis_title='Value',
           hovermode="x")
      
-     config = {'displayModeBar': False}
+     config = {'displayModeBar': False, 'displaylogo': False}
      
      fig.update_layout(legend=dict(
           orientation="h",
@@ -511,8 +511,6 @@ Test_Stationary = forecast.Test_Stationary # dataframe
 Results_Summary = forecast.Results_Summary # st write
 
 forecast_plot()
-
-st.write('Next steps: model details, download button & report a bug form')
 
 with st.expander("See model details: Stationary Test"):
      st.dataframe(Test_Stationary)
