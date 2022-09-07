@@ -102,8 +102,8 @@ def plot():
           config = {'displayModeBar': False}
 
           fig.update_layout(
-               yaxis_title='Value',
-               xaxis_title='Date',
+               # yaxis_title='Value',
+               # xaxis_title='Date',
                hovermode="x")
           
           fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
