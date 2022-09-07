@@ -11,7 +11,6 @@ import plotly.graph_objects as go
 from plotly.offline import init_notebook_mode, iplot
 import plotly.graph_objs as go
 import plotly.io as pio
-pio.templates.default = "plotly_white"
 
 from datetime import date
 
@@ -107,6 +106,8 @@ def plot():
                hovermode="x")
           
           fig.update_xaxes(rangeslider_visible=True)
+          
+          pio.templates.default = "plotly_white"
                     
           fig.update_xaxes(
                rangeslider_visible=True,
