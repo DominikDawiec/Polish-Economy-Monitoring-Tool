@@ -450,6 +450,13 @@ def forecast_plot():
                yaxis_title='Value',
                hovermode="x")
           
+          fig.update_layout(legend=dict(
+          orientation="h",
+          yanchor="bottom",
+          y=1.02,
+          xanchor="right",
+          x=1))
+          
           fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
           fig.update_yaxes(visible=False, showticklabels=False)
           fig.update_xaxes(visible=False, showticklabels=False)
