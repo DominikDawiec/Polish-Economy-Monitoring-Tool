@@ -479,6 +479,4 @@ with st.expander("See model details 2"):
 
 st.info('Forecast build with SARIMA Model', icon="ℹ️")
      
-if st.button('Say hello'):
-          st.balloons()
 
