@@ -212,7 +212,7 @@ def analitical_insights():
           
           fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
           fig.update_yaxes(visible=False, showticklabels=False)
-          fig.update_xaxes(visible=False, showticklabels=False)
+          config = {'displayModeBar': False}
           
           fig.update_xaxes(rangeslider_visible=True)
           
@@ -227,7 +227,7 @@ def analitical_insights():
                          dict(step="all")])))
           
           if vrect == 'none (default)':
-               st.plotly_chart(fig, use_container_width=True)
+               st.plotly_chart(fig, config=config use_container_width=True)
 
                
           elif vrect == 'economic crises':
@@ -247,7 +247,7 @@ def analitical_insights():
                              annotation=dict(font_size=10, font_family="Times New Roman"),
                              fillcolor="blue", opacity=0.25, line_width=0)
                
-               st.plotly_chart(fig, use_container_width=True)
+               st.plotly_chart(fig, config=config, use_container_width=True)
 
                
           elif vrect == 'political parties':
@@ -290,7 +290,7 @@ def analitical_insights():
                              annotation=dict(font_size=10, font_family="Times New Roman"),
                              fillcolor="red", opacity=0.25, line_width=0)
                
-               st.plotly_chart(fig, use_container_width=True)
+               st.plotly_chart(fig, config=config, use_container_width=True)
 
                
                
@@ -400,11 +400,11 @@ def forecast_plot():
      
      fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
      fig.update_yaxes(visible=False, showticklabels=False)
-     fig.update_xaxes(visible=False, showticklabels=False)
+     config = {'displayModeBar': False}
      
      st.info('Forecast based on seasonal ARIMA model', icon="ℹ️")
           
-     st.plotly_chart(fig, use_container_width=True)
+     st.plotly_chart(fig, config=config, use_container_width=True)
 
      
      with st.expander("See training plot"):
@@ -459,7 +459,7 @@ def forecast_plot():
           fig.update_yaxes(visible=False, showticklabels=False)
           fig.update_xaxes(visible=False, showticklabels=False)
           
-          st.plotly_chart(fig, use_container_width=True)
+          st.plotly_chart(fig, config=config, use_container_width=True)
           
           
                
