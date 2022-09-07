@@ -379,6 +379,7 @@ def forecast_plot():
                               y=timeseries['value'],
                               mode='lines',
                               line=dict(color='rgb(31, 119, 180)'),)])
+                    
                     fig.update_layout(
                          yaxis_title='Value',
                          hovermode="x")
@@ -389,7 +390,9 @@ def forecast_plot():
                          y=1.02,
                          xanchor="right",
                          x=1))
+                    
                     fig.update_xaxes(rangeslider_visible=True)
+                    
                     fig.update_xaxes(
                          rangeslider_visible=True,
                          rangeselector=dict(
@@ -400,11 +403,7 @@ def forecast_plot():
                                    dict(count=10, label="10y", step="year", stepmode="backward"),
                                    dict(step="all")])))
                     
-                    fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
-                    fig.update_yaxes(visible=False, showticklabels=False)
-                    config = {'displayModeBar': False}
-                    
-               st.plotly_chart(fig, config=config, use_container_width=True)
+                    st.plotly_chart(fig, config=config, use_container_width=True)
               
           with tab2:
                st.write('hohoho')
