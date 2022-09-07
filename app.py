@@ -394,6 +394,10 @@ def forecast_plot():
                     dict(count=10, label="10y", step="year", stepmode="backward"),
                     dict(step="all")])))
      
+     fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
+     fig.update_yaxes(visible=False, showticklabels=False)
+     fig.update_xaxes(visible=False, showticklabels=False)
+          
      st.plotly_chart(fig, config=config, use_container_width=True)
 
      
@@ -437,6 +441,10 @@ def forecast_plot():
           fig.update_layout(
                yaxis_title='Value',
                hovermode="x")
+          
+          fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
+          fig.update_yaxes(visible=False, showticklabels=False)
+          fig.update_xaxes(visible=False, showticklabels=False)
           
           st.plotly_chart(fig, use_container_width=True)
           
