@@ -99,7 +99,7 @@ def plot():
     with st.container():
          tab1, tab2 = st.tabs(["📈 Historical Chart", "💾 Historical Data"])
          with tab1:
-          st.header("📈 Historical Chart")
+          st.subheader("📈 Historical Chart")
           fig = px.line(timeseries, x='date', y="value")
 
           fig.update_layout(
