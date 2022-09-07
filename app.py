@@ -456,3 +456,6 @@ st.write('Next steps: model details, download button & report a bug form')
 
 with st.expander("See training plot"):
      st.dataframe(Test_Stationary)
+     
+with st.expander("See training plot"):
+     st.write(Results_Summary)
