@@ -497,11 +497,11 @@ with st.container():
      # Create a Pandas Excel writer using XlsxWriter as the engine.
      with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
           # Write each dataframe to a different worksheet.
-          dfghj.to_excel(writer, sheet_name='Sheet1')
-          pred_ci.to_excel(writer, sheet_name='Sheet2')
-          prec_ci_1.to_excel(writer, sheet_name='Sheet3')
+          timeseries.to_excel(writer, sheet_name='Sheet1')
+          
           # Close the Pandas Excel writer and output the Excel file to the buffer
           writer.save()
+          
           st.download_button(
                label="Download Excel worksheets",
                data=buffer,
