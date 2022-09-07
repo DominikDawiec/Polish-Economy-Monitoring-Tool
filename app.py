@@ -101,12 +101,8 @@ def plot():
           config = {'displayModeBar': False}
 
           fig.update_layout(
-               yaxis_title='Value',
-               xaxis_title='Date',
                hovermode="x")
           
-          pio.templates.default = "plotly_dark"
-
           fig.update_xaxes(rangeslider_visible=True)
                               
           fig.update_xaxes(
