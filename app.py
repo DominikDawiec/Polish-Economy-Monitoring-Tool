@@ -382,6 +382,14 @@ def forecast_plot():
           hovermode="x")
      
      config = {'displayModeBar': False}
+     
+     fig.update_layout(legend=dict(
+          orientation="h",
+          yanchor="bottom",
+          y=1.02,
+          xanchor="right",
+          x=1))
+
 
      fig.update_xaxes(rangeslider_visible=True)
      fig.update_xaxes(
