@@ -410,6 +410,9 @@ def forecast_plot():
           st.plotly_chart(fig, use_container_width=True)
           
           
+               
+          
+          
 
 
           
@@ -451,4 +454,5 @@ forecast_plot()
 
 st.write('Next steps: model details, download button & report a bug form')
 
-
+with st.expander("See training plot"):
+     st.dataframe(Test_Stationary)
