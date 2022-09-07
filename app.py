@@ -545,7 +545,6 @@ fig = go.Figure(go.Indicator(
     mode = "number",
     value = ultimate_value,
     title = {'text': "Ultimate Value"},
-    #domain = {'x': [0, 1], 'y': [0, 1]}
 ))
 
 st.plotly_chart(fig, use_container_width=True)
