@@ -71,6 +71,8 @@ choose_variable(chosen_variable_name)
 variable_ID = choose_variable.ID
 
 
+st.write(variable_ID)
+
 # Defining functions
 # =====================================================================================================
 
