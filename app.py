@@ -390,6 +390,21 @@ def forecast_plot():
           with tab2:
                st.header("💾 Forecast Data")
                
+               fig = go.Figure(data=[go.Table(header=dict(values=['<b>DATE<b>', '<b>VALUE<b>'], 
+                                                          line_color='black',
+                                                          font=dict(color='white'),
+                                                          align=['left'],
+                                                          fill_color='#636EFA'),
+                                              cells=dict(values=[pred_ci['date'], pred_ci['value']], 
+                                                         font=dict(color='black'),
+                                                         align=['left'],
+                                                         line_color='black',
+                                                         fill_color='white'))])
+               fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
+               config = {'displayModeBar': False}
+               
+               st.plotly_chart(fig, config=config, use_container_width=True)
+               
           
           
                
@@ -432,7 +447,8 @@ pred_ci = forecast.prec_ci
 Test_Stationary = forecast.Test_Stationary # dataframe
 Results_Summary = forecast.Results_Summary # st write
 
-forecast_plot()
+st.dataframe(pred_ci)
+# forecast_plot()
 
 with st.expander("See model details: Stationary Test"):
      st.dataframe(Test_Stationary)
