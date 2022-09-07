@@ -161,7 +161,7 @@ def plot():
     with st.container():
           st.subheader("📇 Variable Details")
         
-          values = [['title', 'observation_start', 'observation_end', 'frequency', 'units', 'seasonal_adjustment', 'last_updated', 'link', 'notes'], #1st col
+          values = [['title', 'observation_start', 'observation_end', 'frequency', 'units', 'seasonal_adjustment', 'last_updated', 'notes'], #1st col
                     [info_1['title'].iat[-1],
                     info_1['observation_start'].iat[-1],
                     info_1['observation_end'].iat[-1],
@@ -169,7 +169,7 @@ def plot():
                     info_1['units'].iat[-1],
                     info_1['seasonal_adjustment'].iat[-1],
                     info_1['last_updated'].iat[-1],
-                    info_2['link'].iat[-1],
+                    #info_2['link'].iat[-1],
                     info_1['notes'].iat[-1]]]
           fig = go.Figure(data=[go.Table(
                columnorder = [1,2],
