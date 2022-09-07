@@ -408,61 +408,55 @@ def forecast_plot():
                     st.plotly_chart(fig, config=config, use_container_width=True)
                     
                     with tab2:
-
-     
-     with st.expander("See training plot"):
-          fig = go.Figure([
-               go.Scatter(
-                    name='Training Details',
-                    x=pred_ci_1.index,
-                    y=pred_ci_1['predicted'],
-                    mode='markers',
-                    line=dict(color='green'),
-               ),
-               go.Scatter(
-                    name='training upper value',
-                    x=pred_ci_1.index,
-                    y=pred_ci_1['upper value'],
-                    mode='lines',
-                    marker=dict(color="grey"),
-                    line=dict(width=0),
-                    showlegend=False
-               ),
-               go.Scatter(
-                    name='training lower value',
-                    x=pred_ci_1.index,
-                    y=pred_ci_1['lower value'],
-                    marker=dict(color="grey"),
-                    line=dict(width=0),
-                    mode='lines',
-                    fillcolor='rgba(68, 68, 68, 0.3)',
-                    fill='tonexty',
-                    showlegend=False
-               ),
-               go.Scatter(
-                    name='historical value',
-                    x=timeseries.index,
-                    y=timeseries['value'],
-                    mode='lines',
-                    line=dict(color='blue'),
-               )
-          ])
-          fig.update_layout(
-               yaxis_title='Value',
-               hovermode="x")
+                         
+                    with st.expander("See training plot"):
+                         fig = go.Figure([
+                              go.Scatter(
+                                   name='Training Details',
+                                   x=pred_ci_1.index,
+                                   y=pred_ci_1['predicted'],
+                                   mode='markers',
+                                   line=dict(color='green'),),
+                              go.Scatter(
+                                   name='training upper value',
+                                   x=pred_ci_1.index,
+                                   y=pred_ci_1['upper value'],
+                                   mode='lines',
+                                   marker=dict(color="grey"),
+                                   line=dict(width=0),
+                                   showlegend=False),
+                              go.Scatter(
+                                   name='training lower value',
+                                   x=pred_ci_1.index,
+                                   y=pred_ci_1['lower value'],
+                                   marker=dict(color="grey"),
+                                   line=dict(width=0),
+                                   mode='lines',
+                                   fillcolor='rgba(68, 68, 68, 0.3)',
+                                   fill='tonexty',
+                                   showlegend=False),
+                              go.Scatter(
+                                   name='historical value',
+                                   x=timeseries.index,
+                                   y=timeseries['value'],
+                                   mode='lines',
+                                   line=dict(color='blue'),)])
+                         fig.update_layout(
+                              yaxis_title='Value',
+                              hovermode="x")
+                         
+                         fig.update_layout(legend=dict(
+                              orientation="h",
+                              yanchor="bottom",
+                              y=1.02,
+                              xanchor="right",
+                              x=1))
+                         
+                         fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
+                         fig.update_yaxes(visible=False, showticklabels=False)
+                         fig.update_xaxes(visible=False, showticklabels=False)
           
-          fig.update_layout(legend=dict(
-          orientation="h",
-          yanchor="bottom",
-          y=1.02,
-          xanchor="right",
-          x=1))
-          
-          fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
-          fig.update_yaxes(visible=False, showticklabels=False)
-          fig.update_xaxes(visible=False, showticklabels=False)
-          
-          st.plotly_chart(fig, config=config, use_container_width=True)
+                         st.plotly_chart(fig, config=config, use_container_width=True)
           
           
                
