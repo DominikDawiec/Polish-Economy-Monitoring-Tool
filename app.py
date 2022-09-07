@@ -476,21 +476,8 @@ with st.expander("See model details 1"):
 with st.expander("See model details 2"):
      st.write(Results_Summary)
      
-st.table(timeseries)
-
-st.dataframe(timeseries)
-
-
-with st.sidebar:
-    add_radio = st.radio(
-        "Choose a shipping method",
-        ("Standard (5-15 days)", "Express (2-5 days)")
-    )
 
 st.info('Forecast build with SARIMA Model', icon="ℹ️")
-
-my_bar = st.progress(0)
-
      
 if st.button('Say hello'):
           st.balloons()
