@@ -227,7 +227,7 @@ def analitical_insights():
                          dict(step="all")])))
           
           if vrect == 'none (default)':
-               st.plotly_chart(fig, config=config use_container_width=True)
+               st.plotly_chart(fig, config=config, use_container_width=True)
 
                
           elif vrect == 'economic crises':
