@@ -158,7 +158,7 @@ def plot():
           col4.metric("Test KPI", "124")
           col5.metric("Test KPI change", "567")
         
-    with st.expander("📇 Variable Details"):
+    with st.container():
           st.subheader("📇 Variable Details")
         
           values = [['title', 'observation_start', 'observation_end', 'frequency', 'units', 'seasonal_adjustment', 'last_updated', 'notes'], #1st col
@@ -189,7 +189,7 @@ def plot():
                     font=dict(color='black'),
                     font_size=12,
                     height=30))])
-          fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
+          fig.update_layout(margin=dict(r=5, l=5, t=5, b=0))
           config = {'displayModeBar': False}
           fig.update_yaxes(visible=False, showticklabels=False)
           fig.update_xaxes(visible=False, showticklabels=False)
