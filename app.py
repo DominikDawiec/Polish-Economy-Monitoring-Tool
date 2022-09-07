@@ -342,11 +342,47 @@ def forecast():
 def forecast_plot():
      st.info('Forecast based on seasonal ARIMA model', icon="ℹ️")
      with st.container():
-          tab1, tab2 = st.tabs(["Cat", "Dog"])
+          tab1, tab2 = st.tabs(["Forecast Chart", "Forecast Data"])
           
           with tab1:
-               st.header("A cat")
-               st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
+               fig = go.Figure([
+                    go.Scatter(
+                         name='Measurement',
+                         x=pred_ci['Unnamed: 0'],
+                         y=pred_ci['Mean'],
+                         mode='lines',
+                         line=dict(color='rgb(31, 119, 180)'),),
+                    go.Scatter(
+                         name='Upper Bound',
+                         x=pred_ci['Unnamed: 0'],
+                         y=pred_ci['upper value'],
+                         mode='lines',
+                         marker=dict(color="#444"),
+                         line=dict(width=0),
+                         showlegend=False),
+                    go.Scatter(
+                         name='Lower Bound',
+                         x=pred_ci['Unnamed: 0'],
+                         y=pred_ci['lower value'],
+                         marker=dict(color="#444"),
+                         line=dict(width=0),
+                         mode='lines',
+                         fillcolor='rgba(68, 68, 68, 0.3)',
+                         fill='tonexty',
+                         showlegend=False),
+                    go.Scatter(
+                         name='Hist',
+                         x=df['date'],
+                         y=df['value'],
+                         mode='lines',
+                         line=dict(color='rgb(31, 119, 180)'),)])
+               
+               fig.update_layout(
+                    yaxis_title='Wind speed (m/s)',
+                    title='Continuous, variable value error bars',
+                    hovermode="x")
+               
+               st.plotly_chart(fig, use_container_width=True)
                
           with tab2:
                st.header("A dog")
