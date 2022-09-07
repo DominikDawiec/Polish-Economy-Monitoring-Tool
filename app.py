@@ -555,6 +555,8 @@ col1, col2, col3 = st.columns(3)
 with col1:
     fig = go.Figure(go.Indicator(mode = "number",value = ultimate_value,title = {'text': "Ultimate Value"},))
     fig.update_layout(margin=dict(r=1, l=1, t=1, b=1))
+    fig.update_layout(paper_bgcolor="lightgray",height=100,  # Added parameter)
+
     config = {'displayModeBar': False}
     st.plotly_chart(fig, config=config, use_container_width=True)
 
