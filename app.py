@@ -140,8 +140,9 @@ def plot():
                                                fill_color='white'))])
      
      fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
+     config = {'displayModeBar': False}
 
-     st.plotly_chart(fig, use_container_width=True)
+     st.plotly_chart(fig, config=config, use_container_width=True)
     
     with st.container():
           st.header("📟 Key Performance Indicators")
