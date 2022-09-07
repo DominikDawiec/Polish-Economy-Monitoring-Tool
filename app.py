@@ -547,35 +547,29 @@ fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
 st.plotly_chart(fig, config=config, use_container_width=True)
 
 
-
+with st.container():
+     st.title("Download data")
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
     fig = go.Figure(go.Indicator(mode = "number",value = ultimate_value,title = {'text': "Ultimate Value"},))
-    fig.update_layout(margin=dict(r=5, l=5, t=1, b=1))
+    fig.update_layout(margin=dict(r=1, l=1, t=1, b=1))
     config = {'displayModeBar': False}
     st.plotly_chart(fig, config=config, use_container_width=True)
 
 with col2:
     fig = go.Figure(go.Indicator(mode = "number",value = ultimate_value,title = {'text': "Ultimate Value"},))
-    fig.update_layout(margin=dict(r=5, l=5, t=1, b=1))
+    fig.update_layout(margin=dict(r=1, l=1, t=1, b=1))
     config = {'displayModeBar': False}
     st.plotly_chart(fig, config=config, use_container_width=True)
 
 with col3:
     fig = go.Figure(go.Indicator(mode = "number",value = ultimate_value,title = {'text': "Ultimate Value"},))
-    fig.update_layout(margin=dict(r=5, l=5, t=1, b=1))
+    fig.update_layout(margin=dict(r=1, l=1, t=1, b=1))
     config = {'displayModeBar': False}
     st.plotly_chart(fig, config=config, use_container_width=True)
 
      
-     
-     
 with st.container():
-     fig = add_trace(go.Figure(go.Indicator(mode = "number",value = ultimate_value,title = {'text': "Ultimate Value"},)))
-     fig = add_trace(go.Figure(go.Indicator(mode = "number",value = ultimate_value,title = {'text': "Ultimate Value"},)))
-     fig = add_trace(go.Figure(go.Indicator(mode = "number",value = ultimate_value,title = {'text': "Ultimate Value"},)))
-     fig.update_layout(grid = {'rows': 1, 'columns': 3, 'pattern': "independent"},
-                       
-     st.plotly_chart(fig, use_container_width=True)
+     st.title("Download data")
