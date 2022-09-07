@@ -184,11 +184,12 @@ def plot():
                     height=30))])
           #fig.update_layout(height=550)
           fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
+          config = {'displayModeBar': False}
           fig.update_yaxes(visible=False, showticklabels=False)
           fig.update_xaxes(visible=False, showticklabels=False)
           
 
-          st.plotly_chart(fig, use_container_width=True)
+          st.plotly_chart(fig, config=config, use_container_width=True)
 
 
 def data_analitics():
