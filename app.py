@@ -482,9 +482,6 @@ info_2 = download_data.info_2
 ultimate_value = round(timeseries['value'].iat[-1], 2)
 preultimate_value = round(timeseries['value'].iat[-2], 2)
 percentage_change = round(((ultimate_value - preultimate_value) / preultimate_value) * 100, 2)
-percentage_change = str(percentage_change) + "%"
-
-plot()
 
 data_analitics()
 
