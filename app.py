@@ -342,10 +342,7 @@ def forecast_plot():
      st.info('Forecast based on seasonal ARIMA model', icon="ℹ️")
      
      def plot():
-          with st.container():
-               tab1, tab2 = st.tabs(["📈 Forecast Chart", "💾 Forecast Data"])
-               with tab1:
-                    fig = go.Figure([
+          fig = go.Figure([
                          go.Scatter(
                               name='predicted value',
                               x=pred_ci.index,
