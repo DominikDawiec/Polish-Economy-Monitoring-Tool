@@ -33,10 +33,13 @@ warnings.filterwarnings('ignore')
 
 # setting the website details
 st.set_page_config(
-     page_title="Polish Economic Indicators",
+     page_title="Polish Economy Monitoring Tool",
      page_icon="📊",
      layout="wide",
      initial_sidebar_state="expanded")
+
+# Main page
+st.title("📊 Polish Economy Monitoring Tool")
 
 # api key
 fred.key('8c3b945500069081b94040df2da12df7')
@@ -95,9 +98,9 @@ def download_data(variable):
 # Setting function Creating Plot
 def plot():
     with st.container():
-         tab1, tab2 = st.tabs(["Historical Chart 📈", "Historical Data 💾"])
+         tab1, tab2 = st.tabs(["📈 Historical Chart", "💾 Historical Data"])
          with tab1:
-          st.header("Historical Chart 📈")
+          st.header("📈 Historical Chart")
           fig = px.line(timeseries, x='date', y="value")
           config = {'displayModeBar': False}
 
@@ -124,7 +127,7 @@ def plot():
           st.plotly_chart(fig, config=config, use_container_width=True)
                 
     with tab2:
-     st.header("Historical Data 💾")
+     st.header("💾 Historical Data")
      
      fig = go.Figure(data=[go.Table(header=dict(values=['<b>DATE<b>', '<b>VALUE<b>'], 
                                                 line_color='black',
@@ -143,14 +146,14 @@ def plot():
      st.plotly_chart(fig, config=config, use_container_width=True)
     
     with st.container():
-          st.header("KPIs 📟")
+          st.header("📟 Key Performance Indicators")
           col1, col2, col3 = st.columns(3)
           col1.metric("Ultimate value", ultimate_value)
           col2.metric("Preultimate value", preultimate_value)
           col3.metric("Percentage change", percentage_change)
         
     with st.container():
-          st.header("Details 📇")
+          st.header("📇 Variable Details")
         
           values = [['title', 'observation_start', 'observation_end', 'frequency', 'units', 'seasonal_adjustment', 'last_updated', 'link', 'notes'], #1st col
                     [info_1['title'].iat[-1],
@@ -199,7 +202,7 @@ def data_analitics():
 
 def analitical_insights():
      with st.container():
-          st.header("Analitical Insights ✨")
+          st.header("✨ Analitical Insights")
           
           unit = st.selectbox('Please select unit', ['values','natural_log','percentage change','value difference'])
           vrect = st.selectbox('Please select vrect', ['none (default)', 'economic crises','political parties'])
@@ -298,7 +301,7 @@ def analitical_insights():
                
         
 def forecast():
-     st.header("Forecasts 🔮")
+     st.header("🔮 Variable Forecast")
      init_notebook_mode(connected=True)
      def testStationarity(ts):
           dftest = adfuller(ts)
@@ -405,6 +408,8 @@ def forecast_plot():
      fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
      fig.update_yaxes(visible=False, showticklabels=False)
      fig.update_xaxes(visible=False, showticklabels=False)
+     
+     st.info('Forecast based on seasonal ARIMA model', icon="ℹ️")
           
      st.plotly_chart(fig, config=config, use_container_width=True)
 
@@ -509,21 +514,12 @@ forecast_plot()
 
 st.write('Next steps: model details, download button & report a bug form')
 
-st.title('tests below')
-
-with st.expander("See model details 1"):
+with st.expander("See model details: Stationary Test"):
      st.dataframe(Test_Stationary)
      
-with st.expander("See model details 2"):
+with st.expander("See model details: Results Summary"):
      st.write(Results_Summary)
-     
-
-st.info('Forecast build with SARIMA Model', icon="ℹ️")
-     
-
-     
-     
-     
+       
      
      
      
