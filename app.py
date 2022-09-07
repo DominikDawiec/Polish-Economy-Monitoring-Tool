@@ -106,9 +106,7 @@ def plot():
                hovermode="x")
           
           fig.update_xaxes(rangeslider_visible=True)
-          
-          pio.templates.default = "plotly_white"
-                    
+                              
           fig.update_xaxes(
                rangeslider_visible=True,
                rangeselector=dict(
