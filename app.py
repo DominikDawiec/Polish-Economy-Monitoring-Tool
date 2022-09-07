@@ -103,9 +103,7 @@ def plot():
                hovermode="x")
           
           fig.update_xaxes(rangeslider_visible=True)
-          
-          const config = {displayModeBar: false, // this is the line that hides the bar.};          
-          
+                    
           fig.update_xaxes(
                rangeslider_visible=True,
                rangeselector=dict(
