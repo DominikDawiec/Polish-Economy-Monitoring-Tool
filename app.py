@@ -138,11 +138,10 @@ def plot():
                                                align=['left'],
                                                line_color='black',
                                                fill_color='white'))])
-     config = {'displayModeBar': False}
      
      fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
 
-     st.plotly_chart(fig, config=config, use_container_width=True)
+     st.plotly_chart(fig, use_container_width=True)
     
     with st.container():
           st.header("📟 Key Performance Indicators")
@@ -187,9 +186,8 @@ def plot():
           fig.update_yaxes(visible=False, showticklabels=False)
           fig.update_xaxes(visible=False, showticklabels=False)
           
-          config = {'displayModeBar': False}
 
-          st.plotly_chart(fig, config=config, use_container_width=True)
+          st.plotly_chart(fig, use_container_width=True)
 
 
 def data_analitics():
@@ -216,8 +214,6 @@ def analitical_insights():
           fig.update_yaxes(visible=False, showticklabels=False)
           fig.update_xaxes(visible=False, showticklabels=False)
           
-          config = {'displayModeBar': False}
-
           fig.update_xaxes(rangeslider_visible=True)
           
           fig.update_xaxes(
@@ -231,7 +227,7 @@ def analitical_insights():
                          dict(step="all")])))
           
           if vrect == 'none (default)':
-               st.plotly_chart(fig, config=config, use_container_width=True)
+               st.plotly_chart(fig, use_container_width=True)
 
                
           elif vrect == 'economic crises':
@@ -251,7 +247,7 @@ def analitical_insights():
                              annotation=dict(font_size=10, font_family="Times New Roman"),
                              fillcolor="blue", opacity=0.25, line_width=0)
                
-               st.plotly_chart(fig, config=config, use_container_width=True)
+               st.plotly_chart(fig, use_container_width=True)
 
                
           elif vrect == 'political parties':
@@ -294,7 +290,7 @@ def analitical_insights():
                              annotation=dict(font_size=10, font_family="Times New Roman"),
                              fillcolor="red", opacity=0.25, line_width=0)
                
-               st.plotly_chart(fig, config=config, use_container_width=True)
+               st.plotly_chart(fig, use_container_width=True)
 
                
                
@@ -382,9 +378,7 @@ def forecast_plot():
      fig.update_layout(
           yaxis_title='Value',
           hovermode="x")
-     
-     config = {'displayModeBar': False, 'displaylogo': False}
-     
+          
      fig.update_layout(legend=dict(
           orientation="h",
           yanchor="bottom",
@@ -410,7 +404,7 @@ def forecast_plot():
      
      st.info('Forecast based on seasonal ARIMA model', icon="ℹ️")
           
-     st.plotly_chart(fig, config=config, use_container_width=True)
+     st.plotly_chart(fig, use_container_width=True)
 
      
      with st.expander("See training plot"):
