@@ -379,6 +379,18 @@ def forecast_plot():
                
                fig.update_layout(hovermode="x")
                
+               fig.update_xaxes(rangeslider_visible=True)
+               
+               fig.update_xaxes(
+                    rangeslider_visible=True,
+                    rangeselector=dict(
+                         buttons=list([
+                              dict(count=6, label="6m", step="month", stepmode="backward"),
+                              dict(count=1, label="1y", step="year", stepmode="backward"),
+                              dict(count=5, label="5y", step="year", stepmode="backward"),
+                              dict(count=10, label="10y", step="year", stepmode="backward"),
+                              dict(step="all")])))
+               
                fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
                fig.update_yaxes(visible=False, showticklabels=False)
                config = {'displayModeBar': False}
