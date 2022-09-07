@@ -512,3 +512,9 @@ with st.container():
           
           
 st.dataframe(timeseries)
+
+
+table = ff.create_table(timeseries)
+py.iplot(table, filename='dataframe_ex_preview')
+
+st.plotly_chart(fig, use_container_width=True)
