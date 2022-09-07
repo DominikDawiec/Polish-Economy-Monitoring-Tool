@@ -395,7 +395,7 @@ def forecast_plot():
                                                           font=dict(color='white'),
                                                           align=['left'],
                                                           fill_color='#636EFA'),
-                                              cells=dict(values=[pred_ci.index, pred_ci['lower value'], pred_ci['upper balue'], pred_ci['mean']], 
+                                              cells=dict(values=[pred_ci.index, pred_ci['lower value'], pred_ci['upper value'], pred_ci['mean']], 
                                                          font=dict(color='black'),
                                                          align=['left'],
                                                          line_color='black',
