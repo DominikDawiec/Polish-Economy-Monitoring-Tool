@@ -477,7 +477,7 @@ forecast_plot()
      
 with st.container():
      st.title("📥 Download Data")
-     st.info('You may download data regarding choosed variable', icon="ℹ️")
+     st.info('You may download data regarding chosed variable', icon="ℹ️")
      
      # creating excel file
      buffer = io.BytesIO()
