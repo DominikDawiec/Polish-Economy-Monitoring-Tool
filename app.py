@@ -511,3 +511,4 @@ with st.container():
           
           
           
+st.dataframe(timeseries)
