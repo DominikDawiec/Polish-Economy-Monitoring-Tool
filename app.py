@@ -553,9 +553,9 @@ col1, col2, col3 = st.columns(3)
 
 with col1:
     fig = go.Figure(go.Indicator(mode = "number",value = ultimate_value,title = {'text': "Ultimate Value"},))
-     config = {'displayModeBar': False}
-     fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
-     st.plotly_chart(fig, config=config, use_container_width=True)
+    fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
+    config = {'displayModeBar': False}
+    st.plotly_chart(fig, config=config, use_container_width=True)
 
 with col2:
     st.header("A dog")
