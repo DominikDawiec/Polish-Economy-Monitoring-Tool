@@ -342,72 +342,17 @@ def forecast():
 def forecast_plot():
      st.info('Forecast based on seasonal ARIMA model', icon="ℹ️")
      with st.container():
-               def plot():
-                    fig = go.Figure([
-                         go.Scatter(
-                              name='predicted value',
-                              x=pred_ci.index,
-                              y=pred_ci['Mean'],
-                              mode='lines',
-                              line=dict(color='red'),
-                         ),
-                         go.Scatter(
-                              name='upper bound',
-                              x=pred_ci.index,
-                              y=pred_ci['upper value'],
-                              mode='lines',
-                              marker=dict(color="#444"),
-                              line=dict(width=0),
-                              showlegend=False
-                         ),
-                         go.Scatter(
-                              name='lower bound',
-                              x=pred_ci.index,
-                              y=pred_ci['lower value'],
-                              marker=dict(color="#444"),
-                              line=dict(width=0),
-                              mode='lines',
-                              fillcolor='rgba(68, 68, 68, 0.3)',
-                              fill='tonexty',
-                              showlegend=False
-                         ),
-                         go.Scatter(
-                              name='historical value',
-                              x=timeseries.index,
-                              y=timeseries['value'],
-                              mode='lines',
-                              line=dict(color='rgb(31, 119, 180)'),)])
-                    
-                    fig.update_layout(
-                         yaxis_title='Value',
-                         hovermode="x")
-                    
-                    fig.update_layout(legend=dict(
-                         orientation="h",
-                         yanchor="bottom",
-                         y=1.02,
-                         xanchor="right",
-                         x=1))
-                   
-                    fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
-                    
-                    fig.update_yaxes(visible=False, showticklabels=False)
-                    config = {'displayModeBar': False}
-                    fig.update_xaxes(rangeslider_visible=True)
-                    
-                    fig.update_xaxes(
-                         rangeslider_visible=True,
-                         rangeselector=dict(
-                              buttons=list([
-                                   dict(count=6, label="6m", step="month", stepmode="backward"),
-                                   dict(count=1, label="1y", step="year", stepmode="backward"),
-                                   dict(count=5, label="5y", step="year", stepmode="backward"),
-                                   dict(count=10, label="10y", step="year", stepmode="backward"),
-                                   dict(step="all")])))
-                    
-                    st.plotly_chart(fig, config=config, use_container_width=True)
-    
+          tab1, tab2 = st.tabs(["Cat", "Dog"])
           
+          with tab1:
+               st.header("A cat")
+               st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
+               
+          with tab2:
+               st.header("A dog")
+               st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+          
+   
           
                
           
