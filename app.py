@@ -158,7 +158,7 @@ def plot():
           col4.metric("Test KPI", "124")
           col5.metric("Test KPI change", "567")
         
-    with st.container():
+    with st.expander(st.subheader("📇 Variable Details")):
           st.subheader("📇 Variable Details")
         
           values = [['title', 'observation_start', 'observation_end', 'frequency', 'units', 'seasonal_adjustment', 'last_updated', 'notes'], #1st col
