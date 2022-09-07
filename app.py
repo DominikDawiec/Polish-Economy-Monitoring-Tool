@@ -109,7 +109,8 @@ def plot():
                hovermode="x")
           
           fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
-          
+          fig.update_yaxes(visible=False, showticklabels=False)
+
           fig.update_xaxes(rangeslider_visible=True)
                               
           fig.update_xaxes(
