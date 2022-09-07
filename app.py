@@ -558,7 +558,7 @@ with col1:
     fig.update_layout(paper_bgcolor="lightgray",height=100,  # Added parameter)
 
     config = {'displayModeBar': False}
-    st.plotly_chart(fig, config=config, use_container_width=True)
+    st.plotly_chart(fig)
 
 with col2:
     fig = go.Figure(go.Indicator(mode = "number",value = ultimate_value,title = {'text': "Ultimate Value"},))
