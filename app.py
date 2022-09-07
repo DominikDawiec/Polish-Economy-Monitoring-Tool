@@ -580,4 +580,4 @@ with st.container():
      fig.update_layout(grid = {'rows': 1, 'columns': 3, 'pattern': "independent"},
                        config = {'displayModeBar': False}
                        
-                       st.plotly_chart(fig, config=config, use_container_width=True)
+     st.plotly_chart(fig, config=config, use_container_width=True)
