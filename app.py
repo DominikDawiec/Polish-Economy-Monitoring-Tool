@@ -390,12 +390,12 @@ def forecast_plot():
           with tab2:
                st.header("💾 Forecast Data")
                
-               fig = go.Figure(data=[go.Table(header=dict(values=['<b>DATE<b>', '<b>VALUE<b>'], 
+               fig = go.Figure(data=[go.Table(header=dict(values=['<b>DATE<b>', '<b>LOWER VALUE<b>', '<b>UPPER VALUE<b>', '<b>MEAN<b>'], 
                                                           line_color='black',
                                                           font=dict(color='white'),
                                                           align=['left'],
                                                           fill_color='#636EFA'),
-                                              cells=dict(values=[pred_ci['date'], pred_ci['value']], 
+                                              cells=dict(values=[pred_ci.index, pred_ci['lower value'], pred_ci['upper balue'], pred_ci['mean']], 
                                                          font=dict(color='black'),
                                                          align=['left'],
                                                          line_color='black',
@@ -447,8 +447,7 @@ pred_ci = forecast.prec_ci
 Test_Stationary = forecast.Test_Stationary # dataframe
 Results_Summary = forecast.Results_Summary # st write
 
-st.dataframe(pred_ci)
-# forecast_plot()
+forecast_plot()
 
 with st.expander("See model details: Stationary Test"):
      st.dataframe(Test_Stationary)
