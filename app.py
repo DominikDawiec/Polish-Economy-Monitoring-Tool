@@ -499,5 +499,4 @@ for percent_complete in range(100):
      
 if st.button('Say hello'):
           st.balloons()
- else:
-     st.write('Goodbye')
+
