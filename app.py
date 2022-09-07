@@ -454,8 +454,8 @@ forecast_plot()
 
 st.write('Next steps: model details, download button & report a bug form')
 
-with st.expander("See training plot"):
+with st.expander("See model details 1"):
      st.dataframe(Test_Stationary)
      
-with st.expander("See training plot"):
+with st.expander("See model details 2"):
      st.write(Results_Summary)
