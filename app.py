@@ -404,7 +404,7 @@ def forecast_plot():
                     fig.update_yaxes(visible=False, showticklabels=False)
                     config = {'displayModeBar': False}
                     
-                    st.plotly_chart(fig, config=config, use_container_width=True)
+               st.plotly_chart(fig, config=config, use_container_width=True)
               
           with tab2:
                st.write('hohoho')
