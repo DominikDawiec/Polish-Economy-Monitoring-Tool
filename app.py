@@ -348,13 +348,13 @@ def forecast_plot():
                fig = go.Figure([
                     go.Scatter(
                          name='Measurement',
-                         x=pred_ci['Unnamed: 0'],
+                         x=pred_ci.index,
                          y=pred_ci['Mean'],
                          mode='lines',
                          line=dict(color='rgb(31, 119, 180)'),),
                     go.Scatter(
                          name='Upper Bound',
-                         x=pred_ci['Unnamed: 0'],
+                         x=pred_ci.index,
                          y=pred_ci['upper value'],
                          mode='lines',
                          marker=dict(color="#444"),
@@ -362,7 +362,7 @@ def forecast_plot():
                          showlegend=False),
                     go.Scatter(
                          name='Lower Bound',
-                         x=pred_ci['Unnamed: 0'],
+                         x=pred_ci.index,
                          y=pred_ci['lower value'],
                          marker=dict(color="#444"),
                          line=dict(width=0),
@@ -372,8 +372,8 @@ def forecast_plot():
                          showlegend=False),
                     go.Scatter(
                          name='Hist',
-                         x=df['date'],
-                         y=df['value'],
+                         x=timeseries.index,
+                         y=timeseries['value'],
                          mode='lines',
                          line=dict(color='rgb(31, 119, 180)'),)])
                
