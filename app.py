@@ -10,6 +10,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.offline import init_notebook_mode, iplot
 import plotly.graph_objs as go
+import plotly.io as pio
+pio.templates.default = "plotly_white"
 
 from datetime import date
 
@@ -102,7 +104,6 @@ def plot():
           fig.update_layout(
                yaxis_title='Value',
                xaxis_title='Date',
-               template=diamond_template,
                hovermode="x")
           
           fig.update_xaxes(rangeslider_visible=True)
