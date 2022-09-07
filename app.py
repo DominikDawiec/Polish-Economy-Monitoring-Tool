@@ -70,9 +70,6 @@ chosen_variable_name = st.selectbox('Please select an indicator', list_of_availa
 choose_variable(chosen_variable_name)
 variable_ID = choose_variable.ID
 
-
-st.write(variable_ID)
-
 # Defining functions
 # =====================================================================================================
 
@@ -394,8 +391,6 @@ def forecast_plot():
                st.header("💾 Forecast Data")
                
           
-          with tab2:
-
           
                
           
