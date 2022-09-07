@@ -377,12 +377,13 @@ def forecast_plot():
                          mode='lines',
                          line=dict(color='rgb(31, 119, 180)'),)])
                
-               fig.update_layout(
-                    yaxis_title='Wind speed (m/s)',
-                    title='Continuous, variable value error bars',
-                    hovermode="x")
+               fig.update_layout(hovermode="x")
                
-               st.plotly_chart(fig, use_container_width=True)
+               fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
+               fig.update_yaxes(visible=False, showticklabels=False)
+               config = {'displayModeBar': False}
+               
+               st.plotly_chart(fig, config=config, use_container_width=True)
                
           with tab2:
                st.header("A dog")
