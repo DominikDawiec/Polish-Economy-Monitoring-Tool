@@ -410,14 +410,14 @@ def forecast_plot():
                     with tab2:
                          
                with st.expander("See training plot"):
-                         fig = go.Figure([
-                              go.Scatter(
-                                   name='Training Details',
-                                   x=pred_ci_1.index,
-                                   y=pred_ci_1['predicted'],
-                                   mode='markers',
-                                   line=dict(color='green'),),
-                              go.Scatter(
+                    fig = go.Figure([
+                         go.Scatter(
+                              name='Training Details',
+                              x=pred_ci_1.index,
+                              y=pred_ci_1['predicted'],
+                              mode='markers',
+                              line=dict(color='green'),),
+                         go.Scatter(
                                    name='training upper value',
                                    x=pred_ci_1.index,
                                    y=pred_ci_1['upper value'],
