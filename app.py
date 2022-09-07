@@ -189,12 +189,10 @@ def plot():
                     font=dict(color='black'),
                     font_size=12,
                     height=30))])
-          #fig.update_layout(height=550)
           fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
           config = {'displayModeBar': False}
           fig.update_yaxes(visible=False, showticklabels=False)
           fig.update_xaxes(visible=False, showticklabels=False)
-          
 
           st.plotly_chart(fig, config=config, use_container_width=True)
 
