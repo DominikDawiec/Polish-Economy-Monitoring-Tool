@@ -40,6 +40,8 @@ st.set_page_config(
 
 # Main page
 st.title("📊 Polish Economy Monitoring Tool")
+st.caption("The application is designed to enable viewing and analyzing economic indicators for Poland in real time, without the need to manually update the database. </br> In addition, the application has been enriched with a module for variable analysis, a module creating a forecast of a variable and a module that allows you to download the obtained data.")
+
 
 # api key
 fred.key('8c3b945500069081b94040df2da12df7')
@@ -125,7 +127,7 @@ def plot():
           st.plotly_chart(fig, config=config, use_container_width=True)
                 
     with tab2:
-     st.header("💾 Historical Data")
+     st.subheader("💾 Historical Data")
      
      fig = go.Figure(data=[go.Table(header=dict(values=['<b>DATE<b>', '<b>VALUE<b>'], 
                                                 line_color='black',
@@ -144,7 +146,7 @@ def plot():
      st.plotly_chart(fig, config=config, use_container_width=True)
     
     with st.container():
-          st.header("📟 Key Performance Indicators")
+          st.subheader("📟 Key Performance Indicators")
           col1, col2, col3, col4, col5 = st.columns(5)
           col1.metric("Ultimate value", ultimate_value)
           col2.metric("Preultimate value", preultimate_value)
@@ -153,7 +155,7 @@ def plot():
           col5.metric("Test KPI change", "567")
         
     with st.container():
-          st.header("📇 Variable Details")
+          st.subheader("📇 Variable Details")
         
           values = [['title', 'observation_start', 'observation_end', 'frequency', 'units', 'seasonal_adjustment', 'last_updated', 'link', 'notes'], #1st col
                     [info_1['title'].iat[-1],
@@ -345,7 +347,7 @@ def forecast_plot():
           tab1, tab2, tab3 = st.tabs(["📈 Forecast Chart", "💾 Forecast Data", "🤖 Model Details"])
           
           with tab1:
-               st.header("📈 Forecast Chart")
+               st.subheader("📈 Forecast Chart")
                st.info('Forecast based on seasonal ARIMA model', icon="ℹ️")
                fig = go.Figure([
                     go.Scatter(
@@ -402,7 +404,7 @@ def forecast_plot():
                st.plotly_chart(fig, config=config, use_container_width=True)
                
           with tab2:
-               st.header("💾 Forecast Data")
+               st.subheader("💾 Forecast Data")
                st.info('Forecast based on seasonal ARIMA model', icon="ℹ️")
                
                fig = go.Figure(data=[go.Table(header=dict(values=['<b>DATE<b>', '<b>LOWER VALUE<b>', '<b>UPPER VALUE<b>', '<b>MEAN<b>'], 
@@ -421,7 +423,7 @@ def forecast_plot():
                st.plotly_chart(fig, config=config, use_container_width=True)
                
           with tab3:
-               st.header("🤖 Model Details")
+               st.subheader("🤖 Model Details")
                st.info('Forecast based on seasonal ARIMA model', icon="ℹ️")
                st.write('Stationary test')
                st.dataframe(Test_Stationary)
