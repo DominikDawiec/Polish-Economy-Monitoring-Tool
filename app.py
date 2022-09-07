@@ -511,14 +511,3 @@ with st.container():
           
           
           
-st.header(":mailbox: Get in touch with me!")
-
-contactform  """
-<form action="https://formsubmit.co/your@email.com" methon="POST">
-     <input type="text" name="name" required>
-     <input type="email" name="email" required>
-     <button type="submit">Send</button>
-</form>
-"""
-
-st.markdown(contact_form, unsafe_allow_html=True)
