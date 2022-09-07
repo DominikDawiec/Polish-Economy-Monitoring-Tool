@@ -133,6 +133,9 @@ def plot():
                                                line_color='black',
                                                fill_color='white'))])
      config = {'displayModeBar': False}
+     
+     fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
+
      st.plotly_chart(fig, config=config, use_container_width=True)
     
     with st.container():
