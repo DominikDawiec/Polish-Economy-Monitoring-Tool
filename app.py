@@ -181,6 +181,10 @@ def plot():
                     font_size=12,
                     height=30))])
           fig.update_layout(height=550)
+          fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
+          fig.update_yaxes(visible=False, showticklabels=False)
+          fig.update_xaxes(visible=False, showticklabels=False)
+          
           config = {'displayModeBar': False}
 
           st.plotly_chart(fig, config=config, use_container_width=True)
