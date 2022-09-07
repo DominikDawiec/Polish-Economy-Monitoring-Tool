@@ -480,3 +480,31 @@ with st.expander("See model details 2"):
 st.info('Forecast build with SARIMA Model', icon="ℹ️")
      
 
+     
+     
+     
+     
+     
+     
+     
+with st.container():
+st.header("Download data")
+st.info('You download data regarding choosed variable', icon="ℹ️")
+
+# creating excel file
+buffer = io.BytesIO()
+     
+# Create a Pandas Excel writer using XlsxWriter as the engine.
+with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+     # Write each dataframe to a different worksheet.
+     dfghj.to_excel(writer, sheet_name='Sheet1')
+     pred_ci.to_excel(writer, sheet_name='Sheet2')
+     prec_ci_1.to_excel(writer, sheet_name='Sheet3')
+     # Close the Pandas Excel writer and output the Excel file to the buffer
+     writer.save()
+          
+st.download_button(
+     label="Download Excel worksheets",
+     data=buffer,
+     file_name="pandas_multiple.xlsx",
+     mime="application/vnd.ms-excel")
