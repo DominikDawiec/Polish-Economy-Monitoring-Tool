@@ -342,8 +342,6 @@ def forecast():
 def forecast_plot():
      st.info('Forecast based on seasonal ARIMA model', icon="ℹ️")
      with st.container():
-          tab1, tab2 = st.tabs(["Cat", "Dog"])
-          with tab1:
                def plot():
                     fig = go.Figure([
                          go.Scatter(
@@ -408,10 +406,6 @@ def forecast_plot():
                                    dict(step="all")])))
                     
                     st.plotly_chart(fig, config=config, use_container_width=True)
-              
-          with tab2:
-               st.write('hohoho')
-
     
           
           
