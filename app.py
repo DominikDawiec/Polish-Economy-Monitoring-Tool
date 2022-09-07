@@ -97,6 +97,8 @@ def plot():
          with tab1:
           st.header("Historical Chart 📈")
           fig = px.line(timeseries, x='date', y="value")
+          config = {'displayModeBar': False}
+
           fig.update_layout(
                yaxis_title='Value',
                xaxis_title='Date',
