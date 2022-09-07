@@ -488,7 +488,7 @@ st.info('Forecast build with SARIMA Model', icon="ℹ️")
      
      
 with st.container():
-st.header("Download data")
+st.title("Download data")
 st.info('You download data regarding choosed variable', icon="ℹ️")
 
 # creating excel file
