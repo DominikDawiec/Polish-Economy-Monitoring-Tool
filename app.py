@@ -342,9 +342,10 @@ def forecast():
 def forecast_plot():
      st.info('Forecast based on seasonal ARIMA model', icon="ℹ️")
      with st.container():
-          tab1, tab2 = st.tabs(["Forecast Chart", "Forecast Data"])
+          tab1, tab2, tab3 = st.tabs(["📈 Forecast Chart", "💾 Forecast Data", "Model Details"])
           
           with tab1:
+               st.header("📈 Forecast Chart")
                fig = go.Figure([
                     go.Scatter(
                          name='forecast',
@@ -388,10 +389,11 @@ def forecast_plot():
                st.plotly_chart(fig, config=config, use_container_width=True)
                
           with tab2:
-               st.header("A dog")
-               st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+               st.header("💾 Forecast Data")
+               
           
-   
+          with tab2:
+
           
                
           
@@ -466,3 +468,4 @@ with st.container():
                file_name="pandas_multiple.xlsx",
                mime="application/vnd.ms-excel")
           
+st.dataframe(pred_ci)
