@@ -578,5 +578,6 @@ with st.container():
      fig = add_trace(go.Figure(go.Indicator(mode = "number",value = ultimate_value,title = {'text': "Ultimate Value"},)))
      fig.update_layout(margin=dict(r=5, l=5, t=1, b=1))
      fig.update_layout(grid = {'rows': 1, 'columns': 3, 'pattern': "independent"},
-     config = {'displayModeBar': False}
-     st.plotly_chart(fig, config=config, use_container_width=True)
+                       config = {'displayModeBar': False}
+                       
+                       st.plotly_chart(fig, config=config, use_container_width=True)
