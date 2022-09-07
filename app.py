@@ -491,11 +491,6 @@ st.info('Forecast build with SARIMA Model', icon="ℹ️")
 
 my_bar = st.progress(0)
 
-for percent_complete in range(100):
-     time.sleep(0.1)
-     my_bar.progress(percent_complete + 1)
-     
-     
      
 if st.button('Say hello'):
           st.balloons()
