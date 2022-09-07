@@ -444,7 +444,7 @@ info_2 = download_data.info_2
 # creating values for KPIs
 ultimate_value = timeseries['value'].iat[-1]
 preultimate_value = timeseries['value'].iat[-2]
-percentage_change = ((ultimate_value - preultimate_value) / preultimate_value) * 100
+percentage_change = round(((ultimate_value - preultimate_value) / preultimate_value) * 100, 2)
 
 plot()
 
