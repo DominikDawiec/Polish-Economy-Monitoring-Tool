@@ -578,4 +578,4 @@ with st.container():
      fig = add_trace(go.Figure(go.Indicator(mode = "number",value = ultimate_value,title = {'text': "Ultimate Value"},)))
      fig.update_layout(grid = {'rows': 1, 'columns': 3, 'pattern': "independent"},
                        
-     st.plotly_chart(fig, config=config, use_container_width=True)
+     st.plotly_chart(fig, use_container_width=True)
