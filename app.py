@@ -40,9 +40,10 @@ st.set_page_config(
 
 # Main page
 st.title("📊 Polish Economy Monitoring Tool")
-st.caption("The application is designed to enable viewing and analyzing economic indicators for Poland in real time, without the need to manually update the database. </br> In addition, the application has been enriched with a module for variable analysis, a module creating a forecast of a variable and a module that allows you to download the obtained data.")
+st.caption("The application is designed to enable viewing and analyzing economic indicators for Poland in real time, without the need to manually update the database.")
+st.caption("In addition, the application has been enriched with a module for variable analysis, a module creating a forecast of a variable and a module that allows you to download the obtained data.")
 
-st.header('Variable Viewer')
+st.header('🔍 Variable Viewer')
 
 st.info('You can start by selecting the variable you are interested in below, then scroll the page to check available modules', icon="ℹ️")
 
