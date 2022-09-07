@@ -409,7 +409,7 @@ def forecast_plot():
                     
                     with tab2:
                          
-          with st.expander("See training plot"):
+               with st.expander("See training plot"):
                          fig = go.Figure([
                               go.Scatter(
                                    name='Training Details',
