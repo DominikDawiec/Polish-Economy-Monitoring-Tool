@@ -105,6 +105,8 @@ def plot():
                xaxis_title='Date',
                hovermode="x")
           
+          pio.templates.default = "plotly_dark"
+
           fig.update_xaxes(rangeslider_visible=True)
                               
           fig.update_xaxes(
