@@ -552,8 +552,10 @@ st.plotly_chart(fig, config=config, use_container_width=True)
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.header("A cat")
-    st.image("https://static.streamlit.io/examples/cat.jpg")
+    fig = go.Figure(go.Indicator(mode = "number",value = ultimate_value,title = {'text': "Ultimate Value"},))
+     config = {'displayModeBar': False}
+     fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
+     st.plotly_chart(fig, config=config, use_container_width=True)
 
 with col2:
     st.header("A dog")
