@@ -145,10 +145,12 @@ def plot():
     
     with st.container():
           st.header("📟 Key Performance Indicators")
-          col1, col2, col3 = st.columns(3)
+          col1, col2, col3, col4, col5 = st.columns(5)
           col1.metric("Ultimate value", ultimate_value)
           col2.metric("Preultimate value", preultimate_value)
           col3.metric("Percentage change", percentage_change)
+          col4.metric("Test KPI", "124")
+          col5.metric("Test KPI change", "567")
         
     with st.container():
           st.header("📇 Variable Details")
@@ -339,12 +341,12 @@ def forecast():
      forecast.Results_Summary = results.summary()
 
 def forecast_plot():
-     st.info('Forecast based on seasonal ARIMA model', icon="ℹ️")
      with st.container():
           tab1, tab2, tab3 = st.tabs(["📈 Forecast Chart", "💾 Forecast Data", "🤖 Model Details"])
           
           with tab1:
                st.header("📈 Forecast Chart")
+               st.info('Forecast based on seasonal ARIMA model', icon="ℹ️")
                fig = go.Figure([
                     go.Scatter(
                          name='forecast',
@@ -401,6 +403,7 @@ def forecast_plot():
                
           with tab2:
                st.header("💾 Forecast Data")
+               st.info('Forecast based on seasonal ARIMA model', icon="ℹ️")
                
                fig = go.Figure(data=[go.Table(header=dict(values=['<b>DATE<b>', '<b>LOWER VALUE<b>', '<b>UPPER VALUE<b>', '<b>MEAN<b>'], 
                                                           line_color='black',
@@ -419,7 +422,10 @@ def forecast_plot():
                
           with tab3:
                st.header("🤖 Model Details")
+               st.info('Forecast based on seasonal ARIMA model', icon="ℹ️")
+               st.write('Stationary test')
                st.dataframe(Test_Stationary)
+               st.write('Summary Results')
                st.write(Results_Summary)
                
                
@@ -470,8 +476,8 @@ forecast_plot()
      
      
 with st.container():
-     st.title("Download data")
-     st.info('You download data regarding choosed variable', icon="ℹ️")
+     st.title("📥 Download Data")
+     st.info('You may download data regarding choosed variable', icon="ℹ️")
      
      # creating excel file
      buffer = io.BytesIO()
