@@ -468,4 +468,3 @@ with st.container():
                file_name="pandas_multiple.xlsx",
                mime="application/vnd.ms-excel")
           
-st.dataframe(pred_ci)
