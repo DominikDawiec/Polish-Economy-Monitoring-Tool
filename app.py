@@ -347,13 +347,13 @@ def forecast_plot():
           with tab1:
                fig = go.Figure([
                     go.Scatter(
-                         name='Measurement',
+                         name='forecast',
                          x=pred_ci.index,
                          y=pred_ci['Mean'],
                          mode='lines',
                          line=dict(color='rgb(31, 119, 180)'),),
                     go.Scatter(
-                         name='Upper Bound',
+                         name='upper bound',
                          x=pred_ci.index,
                          y=pred_ci['upper value'],
                          mode='lines',
@@ -361,7 +361,7 @@ def forecast_plot():
                          line=dict(width=0),
                          showlegend=False),
                     go.Scatter(
-                         name='Lower Bound',
+                         name='lower bound',
                          x=pred_ci.index,
                          y=pred_ci['lower value'],
                          marker=dict(color="#444"),
@@ -371,7 +371,7 @@ def forecast_plot():
                          fill='tonexty',
                          showlegend=False),
                     go.Scatter(
-                         name='Hist',
+                         name='hist. value',
                          x=timeseries.index,
                          y=timeseries['value'],
                          mode='lines',
@@ -382,6 +382,8 @@ def forecast_plot():
                fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
                fig.update_yaxes(visible=False, showticklabels=False)
                config = {'displayModeBar': False}
+               
+               fig.update_layout(legend=dict(orientation="h",yanchor="bottom",y=1.02,xanchor="right",x=1))
                
                st.plotly_chart(fig, config=config, use_container_width=True)
                
