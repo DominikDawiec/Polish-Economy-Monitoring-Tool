@@ -341,7 +341,7 @@ def forecast():
 def forecast_plot():
      st.info('Forecast based on seasonal ARIMA model', icon="ℹ️")
      with st.container():
-          tab1, tab2, tab3 = st.tabs(["📈 Forecast Chart", "💾 Forecast Data", "Model Details"])
+          tab1, tab2, tab3 = st.tabs(["📈 Forecast Chart", "💾 Forecast Data", "🤖 Model Details"])
           
           with tab1:
                st.header("📈 Forecast Chart")
@@ -387,8 +387,6 @@ def forecast_plot():
                
                st.plotly_chart(fig, config=config, use_container_width=True)
                
-               st.dataframe(pred_ci)
-               
           with tab2:
                st.header("💾 Forecast Data")
                
@@ -406,6 +404,12 @@ def forecast_plot():
                config = {'displayModeBar': False}
                
                st.plotly_chart(fig, config=config, use_container_width=True)
+               
+          with tab3:
+               st.header("🤖 Model Details")
+               st.dataframe(Test_Stationary)
+               st.write(Results_Summary)
+               
                
           
           
@@ -450,15 +454,7 @@ Test_Stationary = forecast.Test_Stationary # dataframe
 Results_Summary = forecast.Results_Summary # st write
 
 forecast_plot()
-
-with st.expander("See model details: Stationary Test"):
-     st.dataframe(Test_Stationary)
-     
-with st.expander("See model details: Results Summary"):
-     st.write(Results_Summary)
-       
-     
-     
+  
      
      
 with st.container():
