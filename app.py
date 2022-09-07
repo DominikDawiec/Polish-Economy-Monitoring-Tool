@@ -11,7 +11,7 @@ import plotly.graph_objects as go
 from plotly.offline import init_notebook_mode, iplot
 import plotly.graph_objs as go
 import plotly.io as pio
-pio.templates.default = "plotly_white"
+pio.templates.default = "plotly"
 
 from datetime import date
 
