@@ -387,6 +387,8 @@ def forecast_plot():
                
                st.plotly_chart(fig, config=config, use_container_width=True)
                
+               st.dataframe(pred_ci)
+               
           with tab2:
                st.header("💾 Forecast Data")
                
