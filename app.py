@@ -151,6 +151,12 @@ def plot():
     
     with st.container():
           st.subheader("📟 Key Performance Indicators")
+          
+          # creating values for KPIs
+          ultmate_value = round(timeseries['value'].iat[-1], 2)
+          preultimate_value = round(timeseries['value'].iat[-2], 2)
+          percentage_change = round(((ultimate_value - preultimate_value) / preultimate_value) * 100, 2)
+          
           col1, col2, col3, col4, col5 = st.columns(5)
           col1.metric("Ultimate value", ultimate_value)
           col2.metric("Preultimate value", preultimate_value)
@@ -433,7 +439,29 @@ def forecast_plot():
                st.write(Results_Summary)
                
                
+def downloading_data():
+     with st.container():
+          st.title("📥 Download Data")
+          st.info('You may download data regarding chosed variable', icon="ℹ️")
+     
+          # creating excel file
+          buffer = io.BytesIO()
+     
+          # Create a Pandas Excel writer using XlsxWriter as the engine.
+          with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+               # Write each dataframe to a different worksheet.
+               timeseries.to_excel(writer, sheet_name='Sheet1')
           
+          # Close the Pandas Excel writer and output the Excel file to the buffer
+          writer.save()
+          
+          st.download_button(
+               label="Download Excel worksheets",
+               data=buffer,
+               file_name="pandas_multiple.xlsx",
+               mime="application/vnd.ms-excel")
+          
+
           
                
           
@@ -445,31 +473,28 @@ def forecast_plot():
 
 download_data(variable_ID)
 
-# saving attributes outside functions
+# saving attributes outside functions for the further use
 timeseries = download_data.timeseries
 info_1 = download_data.info_1
 info_2 = download_data.info_2
-
-# creating values for KPIs
-ultimate_value = round(timeseries['value'].iat[-1], 2)
-preultimate_value = round(timeseries['value'].iat[-2], 2)
-percentage_change = round(((ultimate_value - preultimate_value) / preultimate_value) * 100, 2)
 
 plot()
 
 data_analitics()
 
-# saving attribute outside function
+# saving attribute outside function for the future use
 timeseries = data_analitics.timeseries
 
 analitical_insights()
 
-# cleaning timeseries df before forecast
+# cleaning timeseries df before forecast & for the futher use in functions
+timeseries_extra = timeseries #for download excel
 timeseries = timeseries.set_index(['date'])
 timeseries = timeseries.drop(columns=['values','natural_log','percentage change','value difference'])
 
 forecast()
 
+#saving attributes outside function for further use
 pred_ci_1 = forecast.prec_ci_1
 pred_ci = forecast.prec_ci 
 Test_Stationary = forecast.Test_Stationary # dataframe
@@ -477,26 +502,4 @@ Results_Summary = forecast.Results_Summary # st write
 
 forecast_plot()
   
-     
-     
-with st.container():
-     st.title("📥 Download Data")
-     st.info('You may download data regarding chosed variable', icon="ℹ️")
-     
-     # creating excel file
-     buffer = io.BytesIO()
-     
-     # Create a Pandas Excel writer using XlsxWriter as the engine.
-     with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
-          # Write each dataframe to a different worksheet.
-          timeseries.to_excel(writer, sheet_name='Sheet1')
-          
-          # Close the Pandas Excel writer and output the Excel file to the buffer
-          writer.save()
-          
-          st.download_button(
-               label="Download Excel worksheets",
-               data=buffer,
-               file_name="pandas_multiple.xlsx",
-               mime="application/vnd.ms-excel")
-          
+downloading_data() 
