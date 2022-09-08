@@ -471,7 +471,10 @@ def downloading_data():
           
 # =========================================================================================================
 
-download_data(variable_ID)
+
+
+with st.spiner('Please wait...'):
+     download_data(variable_ID)
 
 # saving attributes outside functions for the further use
 timeseries = download_data.timeseries
