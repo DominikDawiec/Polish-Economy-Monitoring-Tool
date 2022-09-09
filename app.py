@@ -151,11 +151,9 @@ def plot():
     
     with st.container():
           st.subheader("📟 Key Performance Indicators")
-          
-          st.dataframe(timeseries)
-          
+                    
           # creating values for KPIs
-          ultmate_value = round(timeseries['value'].iat[-1], 2)
+          ultimate_value = round(timeseries['value'].iat[-1], 2)
           preultimate_value = round(timeseries['value'].iat[-2], 2)
           percentage_change = round(((ultimate_value - preultimate_value) / preultimate_value) * 100, 2)
           
