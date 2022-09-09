@@ -155,7 +155,7 @@ def plot():
           # creating values for KPIs
           ultmate_value = round(timeseries['value'].iat[-1], 2)
           preultimate_value = round(timeseries['value'].iat[-2], 2)
-          percentage_change = round(((ultimate_value - preultimate_value) / preultimate_value) * 100, 2)
+          percentage_change = ((ultimate_value - preultimate_value) / preultimate_value) * 100
           
           col1, col2, col3, col4, col5 = st.columns(5)
           col1.metric("Ultimate value", ultimate_value)
