@@ -54,7 +54,7 @@ fred.key('8c3b945500069081b94040df2da12df7')
 available_variables = fred.category_series(32339)
 available_variables = pd.DataFrame.from_dict(available_variables['seriess'])
 available_variables['subtitle'] = available_variables['title'] + ", FREQUENCY:" + available_variables['frequency'] + ', UNIT:' + available_variables['units'] + ', SEASONAL ADJUSTMENT:' + available_variables['seasonal_adjustment']
-available_variables = available_variables[available_variables["title"].str.contains("(DISCOUNTED)") == False]
+available_variables[~available_variables.title.str.contains("(DISCOUNTED)")]
 
 # creating list of variables' names for selectbox
 list_of_available_variables = available_variables.title.unique()
