@@ -81,6 +81,7 @@ variable_ID = choose_variable.ID
 # =====================================================================================================
 
 # Function to download data 
+
 def download_data(variable):
     timeseries = fred.observations(variable)
     timeseries = pd.DataFrame.from_dict(timeseries['observations'])
@@ -463,14 +464,12 @@ def downloading_data():
                mime="application/vnd.ms-excel")
           
 
-          
-               
-          
-          
-
 
           
-# =========================================================================================================
+        
+
+          
+# =====================================================================================================
 
 
 
