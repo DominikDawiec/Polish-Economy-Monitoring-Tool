@@ -31,6 +31,10 @@ import io
 # import warnings
 warnings.filterwarnings('ignore')
 
+### FOR TESTS 
+#set_png_as_page_bg('background.png') # add a file background.png with background photo
+###
+
 # setting the website details
 st.set_page_config(
      page_title="Polish Economy Monitoring Tool",
