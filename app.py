@@ -33,11 +33,9 @@ st.set_page_config(
 # api key
 fred.key('8c3b945500069081b94040df2da12df7')
 
-def starting_page():
-     st.title("📊 Polish Economy Monitoring Tool")
-     st.subheader("Real-time Monitoring and Analysis of Economic Indicators")
-     st.write("Welcome to the Polish Economic Dashboard, a tool for tracking and analyzing key economic indicators for Poland. With our app, you can stay up-to-date on the latest trends in the Polish economy and make informed decisions based on real-time data.")
-
+st.title("📊 Polish Economy Monitoring Tool")
+st.subheader("Real-time Monitoring and Analysis of Economic Indicators")
+st.write("Welcome to the Polish Economic Dashboard, a tool for tracking and analyzing key economic indicators for Poland. With our app, you can stay up-to-date on the latest trends in the Polish economy and make informed decisions based on real-time data.")
 
 st.subheader("Get Started")
 st.write("To start exploring the app, simply select an indicator from the dropdown menu in the sidebar. You can also customize the data range and other parameters to suit your needs. We hope you find the Polish Economic Dashboard useful!")
@@ -462,8 +460,6 @@ def downloading_data():
 
           
 # =====================================================================================================
-
-starting_page()
 
 choose_variable(variable_ID)
 
