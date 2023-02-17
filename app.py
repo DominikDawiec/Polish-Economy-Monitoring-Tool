@@ -52,6 +52,12 @@ def list_of_variables():
     # creating list of variable names for selectbox
     list_of_available_variables = available_variables.title.unique()
 
+# setting the selectbox
+def selectbox():
+     chosen_variable_name = st.selectbox('Please select an indicator', list_of_available_variables)
+     choose_variable(chosen_variable_name)
+     variable_ID = choose_variable.ID
+     
 # creating a function returning variable ID of chosen variable 
 def choose_variable(variable):
   chosen_variable = available_variables.loc[available_variables["title"] ==variable]
@@ -65,11 +71,7 @@ def choose_variable(variable):
     subvariable = available_variables.loc[available_variables["title"] ==variable]
     choose_variable.ID = subvariable['id'].iat[-1]
 
-# setting the selectbox
-def selectbox():
-     chosen_variable_name = st.selectbox('Please select an indicator', list_of_available_variables)
-     choose_variable(chosen_variable_name)
-     variable_ID = choose_variable.ID
+
 
 # Defining functions
 # =====================================================================================================
@@ -467,9 +469,9 @@ starting_page()
 
 list_of_variables()
 
-choose_variable()
-
 selectbox()
+
+choose_variable(variable_ID)
 
 download_data(variable_ID)
 
