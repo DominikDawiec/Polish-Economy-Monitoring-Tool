@@ -1,39 +1,28 @@
-import pandas as pd
-import numpy as np
-
-import fred
-from fredapi import Fred
-
-import streamlit as st
-     
-import plotly.express as px
-import plotly.graph_objects as go
-from plotly.offline import init_notebook_mode, iplot
-import plotly.graph_objs as go
-import plotly.io as pio
-pio.templates.default = "plotly"
-
+import io
 from datetime import date
 
-import matplotlib.pyplot as plt
-import warnings
-
-from pylab import rcParams  
+import numpy as np
+import pandas as pd
 
 import cufflinks
-
-from statsmodels.tsa.stattools import adfuller
+import fred
+import matplotlib.pyplot as plt
+import plotly.express as px
+import plotly.graph_objs as go
+import plotly.graph_objects as go
+import plotly.io as pio
 import statsmodels.api as sm
-
+from fredapi import Fred
+from pylab import rcParams
+from statsmodels.tsa.stattools import adfuller
+import streamlit as st
 import xlsxwriter
-import io
 
 # import warnings
+import warnings
 warnings.filterwarnings('ignore')
 
-### FOR TESTS 
-#set_png_as_page_bg('background.png') # add a file background.png with background photo
-###
+pio.templates.default = "plotly"
 
 # setting the website details
 st.set_page_config(
@@ -42,14 +31,22 @@ st.set_page_config(
      layout="wide",
      initial_sidebar_state="expanded")
 
-# Main page
+# setting the main page
 st.title("📊 Polish Economy Monitoring Tool")
-st.caption("The application is designed to enable viewing and analyzing economic indicators for Poland in real time, without the need to manually update the database.")
-st.caption("The application has been enriched with a module for variable analysis, a module creating a forecast of a variable and a module that allows you to download the obtained data.")
+st.subheader("Real-time Monitoring and Analysis of Economic Indicators")
 
-st.header('🔍 Variable Viewer')
+st.write("Welcome to the Polish Economic Dashboard, a tool for tracking and analyzing key economic indicators for Poland. With our app, you can stay up-to-date on the latest trends in the Polish economy and make informed decisions based on real-time data.")
 
-st.info('You can start by selecting the variable you are interested in below, then scroll the page to check available modules', icon="ℹ️")
+st.subheader("Features")
+st.write("Our app includes the following features:")
+st.write("- Real-time data updates from trusted sources")
+st.write("- Interactive charts and graphs for visualizing trends and patterns")
+st.write("- Modules for variable analysis and forecasting")
+st.write("- Data download functionality for further analysis")
+
+# Adding a call to action
+st.subheader("Get Started")
+st.write("To start exploring the app, simply select an indicator from the dropdown menu in the sidebar. You can also customize the data range and other parameters to suit your needs. We hope you find the Polish Economic Dashboard useful!")
 
 # api key
 fred.key('8c3b945500069081b94040df2da12df7')
