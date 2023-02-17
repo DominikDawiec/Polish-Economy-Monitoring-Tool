@@ -28,21 +28,12 @@ pio.templates.default = "plotly"
 st.set_page_config(
      page_title="Polish Economy Monitoring Tool",
      page_icon="📊",
-     layout="wide",
      initial_sidebar_state="expanded")
 
 # setting the main page
 st.title("📊 Polish Economy Monitoring Tool")
 st.subheader("Real-time Monitoring and Analysis of Economic Indicators")
-
 st.write("Welcome to the Polish Economic Dashboard, a tool for tracking and analyzing key economic indicators for Poland. With our app, you can stay up-to-date on the latest trends in the Polish economy and make informed decisions based on real-time data.")
-
-st.subheader("Features")
-st.write("Our app includes the following features:")
-st.write("- Real-time data updates from trusted sources")
-st.write("- Interactive charts and graphs for visualizing trends and patterns")
-st.write("- Modules for variable analysis and forecasting")
-st.write("- Data download functionality for further analysis")
 
 # Adding a call to action
 st.subheader("Get Started")
