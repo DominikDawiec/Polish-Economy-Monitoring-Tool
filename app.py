@@ -1,59 +1,68 @@
-import io
+import pandas as pd
+import numpy as np
+
+import fred
+from fredapi import Fred
+
+import streamlit as st
+     
+import plotly.express as px
+import plotly.graph_objects as go
+from plotly.offline import init_notebook_mode, iplot
+import plotly.graph_objs as go
+import plotly.io as pio
+pio.templates.default = "plotly"
+
 from datetime import date
 
-import numpy as np
-import pandas as pd
+import matplotlib.pyplot as plt
+import warnings
+
+from pylab import rcParams  
 
 import cufflinks
-import fred
-import matplotlib.pyplot as plt
-import plotly.express as px
-import plotly.graph_objs as go
-import plotly.graph_objects as go
-import plotly.io as pio
-import statsmodels.api as sm
-from fredapi import Fred
-from pylab import rcParams
+
 from statsmodels.tsa.stattools import adfuller
-import streamlit as st
+import statsmodels.api as sm
+
 import xlsxwriter
+import io
 
 # import warnings
-import warnings
 warnings.filterwarnings('ignore')
 
-pio.templates.default = "plotly"
+### FOR TESTS 
+#set_png_as_page_bg('background.png') # add a file background.png with background photo
+###
 
 # setting the website details
 st.set_page_config(
      page_title="Polish Economy Monitoring Tool",
      page_icon="📊",
+     layout="wide",
      initial_sidebar_state="expanded")
+
+# Main page
+st.title("📊 Polish Economy Monitoring Tool")
+st.caption("The application is designed to enable viewing and analyzing economic indicators for Poland in real time, without the need to manually update the database.")
+st.caption("The application has been enriched with a module for variable analysis, a module creating a forecast of a variable and a module that allows you to download the obtained data.")
+
+st.header('🔍 Variable Viewer')
+
+st.info('You can start by selecting the variable you are interested in below, then scroll the page to check available modules', icon="ℹ️")
 
 # api key
 fred.key('8c3b945500069081b94040df2da12df7')
 
-st.title("📊 Polish Economy Monitoring Tool")
-st.subheader("Real-time Monitoring and Analysis of Economic Indicators")
-st.write("Welcome to the Polish Economic Dashboard, a tool for tracking and analyzing key economic indicators for Poland. With our app, you can stay up-to-date on the latest trends in the Polish economy and make informed decisions based on real-time data.")
-
-st.subheader("Get Started")
-st.write("To start exploring the app, simply select an indicator from the dropdown menu in the sidebar. You can also customize the data range and other parameters to suit your needs. We hope you find the Polish Economic Dashboard useful!")
-
-# downloading list of available variables regarding Poland
+# downloading list of avaiable variables concerning Poland
 available_variables = fred.category_series(32339)
 available_variables = pd.DataFrame.from_dict(available_variables['seriess'])
 available_variables['subtitle'] = available_variables['title'] + ", FREQUENCY:" + available_variables['frequency'] + ', UNIT:' + available_variables['units'] + ', SEASONAL ADJUSTMENT:' + available_variables['seasonal_adjustment']
 available_variables = available_variables[~available_variables.title.str.contains("(DISCONTINUED)")] # DELETING DISCOUNTED VARIABLES, in the further development I may use option "show DISCOUNTED variables"
-available_variables = available_variables[available_variables.last_updated >= '2021-01-01'] # EXCLUDING VARIABLES THAT HAVEN'T BEEN UPDATED SINCE 2020
 
-# creating list of variable names for selectbox
+# creating list of variables' names for selectbox
 list_of_available_variables = available_variables.title.unique()
 
-chosen_variable_name = st.selectbox('Please select an indicator', list_of_available_variables)
-choose_variable(chosen_variable_name)
-variable_ID = choose_variable.ID
-     
 # creating a function returning variable ID of chosen variable 
 def choose_variable(variable):
   chosen_variable = available_variables.loc[available_variables["title"] ==variable]
@@ -67,10 +76,15 @@ def choose_variable(variable):
     subvariable = available_variables.loc[available_variables["title"] ==variable]
     choose_variable.ID = subvariable['id'].iat[-1]
 
-
+# setting the selectbox
+chosen_variable_name = st.selectbox('Please select an indicator', list_of_available_variables)
+choose_variable(chosen_variable_name)
+variable_ID = choose_variable.ID
 
 # Defining functions
 # =====================================================================================================
+
+# Function to download data 
 
 def download_data(variable):
     timeseries = fred.observations(variable)
@@ -461,7 +475,7 @@ def downloading_data():
           
 # =====================================================================================================
 
-choose_variable(variable_ID)
+
 
 download_data(variable_ID)
 
