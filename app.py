@@ -30,26 +30,27 @@ st.set_page_config(
      page_icon="📊",
      initial_sidebar_state="expanded")
 
-# setting the main page
-st.title("📊 Polish Economy Monitoring Tool")
-st.subheader("Real-time Monitoring and Analysis of Economic Indicators")
-st.write("Welcome to the Polish Economic Dashboard, a tool for tracking and analyzing key economic indicators for Poland. With our app, you can stay up-to-date on the latest trends in the Polish economy and make informed decisions based on real-time data.")
-
-# Adding a call to action
-st.subheader("Get Started")
-st.write("To start exploring the app, simply select an indicator from the dropdown menu in the sidebar. You can also customize the data range and other parameters to suit your needs. We hope you find the Polish Economic Dashboard useful!")
-
 # api key
 fred.key('8c3b945500069081b94040df2da12df7')
 
-# downloading list of avaiable variables concerning Poland
-available_variables = fred.category_series(32339)
-available_variables = pd.DataFrame.from_dict(available_variables['seriess'])
-available_variables['subtitle'] = available_variables['title'] + ", FREQUENCY:" + available_variables['frequency'] + ', UNIT:' + available_variables['units'] + ', SEASONAL ADJUSTMENT:' + available_variables['seasonal_adjustment']
-available_variables = available_variables[~available_variables.title.str.contains("(DISCONTINUED)")] # DELETING DISCOUNTED VARIABLES, in the further development I may use option "show DISCOUNTED variables"
+def starting_page():
+     st.title("📊 Polish Economy Monitoring Tool")
+     st.subheader("Real-time Monitoring and Analysis of Economic Indicators")
+     st.write("Welcome to the Polish Economic Dashboard, a tool for tracking and analyzing key economic indicators for Poland. With our app, you can stay up-to-date on the latest trends in the Polish economy and make informed decisions based on real-time data.")
 
-# creating list of variables' names for selectbox
-list_of_available_variables = available_variables.title.unique()
+def list_of_variables():
+    st.subheader("Get Started")
+    st.write("To start exploring the app, simply select an indicator from the dropdown menu in the sidebar. You can also customize the data range and other parameters to suit your needs. We hope you find the Polish Economic Dashboard useful!")
+
+    # downloading list of available variables regarding Poland
+    available_variables = fred.category_series(32339)
+    available_variables = pd.DataFrame.from_dict(available_variables['seriess'])
+    available_variables['subtitle'] = available_variables['title'] + ", FREQUENCY:" + available_variables['frequency'] + ', UNIT:' + available_variables['units'] + ', SEASONAL ADJUSTMENT:' + available_variables['seasonal_adjustment']
+    available_variables = available_variables[~available_variables.title.str.contains("(DISCONTINUED)")] # DELETING DISCOUNTED VARIABLES, in the further development I may use option "show DISCOUNTED variables"
+    available_variables = available_variables[available_variables.last_updated >= '2021-01-01'] # EXCLUDING VARIABLES THAT HAVEN'T BEEN UPDATED SINCE 2020
+
+    # creating list of variable names for selectbox
+    list_of_available_variables = available_variables.title.unique()
 
 # creating a function returning variable ID of chosen variable 
 def choose_variable(variable):
@@ -65,14 +66,13 @@ def choose_variable(variable):
     choose_variable.ID = subvariable['id'].iat[-1]
 
 # setting the selectbox
-chosen_variable_name = st.selectbox('Please select an indicator', list_of_available_variables)
-choose_variable(chosen_variable_name)
-variable_ID = choose_variable.ID
+def selectbox():
+     chosen_variable_name = st.selectbox('Please select an indicator', list_of_available_variables)
+     choose_variable(chosen_variable_name)
+     variable_ID = choose_variable.ID
 
 # Defining functions
 # =====================================================================================================
-
-# Function to download data 
 
 def download_data(variable):
     timeseries = fred.observations(variable)
@@ -463,7 +463,13 @@ def downloading_data():
           
 # =====================================================================================================
 
+starting_page()
 
+list_of_variables()
+
+choose_variable()
+
+selectbox()
 
 download_data(variable_ID)
 
