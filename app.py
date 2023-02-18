@@ -268,23 +268,22 @@ def analitical_insights():
 
                
           elif vrect == 'economic crises':
-               
-               fig.add_vrect(x0="2020-01-01", x1="2020-06-31", 
-                             annotation_text="Covid-19 Crisis", annotation_position="top left",
-                             annotation=dict(font_size=10, font_family="Times New Roman"),
-                             fillcolor="blue", opacity=0.1, line_width=0)
-               
-               fig.add_vrect(x0="2007-12-01", x1="2009-09-31", 
-                             annotation_text="Global Crisis", annotation_position="top left",
-                             annotation=dict(font_size=10, font_family="Times New Roman"),
-                             fillcolor="blue", opacity=0.1, line_width=0)
-               
-               fig.add_vrect(x0="2001-02-01", x1="2002-02-31", 
-                             annotation_text="Internet Bubble Crisis", annotation_position="top left",
-                             annotation=dict(font_size=10, font_family="Times New Roman"),
-                             fillcolor="blue", opacity=0.1, line_width=0)
-               
-               st.plotly_chart(fig, config=config, use_container_width=True)
+              fig.add_vrect(x0="2020-01-01", x1="2020-06-31", 
+                            annotation_text="Covid-19 Crisis", annotation_position="top left",
+                            annotation=dict(font_size=10, font_family="Times New Roman"),
+                            fillcolor="red", opacity=0.25, line_width=0)
+
+              fig.add_vrect(x0="2007-12-01", x1="2009-09-31", 
+                            annotation_text="Global Crisis", annotation_position="top left",
+                            annotation=dict(font_size=10, font_family="Times New Roman"),
+                            fillcolor="green", opacity=0.25, line_width=0)
+
+              fig.add_vrect(x0="2001-02-01", x1="2002-02-31", 
+                            annotation_text="Internet Bubble Crisis", annotation_position="top left",
+                            annotation=dict(font_size=10, font_family="Times New Roman"),
+                            fillcolor="red", opacity=0.25, line_width=0)
+
+              st.plotly_chart(fig, config=config, use_container_width=True)
 
                
           elif vrect == 'political parties':
