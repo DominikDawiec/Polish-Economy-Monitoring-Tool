@@ -459,32 +459,36 @@ def forecast_plot():
                st.dataframe(pred_ci)
                
                
-def downloading_data():
-     with st.container():
-          st.title("📥 Download Data")
-          st.info('You may download data regarding chosed variable', icon="ℹ️")
-     
-          # creating excel file
-          buffer = io.BytesIO()
-     
-          # Create a Pandas Excel writer using XlsxWriter as the engine.
-          with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
-               # Write each dataframe to a different worksheet.
-               timeseries.to_excel(writer, sheet_name='Sheet1')
-          
-          # Close the Pandas Excel writer and output the Excel file to the buffer
-          writer.save()
-          
-          st.download_button(
-               label="Download Excel worksheets",
-               data=buffer,
-               file_name="pandas_multiple.xlsx",
-               mime="application/vnd.ms-excel")
-          
-
-
-          
+def downloading_data(chosen_variable_name, info_1, info_2, timeseries, forecast):
+    with st.container():
+        st.title("📥 Download Data")
+        st.info('You may download data regarding chosen variable', icon="ℹ️")
         
+        # create Excel file
+        buffer = io.BytesIO()
+        with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+            # write each dataframe to a different worksheet
+            timeseries.to_excel(writer, sheet_name='Time Series Data')
+            forecast.prec_ci.to_excel(writer, sheet_name='Precision Intervals')
+            forecast.Test_Stationary.to_excel(writer, sheet_name='Stationarity Test Results')
+            forecast.Results_Summary.to_excel(writer, sheet_name='Forecast Summary')
+            
+            # add additional information to a separate worksheet
+            info_df = pd.DataFrame({'Variable Name': [chosen_variable_name],
+                                    'Info 1': [info_1],
+                                    'Info 2': [info_2]})
+            info_df.to_excel(writer, sheet_name='Additional Info')
+            
+        # close the Pandas Excel writer and output the Excel file to the buffer
+        writer.save()
+        
+        # download button
+        st.download_button(
+            label="Download Excel worksheets",
+            data=buffer,
+            file_name=f"{chosen_variable_name}.xlsx",
+            mime="application/vnd.ms-excel")
+
 
           
 # =====================================================================================================
