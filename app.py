@@ -333,6 +333,8 @@ def forecast():
      
      model = sm.tsa.statespace.SARIMAX(timeseries['value'], order=(1, 1, 1), seasonal_order=(0, 1, 1, 12))
      
+     results = model.fit()
+     
      forecast = results.get_forecast(steps=12)
      
      pred_ci = forecast.conf_int()
