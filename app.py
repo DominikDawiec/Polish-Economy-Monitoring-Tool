@@ -367,7 +367,7 @@ def forecast_plot():
           
           with tab1:
                st.subheader("📈 Forecast Chart")
-               st.info('Forecast based on seasonal ARIMA model', icon="ℹ️")
+               st.info('This forecast is based on a seasonal ARIMA model.', icon="ℹ️")
                fig = go.Figure([
                     go.Scatter(
                          name='forecast',
@@ -424,13 +424,13 @@ def forecast_plot():
                
           with tab2:
                st.subheader("💾 Forecast Data")
-               st.info('Forecast based on seasonal ARIMA model', icon="ℹ️")
+               st.info('This forecast is based on a seasonal ARIMA model.', icon="ℹ️")
                
                fig = go.Figure(data=[go.Table(header=dict(values=['<b>DATE<b>', '<b>LOWER VALUE<b>', '<b>UPPER VALUE<b>', '<b>MEAN<b>'], 
                                                           line_color='black',
                                                           font=dict(color='white'),
                                                           align=['left'],
-                                                          fill_color='#636EFA'),
+                                                          fill_color='#808080'),
                                               cells=dict(values=[pred_ci.index, pred_ci['lower value'], pred_ci['upper value'], pred_ci['Mean']], 
                                                          font=dict(color='black'),
                                                          align=['left'],
@@ -442,12 +442,21 @@ def forecast_plot():
                st.plotly_chart(fig, config=config, use_container_width=True)
                
           with tab3:
-               st.subheader("🤖 Model Details")
-               st.info('Forecast based on seasonal ARIMA model', icon="ℹ️")
-               st.write('Stationary test')
-               st.dataframe(Test_Stationary)
-               st.write('Summary Results')
-               st.write(Results_Summary)
+               # Display the stationary test results
+               st.write('Results of stationary test:')
+               st.dataframe(test_stationary)
+
+               # Display the summary results of the model
+               st.write('Summary of the model results:')
+               st.code(Results_Summary)
+
+               # Display the forecast confidence interval 1
+               st.write('Forecast Confidence Interval 1:')
+               st.dataframe(pred_ci_1)
+
+               # Display the forecast confidence interval 2
+               st.write('Forecast Confidence Interval 2:')
+               st.dataframe(pred_ci)
                
                
 def downloading_data():
