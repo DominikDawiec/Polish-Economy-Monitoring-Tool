@@ -349,8 +349,6 @@ def forecast():
 
      forecast.prec_ci = pred_ci
 
-     forecast.Test_Stationary = testStationarity(timeseries.value)
-
      forecast.Results_Summary = results.summary()
      
      
