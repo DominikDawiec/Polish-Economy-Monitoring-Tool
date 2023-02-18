@@ -234,7 +234,6 @@ def plot():
 
 
 def data_analitics():
-     timeseries['natural_log'] = np.log(timeseries['value'])
      timeseries['values'] = timeseries['value']
      timeseries['percentage change'] = timeseries['value'].pct_change().mul(100)
      timeseries['value difference'] = timeseries['value'].diff()
@@ -244,7 +243,7 @@ def analitical_insights():
      with st.container():
           st.header("✨ Analitical Insights")
           
-          unit = st.selectbox('Please select unit', ['values','natural_log','percentage change','value difference'])
+          unit = st.selectbox('Please select unit', ['values','percentage change','value difference'])
           vrect = st.selectbox('Please select vrect', ['none (default)', 'economic crises','political parties'])
 
           fig = px.line(timeseries, x='date', y=unit)
@@ -520,7 +519,7 @@ analitical_insights()
 # cleaning timeseries df before forecast & for the futher use in functions
 timeseries_extra = timeseries #for download excel
 timeseries = timeseries.set_index(['date'])
-timeseries = timeseries.drop(columns=['values','natural_log','percentage change','value difference'])
+timeseries = timeseries.drop(columns=['values','percentage change','value difference'])
 
 forecast()
 
