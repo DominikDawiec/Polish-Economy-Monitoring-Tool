@@ -105,11 +105,11 @@ def download_data(variable):
 # Setting function Creating Plot
 def plot():
      
-    with st.expander("Variable Details"):
-         st.subheader("📇 Variable Details")
-
-         values = [['title', 'observation_start', 'observation_end', 'frequency', 'units', 'seasonal_adjustment', 'last_updated', 'notes'], #1st col
-                   [info_1['title'].iat[-1],
+     with st.expander("Variable Details"):
+          st.subheader("📇 Variable Details")
+          
+          values = [['title', 'observation_start', 'observation_end', 'frequency', 'units', 'seasonal_adjustment', 'last_updated', 'notes'], #1st col
+                    [info_1['title'].iat[-1],
                    info_1['observation_start'].iat[-1],
                    info_1['observation_end'].iat[-1],
                    info_1['frequency'].iat[-1],
