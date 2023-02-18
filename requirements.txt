@@ -8,5 +8,3 @@ matplotlib==3.3.4
 fred
 fredapi
 xlsxwriter
-pycaret==2.3.3
-
