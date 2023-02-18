@@ -146,6 +146,7 @@ def plot():
         tab1, tab2 = st.tabs(["📈 Historical Chart", "💾 Historical Data"])
         with tab1:
             st.subheader("📈 Historical Chart")
+            fig.update_traces(line_color='#5e5e5e')
             fig = px.line(timeseries, x='date', y="value")
 
             fig.update_layout(
