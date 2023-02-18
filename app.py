@@ -321,37 +321,45 @@ def analitical_insights():
         
 def forecast():
      
-     st.subheader("🔮 Variable Forecast")
-     init_notebook_mode(connected=True)
-     
-     result = sm.tsa.stattools.adfuller(timeseries['value'])
-     st.write('ADF Statistic: {}'.format(result[0]))
-     st.write('p-value: {}'.format(result[1]))
-     st.write('Critical Values: {}'.format(result[4]))
-     
-     timeseries_diff = timeseries.diff().dropna()
-     
-     model = sm.tsa.statespace.SARIMAX(timeseries['value'], order=(1, 1, 1), seasonal_order=(0, 1, 1, 12))
-     
-     results = model.fit()
-     
-     forecast = results.get_forecast(steps=12)
-     
-     pred_ci = forecast.conf_int()
-     
-     pred_ci['predicted'] = (pred_ci['lower value'] + pred_ci['upper value']) / 2
-     pred_ci['observed'] = timeseries['value']
-     pred_ci['diff, %%'] = ((pred_ci['predicted'] / pred_ci['observed']) - 1) * 100
+     # Define function to test stationarity
+     def test_stationarity(ts):
+         dftest = adfuller(ts)
+         dfoutput = pd.Series(dftest[0:4], index=['Test Statistic', 'p-value', '#Lags Used', 'Number of Observations Used'])
+         for key, value in dftest[4].items():
+             dfoutput[f'Critical Value ({key})'] = value
+         return dfoutput
 
-     forecast.prec_ci_1 = pred_ci
+     # Define the SARIMAX model and fit it to the data
+     mod = sm.tsa.statespace.SARIMAX(timeseries,
+                                     order=(1, 1, 0),
+                                     seasonal_order=(0, 1, 1, 12),
+                                     enforce_stationarity=False,
+                                     enforce_invertibility=False)
+     results = mod.fit()
 
+     # Get predictions for the next 3 years
+     pred_uc = results.get_forecast(steps=36)
+     pred_ci = pred_uc.conf_int()
+
+     # Calculate mean predictions and add to DataFrame
      pred_ci['Mean'] = (pred_ci['lower value'] + pred_ci['upper value']) / 2
 
-     forecast.prec_ci = pred_ci
+     # Calculate predicted, observed and percent difference values
+     pred = results.get_prediction(start=pd.to_datetime('2016-01-01'), dynamic=False)
+     pred_ci_temp = pred.conf_int()
+     pred_ci_temp['Predicted'] = (pred_ci_temp['lower value'] + pred_ci_temp['upper value']) / 2
+     pred_ci_temp['Observed'] = timeseries['value']
+     pred_ci_temp['Diff, %'] = ((pred_ci_temp['Predicted'] / pred_ci_temp['Observed']) - 1) * 100
 
-     forecast.Results_Summary = results.summary()
-     
-     
+     # Store results in a dictionary
+     forecast = {}
+     forecast['Test Stationary'] = test_stationarity(timeseries['value'])
+     forecast['Results Summary'] = results.summary()
+     forecast['Forecast Confidence Interval 1'] = pred_ci_temp
+     forecast['Forecast Confidence Interval 2'] = pred_ci
+
+     # Display header
+     st.header('🔮 Variable Forecast')
 
 def forecast_plot():
      with st.container():
