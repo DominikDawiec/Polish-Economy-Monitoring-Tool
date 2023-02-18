@@ -160,7 +160,7 @@ def plot():
                             dict(count=5, label="5y", step="year", stepmode="backward"),
                             dict(count=10, label="10y", step="year", stepmode="backward"),
                             dict(step="all")]),
-                        font=dict(color="#6c757d")
+                        font=dict(color="#5e5e5e")
                     ),
                     title=dict(text="Date", font=dict(color="#6c757d")),
                     showgrid=False,
