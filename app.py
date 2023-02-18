@@ -172,8 +172,8 @@ def plot():
                     showgrid=False,
                     color="#6c757d"
                 ),
-                plot_bgcolor="#fff",
-                paper_bgcolor="#fff"
+                #plot_bgcolor="#fff",
+                #paper_bgcolor="#fff"
             )
             config = {'displayModeBar': False}
 
