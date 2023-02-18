@@ -28,6 +28,7 @@ import statsmodels.api as sm
 import xlsxwriter
 import io
 
+import pycaret
 from pycaret.time_series import *
 
 # import warnings
