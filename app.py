@@ -133,23 +133,31 @@ def plot():
                st.plotly_chart(fig, config=config, use_container_width=True)
                 
      with tab2:
+     
           st.subheader("💾 Historical Data")
-     
-          fig = go.Figure(data=[go.Table(header=dict(values=['<b>DATE<b>', '<b>VALUE<b>'], 
-                                                line_color='black',
-                                                font=dict(color='white'),
-                                                align=['left'],
-                                                fill_color='#636EFA'),
-                                    cells=dict(values=[timeseries['date'], timeseries['value']], 
-                                               font=dict(color='black'),
-                                               align=['left'],
-                                               line_color='black',
-                                               fill_color='white'))])
-     
+
+          fig = go.Figure(data=[go.Table(
+              header=dict(
+                  values=['<b>DATE<b>', '<b>VALUE<b>'],
+                  line_color='black',
+                  font=dict(color='white'),
+                  align=['left'],
+                  fill_color='#636EFA'
+              ),
+              cells=dict(
+                  values=[timeseries['date'], timeseries['value']],
+                  font=dict(color='black'),
+                  align=['left'],
+                  line_color='black',
+                  fill_color='white'
+              )
+          )])
+
           fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
           config = {'displayModeBar': False}
-          
+
           st.plotly_chart(fig, config=config, use_container_width=True)
+
           
      with st.container():
           st.subheader("📟 Key Performance Indicators")
