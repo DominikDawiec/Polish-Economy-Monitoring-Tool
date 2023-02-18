@@ -459,7 +459,7 @@ def forecast_plot():
                st.dataframe(pred_ci)
                
                
-def downloading_data(chosen_variable_name, info_1, info_2, timeseries, forecast):
+def downloading_data():
     with st.container():
         st.title("📥 Download Data")
         st.info('You may download data regarding chosen variable', icon="ℹ️")
