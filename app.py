@@ -444,7 +444,7 @@ def forecast_plot():
           with tab3:
                # Display the stationary test results
                st.write('Results of stationary test:')
-               st.dataframe(test_stationary)
+               st.write(test_stationary)
 
                # Display the summary results of the model
                st.write('Summary of the model results:')
