@@ -110,38 +110,38 @@ def plot():
           
           values = [['title', 'observation_start', 'observation_end', 'frequency', 'units', 'seasonal_adjustment', 'last_updated', 'notes'], #1st col
                     [info_1['title'].iat[-1],
-                   info_1['observation_start'].iat[-1],
-                   info_1['observation_end'].iat[-1],
-                   info_1['frequency'].iat[-1],
-                   info_1['units'].iat[-1],
-                   info_1['seasonal_adjustment'].iat[-1],
-                   info_1['last_updated'].iat[-1],
-                   #info_2['link'].iat[-1],
-                   info_1['notes'].iat[-1]]]
-         fig = go.Figure(data=[go.Table(
-                columnorder = [1,2],
-                columnwidth = [100,450],
-                header = dict(
-                     values = [['<b>CATEGORY</b>'],['<b>DESCRIPTION</b>']],
-                     line_color='black',
-                     fill_color='#5e5e5e',
-                     align=['left'],
-                     font=dict(color='white', size=12),
-                     height=40),
-                cells=dict(
-                     values=values,
-                     line_color='black',
-                     fill=dict(color=['#F5F5F5', 'white']),
-                     align=['left'],
-                     font=dict(color='black'),
-                     font_size=12,
-                     height=30))])
-         fig.update_layout(margin=dict(r=5, l=5, t=5, b=0))
-         config = {'displayModeBar': False}
-         fig.update_yaxes(visible=False, showticklabels=False)
-         fig.update_xaxes(visible=False, showticklabels=False)
+                    info_1['observation_start'].iat[-1],
+                    info_1['observation_end'].iat[-1],
+                    info_1['frequency'].iat[-1],
+                    info_1['units'].iat[-1],
+                    info_1['seasonal_adjustment'].iat[-1],
+                    info_1['last_updated'].iat[-1],
+                    #info_2['link'].iat[-1],
+                    info_1['notes'].iat[-1]]]
+          fig = go.Figure(data=[go.Table(
+               columnorder = [1,2],
+               columnwidth = [100,450],
+               header = dict(
+                    values = [['<b>CATEGORY</b>'],['<b>DESCRIPTION</b>']],
+                    line_color='black',
+                    fill_color='#5e5e5e',
+                    align=['left'],
+                    font=dict(color='white', size=12),
+                    height=40),
+               cells=dict(
+                    values=values,
+                    line_color='black',
+                    fill=dict(color=['#F5F5F5', 'white']),
+                    align=['left'],
+                    font=dict(color='black'),
+                    font_size=12,
+                    height=30))])
+          fig.update_layout(margin=dict(r=5, l=5, t=5, b=0))
+          config = {'displayModeBar': False}
+          fig.update_yaxes(visible=False, showticklabels=False)
+          fig.update_xaxes(visible=False, showticklabels=False)
 
-         st.plotly_chart(fig, config=config, use_container_width=True, height='100%')
+          st.plotly_chart(fig, config=config, use_container_width=True, height='100%')
      
      with st.container():
           tab1, tab2 = st.tabs(["📈 Historical Chart", "💾 Historical Data"])
