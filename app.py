@@ -107,30 +107,30 @@ def plot():
      with st.container():
           tab1, tab2 = st.tabs(["📈 Historical Chart", "💾 Historical Data"])
           with tab1:
-          st.subheader("📈 Historical Chart")
-          fig = px.line(timeseries, x='date', y="value")
+               st.subheader("📈 Historical Chart")
+               fig = px.line(timeseries, x='date', y="value")
 
-          fig.update_layout(
+               fig.update_layout(
                # yaxis_title='Value',
                # xaxis_title='Date',
-               hovermode="x")
+                    hovermode="x")
           
-          fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
-          fig.update_yaxes(visible=False, showticklabels=False)
-          config = {'displayModeBar': False}
+               fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
+               fig.update_yaxes(visible=False, showticklabels=False)
+               config = {'displayModeBar': False}
 
-          fig.update_xaxes(rangeslider_visible=True)
+               fig.update_xaxes(rangeslider_visible=True)
                               
-          fig.update_xaxes(
-               rangeslider_visible=True,
-               rangeselector=dict(
-                    buttons=list([
-                         dict(count=6, label="6m", step="month", stepmode="backward"),
-                         dict(count=1, label="1y", step="year", stepmode="backward"),
-                         dict(count=5, label="5y", step="year", stepmode="backward"),
-                         dict(count=10, label="10y", step="year", stepmode="backward"),
-                         dict(step="all")])))
-          st.plotly_chart(fig, config=config, use_container_width=True)
+               fig.update_xaxes(
+                    rangeslider_visible=True,
+                    rangeselector=dict(
+                         buttons=list([
+                              dict(count=6, label="6m", step="month", stepmode="backward"),
+                              dict(count=1, label="1y", step="year", stepmode="backward"),
+                              dict(count=5, label="5y", step="year", stepmode="backward"),
+                              dict(count=10, label="10y", step="year", stepmode="backward"),
+                              dict(step="all")])))
+               st.plotly_chart(fig, config=config, use_container_width=True)
                 
      with tab2:
           st.subheader("💾 Historical Data")
