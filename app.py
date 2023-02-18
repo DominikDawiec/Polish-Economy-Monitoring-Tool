@@ -146,7 +146,9 @@ def plot():
         tab1, tab2 = st.tabs(["📈 Historical Chart", "💾 Historical Data"])
         with tab1:
             st.subheader("📈 Historical Chart")
-            fig = px.line(timeseries, x='date', y="value")
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(x=timeseries['date'], y=timeseries['value'], mode='lines', line=dict(color="#5e5e5e")))
+
 
             fig.update_layout(
                 hovermode="x",
