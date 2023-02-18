@@ -319,7 +319,7 @@ def analitical_insights():
                st.plotly_chart(fig, config=config, use_container_width=True)
                
         
-def forecast()
+def forecast():
      
      st.subheader("🔮 Variable Forecast")
      init_notebook_mode(connected=True)
