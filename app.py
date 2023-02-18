@@ -390,7 +390,7 @@ def forecast_plot():
                          marker=dict(color="#a4a9ed"),
                          line=dict(width=0),
                          mode='lines',
-                         fillcolor='#a4a9ed',
+                         fillcolor='#444',
                          fill='tonexty',
                          showlegend=False),
                     go.Scatter(
