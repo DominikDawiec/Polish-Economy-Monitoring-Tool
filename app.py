@@ -143,41 +143,39 @@ def plot():
          st.plotly_chart(fig, config=config, use_container_width=True, height='100%')
      
     with st.container():
-        tab1, tab2 = st.tabs(["📈 Historical Chart", "💾 Historical Data"])
-        with tab1:
-            st.subheader("📈 Historical Chart")
-            fig = px.line(timeseries, x='date', y="value")
+         tab1, tab2 = st.tabs(["📈 Historical Chart", "💾 Historical Data"])
+         with tab1:
+             st.subheader("📈 Historical Chart")
+             fig = px.line(timeseries, x='date', y="value")
 
-            fig.update_layout(
-                hovermode="x",
-                margin=dict(r=5, l=5, t=5, b=5),
-                xaxis=dict(
-                    rangeslider=dict(visible=True),
-                    rangeselector=dict(
-                        buttons=list([
-                            dict(count=6, label="6m", step="month", stepmode="backward"),
-                            dict(count=1, label="1y", step="year", stepmode="backward"),
-                            dict(count=5, label="5y", step="year", stepmode="backward"),
-                            dict(count=10, label="10y", step="year", stepmode="backward"),
-                            dict(step="all")]),
-                        font=dict(color="#5e5e5e")
-                    ),
-                    title=dict(text="Date", font=dict(color="#6c757d")),
-                    showgrid=False,
-                    color="#6c757d"
-                ),
-                yaxis=dict(
-                    title=dict(text="Value", font=dict(color="#6c757d")),
-                    showticklabels=False,
-                    showgrid=False,
-                    color="#6c757d"
-                ),
-                #plot_bgcolor="#fff",
-                #paper_bgcolor="#fff"
-            )
-            config = {'displayModeBar': False}
+             fig.update_layout(
+                 hovermode="x",
+                 margin=dict(r=5, l=5, t=5, b=5),
+                 xaxis=dict(
+                     rangeslider=dict(visible=True),
+                     rangeselector=dict(
+                         buttons=list([
+                             dict(count=6, label="6m", step="month", stepmode="backward"),
+                             dict(count=1, label="1y", step="year", stepmode="backward"),
+                             dict(count=5, label="5y", step="year", stepmode="backward"),
+                             dict(count=10, label="10y", step="year", stepmode="backward"),
+                             dict(step="all")]),
+                         font=dict(color="#5e5e5e")
+                     ),
+                     title=dict(text="Date", font=dict(color="#6c757d")),
+                     showgrid=False,
+                     color="#6c757d"
+                 ),
+                 yaxis=dict(
+                     title=dict(text="Value", font=dict(color="#6c757d")),
+                     showticklabels=False,
+                     showgrid=False,
+                     color="#6c757d"
+                 ),
+                 config = {'displayModeBar': False}
+             )
 
-            st.plotly_chart(fig, config=config, use_container_width=True)
+             st.plotly_chart(fig, config=config, use_container_width=True)
 
         with tab2:
             st.subheader("💾 Historical Data")
