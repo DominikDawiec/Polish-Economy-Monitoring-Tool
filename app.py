@@ -505,11 +505,11 @@ timeseries = timeseries.drop(columns=['values','percentage change','value differ
 
 forecast()
 
-#saving attributes outside function for further use
-#pred_ci_1 = forecast.prec_ci_1
-#pred_ci = forecast.prec_ci 
-test_stationary = forecast.Test_Stationary # dataframe
-Results_Summary = forecast.Results_Summary # st write
+# Get the required attributes from the forecast dictionary
+pred_ci_1 = forecast['Forecast Confidence Interval 1']
+pred_ci = forecast['Forecast Confidence Interval 2']
+test_stationary = forecast['Test Stationary']
+Results_Summary = forecast['Results Summary']
 
 forecast_plot()
   
