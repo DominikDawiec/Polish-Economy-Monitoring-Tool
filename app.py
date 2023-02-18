@@ -320,46 +320,46 @@ def analitical_insights():
                
         
 def forecast():
+     st.header("🔮 Variable Forecast")
+     init_notebook_mode(connected=True)
+     def testStationarity(ts):
+          dftest = adfuller(ts)
+          dfoutput = pd.Series(dftest[0:4], index=['Test Statistic','p-value','#Lags Used','Number of Observations Used'])
+          for key,value in dftest[4].items():
+               dfoutput['Critical Value (%s)'%key] = value
+          return dfoutput
      
-     # Define function to test stationarity
-     def test_stationarity(ts):
-         dftest = adfuller(ts)
-         dfoutput = pd.Series(dftest[0:4], index=['Test Statistic', 'p-value', '#Lags Used', 'Number of Observations Used'])
-         for key, value in dftest[4].items():
-             dfoutput[f'Critical Value ({key})'] = value
-         return dfoutput
-
-     # Define the SARIMAX model and fit it to the data
+     testStationarity(timeseries.value)
+     
      mod = sm.tsa.statespace.SARIMAX(timeseries,
                                      order=(1, 1, 0),
                                      seasonal_order=(0, 1, 1, 12),
                                      enforce_stationarity=False,
                                      enforce_invertibility=False)
      results = mod.fit()
-
-     # Get predictions for the next 3 years
-     pred_uc = results.get_forecast(steps=36)
-     pred_ci = pred_uc.conf_int()
-
-     # Calculate mean predictions and add to DataFrame
-     pred_ci['Mean'] = (pred_ci['lower value'] + pred_ci['upper value']) / 2
-
-     # Calculate predicted, observed and percent difference values
+     
      pred = results.get_prediction(start=pd.to_datetime('2016-01-01'), dynamic=False)
-     pred_ci_temp = pred.conf_int()
-     pred_ci_temp['Predicted'] = (pred_ci_temp['lower value'] + pred_ci_temp['upper value']) / 2
-     pred_ci_temp['Observed'] = timeseries['value']
-     pred_ci_temp['Diff, %'] = ((pred_ci_temp['Predicted'] / pred_ci_temp['Observed']) - 1) * 100
-
-     # Store results in a dictionary
-     forecast = {}
-     forecast['Test Stationary'] = test_stationarity(timeseries['value'])
-     forecast['Results Summary'] = results.summary()
-     forecast['Forecast Confidence Interval 1'] = pred_ci_temp
-     forecast['Forecast Confidence Interval 2'] = pred_ci
-
-     # Display header
-     st.header('🔮 Variable Forecast')
+     pred_ci = pred.conf_int()
+     
+     pred_ci['predicted'] = (pred_ci['lower value'] + pred_ci['upper value'])/2
+     pred_ci['observed'] = timeseries['value']
+     pred_ci['diff, %%'] = ((pred_ci['predicted'] / pred_ci['observed'])-1) * 100
+     
+     forecast.prec_ci_1 = pred_ci
+     
+     # Get forecast 3 years ahead in future
+     pred_uc = results.get_forecast(steps=36)
+     
+     # Get confidence intervals of forecasts
+     pred_ci = pred_uc.conf_int()
+     
+     pred_ci['Mean'] = (pred_ci['lower value'] + pred_ci['upper value'])/2
+     
+     forecast.prec_ci = pred_ci
+     
+     forecast.Test_Stationary = testStationarity(timeseries.value)
+     
+     forecast.Results_Summary = results.summary()
 
 def forecast_plot():
      with st.container():
@@ -504,6 +504,12 @@ timeseries = timeseries.set_index(['date'])
 timeseries = timeseries.drop(columns=['values','percentage change','value difference'])
 
 forecast()
+
+#saving attributes outside function for further use
+pred_ci_1 = forecast.prec_ci_1
+pred_ci = forecast.prec_ci 
+Test_Stationary = forecast.Test_Stationary # dataframe
+Results_Summary = forecast.Results_Summary # st write
 
 forecast_plot()
   
