@@ -202,7 +202,7 @@ def plot():
 
           st.plotly_chart(fig, config=config, use_container_width=True)
           
-        with st.container():
+         with st.container():
           st.subheader("📟 Key Performance Indicators")
 
          # Creating values for KPIs
