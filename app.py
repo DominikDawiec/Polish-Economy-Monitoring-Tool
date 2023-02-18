@@ -124,7 +124,7 @@ def plot():
                header = dict(
                     values = [['<b>CATEGORY</b>'],['<b>DESCRIPTION</b>']],
                     line_color='black',
-                    fill_color='#5e5e5e',
+                    fill_color='#808080',
                     align=['left'],
                     font=dict(color='white', size=12),
                     height=40),
@@ -181,7 +181,7 @@ def plot():
                   line_color='black',
                   font=dict(color='white'),
                   align=['left'],
-                  fill_color='#F5F5F5'
+                  fill_color='#808080'
               ),
               cells=dict(
                   values=[timeseries['date'], timeseries['value']],
