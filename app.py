@@ -28,6 +28,8 @@ import statsmodels.api as sm
 import xlsxwriter
 import io
 
+from pycaret.time_series import *
+
 # import warnings
 warnings.filterwarnings('ignore')
 
@@ -377,92 +379,46 @@ def forecast():
      forecast.Results_Summary = results.summary()
 
 def forecast_plot():
+          # load data
+     data = pd.read_csv("your_timeseries_data.csv", index_col=0)
+
+     # initialize PyCaret setup
+     ts_setup = setup(data, session_id=123)
+
+     # train and evaluate seasonal ARIMA model
+     arima = create_model('arima', cross_validation=True)
+
+     # make predictions
+     preds = predict_model(arima)
+
+     # create forecast plot
+     forecast_plot = plot_model(arima, plot='forecast')
+
+     # create forecast data table
+     forecast_data = get_config('prep_pipe')['xf'].inverse_transform(preds[['ds', 'yhat_lower', 'yhat_upper', 'yhat']])
+
+     # create model details table
+     stationary_test = get_config('prep_pipe')['stationary_test']
+     summary_results = get_config('prep_pipe')['summary_results']
+
+     # display results in tabs
      with st.container():
-          tab1, tab2, tab3 = st.tabs(["📈 Forecast Chart", "💾 Forecast Data", "🤖 Model Details"])
-          
-          with tab1:
-               st.subheader("📈 Forecast Chart")
-               st.info('Forecast based on seasonal ARIMA model', icon="ℹ️")
-               fig = go.Figure([
-                    go.Scatter(
-                         name='forecast',
-                         x=pred_ci.index,
-                         y=pred_ci['Mean'],
-                         mode='lines',
-                         line=dict(color='rgb(31, 119, 180)'),),
-                    go.Scatter(
-                         name='upper bound',
-                         x=pred_ci.index,
-                         y=pred_ci['upper value'],
-                         mode='lines',
-                         marker=dict(color="#444"),
-                         line=dict(width=0),
-                         showlegend=False),
-                    go.Scatter(
-                         name='lower bound',
-                         x=pred_ci.index,
-                         y=pred_ci['lower value'],
-                         marker=dict(color="#444"),
-                         line=dict(width=0),
-                         mode='lines',
-                         fillcolor='rgba(68, 68, 68, 0.3)',
-                         fill='tonexty',
-                         showlegend=False),
-                    go.Scatter(
-                         name='hist. value',
-                         x=timeseries.index,
-                         y=timeseries['value'],
-                         mode='lines',
-                         line=dict(color='rgb(31, 119, 180)'),)])
-               
-               fig.update_layout(hovermode="x")
-               
-               fig.update_xaxes(rangeslider_visible=True)
-               
-               fig.update_xaxes(
-                    rangeslider_visible=True,
-                    rangeselector=dict(
-                         buttons=list([
-                              dict(count=6, label="6m", step="month", stepmode="backward"),
-                              dict(count=1, label="1y", step="year", stepmode="backward"),
-                              dict(count=5, label="5y", step="year", stepmode="backward"),
-                              dict(count=10, label="10y", step="year", stepmode="backward"),
-                              dict(step="all")])))
-               
-               fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
-               fig.update_yaxes(visible=False, showticklabels=False)
-               config = {'displayModeBar': False}
-               
-               fig.update_layout(legend=dict(orientation="h",yanchor="bottom",y=1.02,xanchor="right",x=1))
-               
-               st.plotly_chart(fig, config=config, use_container_width=True)
-               
-          with tab2:
-               st.subheader("💾 Forecast Data")
-               st.info('Forecast based on seasonal ARIMA model', icon="ℹ️")
-               
-               fig = go.Figure(data=[go.Table(header=dict(values=['<b>DATE<b>', '<b>LOWER VALUE<b>', '<b>UPPER VALUE<b>', '<b>MEAN<b>'], 
-                                                          line_color='black',
-                                                          font=dict(color='white'),
-                                                          align=['left'],
-                                                          fill_color='#636EFA'),
-                                              cells=dict(values=[pred_ci.index, pred_ci['lower value'], pred_ci['upper value'], pred_ci['Mean']], 
-                                                         font=dict(color='black'),
-                                                         align=['left'],
-                                                         line_color='black',
-                                                         fill_color='white'))])
-               fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
-               config = {'displayModeBar': False}
-               
-               st.plotly_chart(fig, config=config, use_container_width=True)
-               
-          with tab3:
-               st.subheader("🤖 Model Details")
-               st.info('Forecast based on seasonal ARIMA model', icon="ℹ️")
-               st.write('Stationary test')
-               st.dataframe(Test_Stationary)
-               st.write('Summary Results')
-               st.write(Results_Summary)
+         tab1, tab2, tab3 = st.tabs(["📈 Forecast Chart", "💾 Forecast Data", "🤖 Model Details"])
+
+         with tab1:
+             st.subheader("📈 Forecast Chart")
+             st.plotly_chart(forecast_plot)
+
+         with tab2:
+             st.subheader("💾 Forecast Data")
+             st.write(forecast_data)
+
+         with tab3:
+             st.subheader("🤖 Model Details")
+             st.write('Stationary test')
+             st.write(stationary_test)
+             st.write('Summary Results')
+             st.write(summary_results)
                
                
 def downloading_data():
