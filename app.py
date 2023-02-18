@@ -54,6 +54,7 @@ available_variables = fred.category_series(32339)
 available_variables = pd.DataFrame.from_dict(available_variables['seriess'])
 available_variables['subtitle'] = available_variables['title'] + ", FREQUENCY:" + available_variables['frequency'] + ', UNIT:' + available_variables['units'] + ', SEASONAL ADJUSTMENT:' + available_variables['seasonal_adjustment']
 available_variables = available_variables[~available_variables.title.str.contains("(DISCONTINUED)")] # DELETING DISCOUNTED VARIABLES, in the further development I may use option "show DISCOUNTED variables"
+available_variables = available_variables[available_variables.last_updated >= '2021-01-01'] # EXCLUDING VARIABLES THAT HAVEN'T BEEN UPDATED SINCE 2020
 
 # creating list of variables' names for selectbox
 list_of_available_variables = available_variables.title.unique()
