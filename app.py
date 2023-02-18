@@ -204,28 +204,29 @@ def plot():
                    info_1['notes'].iat[-1]]]
          fig = go.Figure(data=[go.Table(
                 columnorder = [1,2],
-                columnwidth = [150,500],
+                columnwidth = [100,450],
                 header = dict(
                      values = [['<b>CATEGORY</b>'],['<b>DESCRIPTION</b>']],
-                     line_color='white',
-                     fill_color='#E8E8E8',
+                     line_color='black',
+                     fill_color='#636EFA',
                      align=['left'],
-                     font=dict(color='black', size=12),
-                     height=50),
+                     font=dict(color='white', size=12),
+                     height=40),
                 cells=dict(
                      values=values,
-                     line_color='white',
-                     fill=dict(color=['white', '#E8E8E8']),
+                     line_color='black',
+                     fill=dict(color=['#F5F5F5', 'white']),
                      align=['left'],
                      font=dict(color='black'),
                      font_size=12,
-                     height=40))])
+                     height=30))])
          fig.update_layout(margin=dict(r=5, l=5, t=5, b=0))
          config = {'displayModeBar': False}
          fig.update_yaxes(visible=False, showticklabels=False)
          fig.update_xaxes(visible=False, showticklabels=False)
 
-         st.plotly_chart(fig, config=config, use_container_width=True)
+         st.plotly_chart(fig, config=config, use_container_width=True, height='100%')
+
 
 
 
