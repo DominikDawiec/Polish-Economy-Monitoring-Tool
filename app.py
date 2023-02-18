@@ -320,7 +320,7 @@ def analitical_insights():
                
         
 def forecast():
-     st.header("🔮 Variable Forecast")
+     st.subheader("🔮 Variable Forecast")
      init_notebook_mode(connected=True)
      def testStationarity(ts):
           dftest = adfuller(ts)
@@ -461,7 +461,7 @@ def forecast_plot():
                
 def downloading_data():
     with st.container():
-        st.title("📥 Download Data")
+        st.subheader("📥 Download Data")
         st.info('You may download data regarding chosen variable', icon="ℹ️")
         
         # create Excel file
