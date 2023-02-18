@@ -177,7 +177,7 @@ def plot():
 
              st.plotly_chart(fig, config=config, use_container_width=True)
 
-        with tab2:
+         with tab2:
           st.subheader("💾 Historical Data")
           fig = go.Figure(
                data=[go.Table(
