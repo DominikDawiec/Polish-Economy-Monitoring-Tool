@@ -266,6 +266,8 @@ def analitical_insights():
                          dict(count=10, label="10y", step="year", stepmode="backward"),
                          dict(step="all")])))
           
+          fig.update_layout(plot_bgcolor='white', paper_bgcolor='white')
+
           if vrect == 'none (default)':
                st.plotly_chart(fig, config=config, use_container_width=True)
 
