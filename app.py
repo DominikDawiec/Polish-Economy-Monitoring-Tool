@@ -506,9 +506,9 @@ timeseries = timeseries.drop(columns=['values','percentage change','value differ
 forecast()
 
 #saving attributes outside function for further use
-pred_ci_1 = forecast.prec_ci_1
-pred_ci = forecast.prec_ci 
-Test_Stationary = forecast.Test_Stationary # dataframe
+#pred_ci_1 = forecast.prec_ci_1
+#pred_ci = forecast.prec_ci 
+test_stationary = forecast.Test_Stationary # dataframe
 Results_Summary = forecast.Results_Summary # st write
 
 forecast_plot()
