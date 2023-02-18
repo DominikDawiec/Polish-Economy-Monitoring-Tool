@@ -31,25 +31,20 @@ import io
 # import warnings
 warnings.filterwarnings('ignore')
 
-### FOR TESTS 
-#set_png_as_page_bg('background.png') # add a file background.png with background photo
-###
 
 # setting the website details
 st.set_page_config(
      page_title="Polish Economy Monitoring Tool",
      page_icon="📊",
-     layout="wide",
      initial_sidebar_state="expanded")
 
 # Main page
 st.title("📊 Polish Economy Monitoring Tool")
-st.caption("The application is designed to enable viewing and analyzing economic indicators for Poland in real time, without the need to manually update the database.")
-st.caption("The application has been enriched with a module for variable analysis, a module creating a forecast of a variable and a module that allows you to download the obtained data.")
+st.subheader("Real-time Monitoring and Analysis of Economic Indicators")
+st.write("Welcome to the Polish Economic Dashboard, a tool for tracking and analyzing key economic indicators for Poland. With our app, you can stay up-to-date on the latest trends in the Polish economy and make informed decisions based on real-time data.")
 
-st.header('🔍 Variable Viewer')
-
-st.info('You can start by selecting the variable you are interested in below, then scroll the page to check available modules', icon="ℹ️")
+st.subheader("Get Started")
+st.write("To start exploring the app, simply select an indicator from the dropdown menu below.")
 
 # api key
 fred.key('8c3b945500069081b94040df2da12df7')
