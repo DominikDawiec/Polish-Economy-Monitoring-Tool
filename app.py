@@ -146,9 +146,7 @@ def plot():
         tab1, tab2 = st.tabs(["📈 Historical Chart", "💾 Historical Data"])
         with tab1:
             st.subheader("📈 Historical Chart")
-            fig = go.Figure()
-            fig.add_trace(go.Scatter(x=timeseries['date'], y=timeseries['value'], mode='lines', line=dict(color="#5e5e5e")))
-
+            fig = px.line(timeseries, x='date', y="value")
 
             fig.update_layout(
                 hovermode="x",
@@ -266,8 +264,6 @@ def analitical_insights():
                          dict(count=10, label="10y", step="year", stepmode="backward"),
                          dict(step="all")])))
           
-          fig.update_layout(plot_bgcolor='white', paper_bgcolor='white')
-
           if vrect == 'none (default)':
                st.plotly_chart(fig, config=config, use_container_width=True)
 
