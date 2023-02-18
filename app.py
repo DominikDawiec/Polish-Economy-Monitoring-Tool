@@ -374,7 +374,7 @@ def forecast_plot():
                          x=pred_ci.index,
                          y=pred_ci['Mean'],
                          mode='lines',
-                         line=dict(color='rgb(31, 119, 180)'),),
+                         line=dict(color='#787fde'),),
                     go.Scatter(
                          name='upper bound',
                          x=pred_ci.index,
@@ -398,7 +398,7 @@ def forecast_plot():
                          x=timeseries.index,
                          y=timeseries['value'],
                          mode='lines',
-                         line=dict(color='rgb(31, 119, 180)'),)])
+                         line=dict(color='#606bf3'),)])
                
                fig.update_layout(hovermode="x")
                
