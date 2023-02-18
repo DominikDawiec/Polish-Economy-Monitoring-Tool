@@ -320,6 +320,9 @@ def analitical_insights():
                
         
 def forecast():
+     
+     st.dataframe(ts)
+     
      st.header("🔮 Variable Forecast")
      init_notebook_mode(connected=True)
      def testStationarity(ts):
