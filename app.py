@@ -192,44 +192,48 @@ def plot():
     with st.container():
          st.subheader("📇 Variable Details")
 
-         # creating values for table
-         variable_details = [['Title', 'Observation Start', 'Observation End', 'Frequency', 'Units', 'Seasonal Adjustment', 'Last Updated', 'Notes'],
-                             [info_1['title'].iat[-1],
-                              info_1['observation_start'].iat[-1],
-                              info_1['observation_end'].iat[-1],
-                              info_1['frequency'].iat[-1],
-                              info_1['units'].iat[-1],
-                              info_1['seasonal_adjustment'].iat[-1],
-                              info_1['last_updated'].iat[-1],
-                              info_1['notes'].iat[-1]]]
+         values = [        ['Title', 'Observation Start', 'Observation End', 'Frequency', 'Units', 'Seasonal Adjustment', 'Last Updated', 'Notes'], # 1st col
+             [            info_1['title'].iat[-1],
+                 info_1['observation_start'].iat[-1],
+                 info_1['observation_end'].iat[-1],
+                 info_1['frequency'].iat[-1],
+                 info_1['units'].iat[-1],
+                 info_1['seasonal_adjustment'].iat[-1],
+                 info_1['last_updated'].iat[-1],
+                 info_1['notes'].iat[-1]
+             ]
+         ]
+
          fig = go.Figure(data=[go.Table(
-             columnwidth=[120, 200],
+             columnorder=[1,2],
+             columnwidth=[100,450],
              header=dict(
-                 values=[f"<b>{value}</b>" for value in variable_details[0]],
-                 fill_color='lightgray',
-                 line_color='black',
-                 align=['left', 'center'],
-                 font=dict(color='black', size=12),
-                 height=30
+                 values=[['<b>CATEGORY</b>'], ['<b>DESCRIPTION</b>']],
+                 line_color='white',
+                 fill_color='#3366CC',
+                 align=['center'],
+                 font=dict(color='white', size=13),
+                 height=35
              ),
              cells=dict(
-                 values=[variable_details[1]],
-                 fill_color='white',
-                 line_color='black',
-                 align=['left', 'center'],
-                 font=dict(color='black', size=12),
-                 height=25
-             )
-         )])
+                 values=values,
+                 line_color='#707070',
+                 fill=dict(color=['#F5F5F5', 'white']),
+                 align=['left'],
+                 font=dict(color='#1f1f1f', size=13),
+                 height=32
+             ))
+         ])
+
          fig.update_layout(
              margin=dict(r=5, l=5, t=5, b=0),
-             height=100
+             height=140
          )
+
          config = {'displayModeBar': False}
-         fig.update_yaxes(visible=False, showticklabels=False)
-         fig.update_xaxes(visible=False, showticklabels=False)
 
          st.plotly_chart(fig, config=config, use_container_width=True)
+
 
 
 
