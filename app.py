@@ -171,19 +171,23 @@ def plot():
             st.plotly_chart(fig, config=config, use_container_width=True)
     
     with st.container():
-          st.subheader("📟 Key Performance Indicators")
-                    
-          # creating values for KPIs
-          ultimate_value = round(timeseries['value'].iat[-1], 2)
-          preultimate_value = round(timeseries['value'].iat[-2], 2)
-          percentage_change = round(((ultimate_value - preultimate_value) / preultimate_value) * 100, 2)
-          
-          col1, col2, col3, col4, col5 = st.columns(5)
-          col1.metric("Ultimate value", ultimate_value)
-          col2.metric("Preultimate value", preultimate_value)
-          col3.metric("Percentage change", percentage_change)
-          col4.metric("Test KPI", "124")
-          col5.metric("Test KPI change", "567")
+         st.subheader("📟 Key Performance Indicators")
+
+         # Creating values for KPIs
+         ultimate_value = round(timeseries['value'].iat[-1], 2)
+         preultimate_value = round(timeseries['value'].iat[-2], 2)
+         percentage_change = round(((ultimate_value - preultimate_value) / preultimate_value) * 100, 2)
+         min_value = round(timeseries['value'].min(), 2)
+         max_value = round(timeseries['value'].max(), 2)
+
+         # Displaying KPIs
+         cols = st.columns(5)
+         cols[0].metric("Ultimate value", f"{ultimate_value:,}")
+         cols[1].metric("Preultimate value", f"{preultimate_value:,}")
+         cols[2].metric("Percentage change", f"{percentage_change}%")
+         cols[3].metric("Minimum value", f"{min_value:,}")
+         cols[4].metric("Maximum value", f"{max_value:,}")
+
         
     with st.container():
           st.subheader("📇 Variable Details")
