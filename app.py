@@ -178,52 +178,47 @@ def plot():
              st.plotly_chart(fig, config=config, use_container_width=True)
 
         with tab2:
-            st.subheader("💾 Historical Data")
-            fig = go.Figure(
-                data=[go.Table(
+          st.subheader("💾 Historical Data")
+          fig = go.Figure(
+               data=[go.Table(
                     header=dict(
-                        values=['<b>DATE<b>', '<b>VALUE<b>'],
-                        line_color='#6c757d',
-                        font=dict(color='#fff'),
-                        align=['left'],
-                        fill_color='#343a40'
-                    ),
+                         values=['<b>DATE<b>', '<b>VALUE<b>'],
+                         line_color='#6c757d',
+                         font=dict(color='#fff'),
+                         align=['left'],
+                         fill_color='#343a40'),
                     cells=dict(
-                        values=[timeseries['date'], timeseries['value']],
-                        font=dict(color='black'),
-                        align=['left'],
-                        line_color='#5e5e5e',
-                        fill_color='#fff'
-                    ),
-                )]
-            )
+                         values=[timeseries['date'], timeseries['value']],
+                         font=dict(color='black'),
+                         align=['left'],
+                         line_color='#5e5e5e',
+                         fill_color='#fff'),)])
+          
+          fig.update_layout(
+               margin=dict(r=5, l=5, t=5, b=5),
+               plot_bgcolor="#fff",
+               paper_bgcolor="#fff")
+          config = {'displayModeBar': False}
 
-            fig.update_layout(
-                margin=dict(r=5, l=5, t=5, b=5),
-                plot_bgcolor="#fff",
-                paper_bgcolor="#fff"
-            )
-            config = {'displayModeBar': False}
-
-            st.plotly_chart(fig, config=config, use_container_width=True)
-    
-    with st.container():
-         st.subheader("📟 Key Performance Indicators")
+          st.plotly_chart(fig, config=config, use_container_width=True)
+          
+        with st.container():
+          st.subheader("📟 Key Performance Indicators")
 
          # Creating values for KPIs
-         ultimate_value = round(timeseries['value'].iat[-1], 2)
-         preultimate_value = round(timeseries['value'].iat[-2], 2)
-         percentage_change = round(((ultimate_value - preultimate_value) / preultimate_value) * 100, 2)
-         min_value = round(timeseries['value'].min(), 2)
-         max_value = round(timeseries['value'].max(), 2)
+          ultimate_value = round(timeseries['value'].iat[-1], 2)
+          preultimate_value = round(timeseries['value'].iat[-2], 2)
+          percentage_change = round(((ultimate_value - preultimate_value) / preultimate_value) * 100, 2)
+          min_value = round(timeseries['value'].min(), 2)
+          max_value = round(timeseries['value'].max(), 2)
 
          # Displaying KPIs
-         cols = st.columns(5)
-         cols[0].metric("Ultimate value", f"{ultimate_value:,}")
-         cols[1].metric("Preultimate value", f"{preultimate_value:,}")
-         cols[2].metric("Percentage change", f"{percentage_change}%")
-         cols[3].metric("Minimum value", f"{min_value:,}")
-         cols[4].metric("Maximum value", f"{max_value:,}")
+          cols = st.columns(5)
+          cols[0].metric("Ultimate value", f"{ultimate_value:,}")
+          cols[1].metric("Preultimate value", f"{preultimate_value:,}")
+          cols[2].metric("Percentage change", f"{percentage_change}%")
+          cols[3].metric("Minimum value", f"{min_value:,}")
+          cols[4].metric("Maximum value", f"{max_value:,}")
 
 
 def data_analitics():
