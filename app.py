@@ -242,6 +242,7 @@ def analitical_insights():
           vrect = st.selectbox('Please select vrect', ['none (default)', 'economic crises','political parties'])
 
           fig = px.line(timeseries, x='date', y=unit)
+          fig.update_traces(line_color='#5e5e5e')
           fig.update_layout(
                yaxis_title='Value',
                xaxis_title='Date',
