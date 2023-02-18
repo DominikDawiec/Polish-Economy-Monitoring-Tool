@@ -313,7 +313,7 @@ def analitical_insights():
           
                fig.add_vrect(x0="2015-11-14", x1=d1, 
                              annotation_text="PiS", annotation_position="top left",
-                             annotation=dict(font_size=10, font_family="Times New Roman"),
+                             annotation=dict(font_size=10, font_family="Times New Roman", textangle=90),
                              fillcolor="red", opacity=0.25, line_width=0)
                
                st.plotly_chart(fig, config=config, use_container_width=True)
