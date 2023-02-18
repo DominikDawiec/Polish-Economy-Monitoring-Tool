@@ -228,70 +228,63 @@ def plot():
          cols[4].metric("Maximum value", f"{max_value:,}")
 
 
-
-
-
-
-
 def data_analitics():
      timeseries['values'] = timeseries['value']
      timeseries['percentage change'] = timeseries['value'].pct_change().mul(100)
      timeseries['value difference'] = timeseries['value'].diff()
      data_analitics.timeseries = timeseries
 
-def display_analytical_insights():
-    with st.container():
-        st.subheader("✨ Analytical Insights")
+def analitical_insights():
+     with st.container():
+          st.subheader("✨ Analitical Insights")
+          
+          unit = st.selectbox('Please select unit', ['values','percentage change','value difference'])
+          vrect = st.selectbox('Please select vrect', ['none (default)', 'economic crises','political parties'])
 
-        unit = st.selectbox('Please select unit', ['Values', 'Percentage Change', 'Value Difference'])
-        vrect = st.selectbox('Please select vrect', ['None (default)', 'Economic Crises', 'Political Parties'])
-
-        fig = px.line(timeseries, x='date', y=unit)
-        fig.update_layout(
-            yaxis_title='Value',
-            xaxis_title='Date',
-            hovermode="x",
-            margin=dict(r=5, l=5, t=5, b=5),
-            yaxis_visible=False,
-            xaxis_visible=False,
-            xaxis_rangeslider_visible=True,
-            xaxis_rangeslider=dict(
-                visible=True,
-                rangeselector=dict(
+          fig = px.line(timeseries, x='date', y=unit)
+          fig.update_layout(
+               yaxis_title='Value',
+               xaxis_title='Date',
+               hovermode="x")
+          
+          fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
+          fig.update_yaxes(visible=False, showticklabels=False)
+          config = {'displayModeBar': False}
+          
+          fig.update_xaxes(rangeslider_visible=True)
+          
+          fig.update_xaxes(
+               rangeslider_visible=True,
+               rangeselector=dict(
                     buttons=list([
-                        dict(count=6, label="6m", step="month", stepmode="backward"),
-                        dict(count=1, label="1y", step="year", stepmode="backward"),
-                        dict(count=5, label="5y", step="year", stepmode="backward"),
-                        dict(count=10, label="10y", step="year", stepmode="backward"),
-                        dict(step="all")]),
-                    font=dict(color='gray'),
-                    bgcolor='white',
-                    activecolor='gray'),
-                thickness=0.05,
-                range=[timeseries['date'].iloc[-120], timeseries['date'].iloc[-1]]
-            ),
-        )
+                         dict(count=6, label="6m", step="month", stepmode="backward"),
+                         dict(count=1, label="1y", step="year", stepmode="backward"),
+                         dict(count=5, label="5y", step="year", stepmode="backward"),
+                         dict(count=10, label="10y", step="year", stepmode="backward"),
+                         dict(step="all")])))
+          
+          if vrect == 'none (default)':
+               st.plotly_chart(fig, config=config, use_container_width=True)
 
-        if vrect == 'None (default)':
-            st.plotly_chart(fig, config={'displayModeBar': False}, use_container_width=True)
-
-        elif vrect == 'Economic Crises':
-            fig.add_vrect(x0="2020-01-01", x1="2020-06-31",
-                          annotation_text="Covid-19 Crisis", annotation_position="top left",
-                          annotation=dict(font_size=10, font_family="Times New Roman"),
-                          fillcolor="blue", opacity=0.25, line_width=0)
-
-            fig.add_vrect(x0="2007-12-01", x1="2009-09-31",
-                          annotation_text="Global Crisis", annotation_position="top left",
-                          annotation=dict(font_size=10, font_family="Times New Roman"),
-                          fillcolor="blue", opacity=0.25, line_width=0)
-
-            fig.add_vrect(x0="2001-02-01", x1="2002-02-31",
-                          annotation_text="Internet Bubble Crisis", annotation_position="top left",
-                          annotation=dict(font_size=10, font_family="Times New Roman"),
-                          fillcolor="blue", opacity=0.25, line_width=0)
-
-            st.plotly_chart(fig, config={'displayModeBar': False}, use_container_width=True)
+               
+          elif vrect == 'economic crises':
+               
+               fig.add_vrect(x0="2020-01-01", x1="2020-06-31", 
+                             annotation_text="Covid-19 Crisis", annotation_position="top left",
+                             annotation=dict(font_size=10, font_family="Times New Roman"),
+                             fillcolor="blue", opacity=0.25, line_width=0)
+               
+               fig.add_vrect(x0="2007-12-01", x1="2009-09-31", 
+                             annotation_text="Global Crisis", annotation_position="top left",
+                             annotation=dict(font_size=10, font_family="Times New Roman"),
+                             fillcolor="blue", opacity=0.25, line_width=0)
+               
+               fig.add_vrect(x0="2001-02-01", x1="2002-02-31", 
+                             annotation_text="Internet Bubble Crisis", annotation_position="top left",
+                             annotation=dict(font_size=10, font_family="Times New Roman"),
+                             fillcolor="blue", opacity=0.25, line_width=0)
+               
+               st.plotly_chart(fig, config=config, use_container_width=True)
 
                
           elif vrect == 'political parties':
@@ -335,8 +328,6 @@ def display_analytical_insights():
                              fillcolor="red", opacity=0.25, line_width=0)
                
                st.plotly_chart(fig, config=config, use_container_width=True)
-
-               
                
         
 def forecast():
