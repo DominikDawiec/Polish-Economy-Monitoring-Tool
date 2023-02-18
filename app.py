@@ -261,16 +261,16 @@ def analitical_insights():
               fig.add_vrect(x0="2020-01-01", x1="2020-06-31", 
                             annotation_text="Covid-19 Crisis", annotation_position="top left",
                             annotation=dict(font_size=10, font_family="Times New Roman", textangle=90),
-                            fillcolor="red", opacity=0.25, line_width=0)
+                            fillcolor="blue", opacity=0.25, line_width=0)
 
               fig.add_vrect(x0="2007-12-01", x1="2009-09-31", 
                             annotation_text="Global Crisis", annotation_position="top left",
-                            annotation=dict(font_size=10, font_family="Times New Roman", textangle=180),
+                            annotation=dict(font_size=10, font_family="Times New Roman", textangle=90),
                             fillcolor="green", opacity=0.25, line_width=0)
 
               fig.add_vrect(x0="2001-02-01", x1="2002-02-31", 
                             annotation_text="Internet Bubble Crisis", annotation_position="top left",
-                            annotation=dict(font_size=10, font_family="Times New Roman", textangle=230),
+                            annotation=dict(font_size=10, font_family="Times New Roman", textangle=90),
                             fillcolor="red", opacity=0.25, line_width=0)
 
               st.plotly_chart(fig, config=config, use_container_width=True)
@@ -280,32 +280,32 @@ def analitical_insights():
                
                fig.add_vrect(x0="1995-03-07", x1="1997-10-31", 
                              annotation_text="SLD-PSL", annotation_position="top left",
-                             annotation=dict(font_size=10, font_family="Times New Roman"),
+                             annotation=dict(font_size=10, font_family="Times New Roman", textangle=90),
                              fillcolor="blue", opacity=0.25, line_width=0)
                
                fig.add_vrect(x0="1997-11-01", x1="2001-10-19", 
                              annotation_text="AWS-UW", annotation_position="top left",
-                             annotation=dict(font_size=10, font_family="Times New Roman"),
+                             annotation=dict(font_size=10, font_family="Times New Roman", textangle=90),
                              fillcolor="green", opacity=0.25, line_width=0)
           
                fig.add_vrect(x0="2001-10-19", x1="2004-05-02", 
                              annotation_text="SLD-UP-PSL", annotation_position="top left",
-                             annotation=dict(font_size=10, font_family="Times New Roman"),
+                             annotation=dict(font_size=10, font_family="Times New Roman", textangle=90),
                              fillcolor="red", opacity=0.25, line_width=0)
           
                fig.add_vrect(x0="2004-05-02", x1="2005-10-19", 
                              annotation_text="SLD-UP", annotation_position="top left",
-                             annotation=dict(font_size=10, font_family="Times New Roman"),
+                             annotation=dict(font_size=10, font_family="Times New Roman", textangle=90),
                              fillcolor="yellow", opacity=0.25, line_width=0)
           
                fig.add_vrect(x0="2005-10-31", x1="2007-11-16", 
                              annotation_text="PiS-SO-LPR", annotation_position="top left",
-                             annotation=dict(font_size=10, font_family="Times New Roman"),
+                             annotation=dict(font_size=10, font_family="Times New Roman", textangle=90),
                              fillcolor="grey", opacity=0.25, line_width=0)
           
                fig.add_vrect(x0="2007-11-17", x1="2015-11-13", 
                              annotation_text="PO-PSL", annotation_position="top left",
-                             annotation=dict(font_size=10, font_family="Times New Roman"),
+                             annotation=dict(font_size=10, font_family="Times New Roman", textangle=90),
                              fillcolor="blue", opacity=0.25, line_width=0)
                
                today = date.today()
