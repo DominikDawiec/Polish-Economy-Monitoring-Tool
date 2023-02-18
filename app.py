@@ -208,7 +208,7 @@ def plot():
                 header = dict(
                      values = [['<b>CATEGORY</b>'],['<b>DESCRIPTION</b>']],
                      line_color='black',
-                     fill_color='#636EFA',
+                     fill_color='#5e5e5e',
                      align=['left'],
                      font=dict(color='white', size=12),
                      height=40),
