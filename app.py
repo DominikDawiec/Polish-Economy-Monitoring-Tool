@@ -189,7 +189,7 @@ def plot():
          cols[4].metric("Maximum value", f"{max_value:,}")
 
         
-    with st.container():
+    with st.expander("Variable Details"):
          st.subheader("📇 Variable Details")
 
          values = [['title', 'observation_start', 'observation_end', 'frequency', 'units', 'seasonal_adjustment', 'last_updated', 'notes'], #1st col
