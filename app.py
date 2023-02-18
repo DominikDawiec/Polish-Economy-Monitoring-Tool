@@ -471,7 +471,7 @@ def downloading_data():
             timeseries.to_excel(writer, sheet_name='Time Series Data')
             forecast.prec_ci.to_excel(writer, sheet_name='Precision Intervals')
             forecast.Test_Stationary.to_excel(writer, sheet_name='Stationarity Test Results')
-            forecast.Results_Summary.to_excel(writer, sheet_name='Forecast Summary')
+            #forecast.Results_Summary.to_excel(writer, sheet_name='Forecast Summary')
             
             # add additional information to a separate worksheet
             info_df = pd.DataFrame({'Variable Name': [chosen_variable_name],
