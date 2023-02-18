@@ -194,7 +194,7 @@ def plot():
                         values=[timeseries['date'], timeseries['value']],
                         font=dict(color='black'),
                         align=['left'],
-                        line_color='#6c757d',
+                        line_color='#5e5e5e',
                         fill_color='#fff'
                     ),
                 )]
