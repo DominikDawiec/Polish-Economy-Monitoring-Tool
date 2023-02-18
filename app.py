@@ -142,7 +142,7 @@ def plot():
                   line_color='black',
                   font=dict(color='white'),
                   align=['left'],
-                  fill_color='#636EFA'
+                  fill_color='#525252'
               ),
               cells=dict(
                   values=[timeseries['date'], timeseries['value']],
