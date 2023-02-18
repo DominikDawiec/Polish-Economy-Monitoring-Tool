@@ -505,12 +505,6 @@ timeseries = timeseries.drop(columns=['values','percentage change','value differ
 
 forecast()
 
-# Get the required attributes from the forecast dictionary
-pred_ci_1 = forecast['Forecast Confidence Interval 1']
-pred_ci = forecast['Forecast Confidence Interval 2']
-test_stationary = forecast['Test Stationary']
-Results_Summary = forecast['Results Summary']
-
 forecast_plot()
   
 downloading_data() 
