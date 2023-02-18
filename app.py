@@ -192,47 +192,41 @@ def plot():
     with st.container():
          st.subheader("📇 Variable Details")
 
-         values = [        ['Title', 'Observation Start', 'Observation End', 'Frequency', 'Units', 'Seasonal Adjustment', 'Last Updated', 'Notes'], # 1st col
-             [            info_1['title'].iat[-1],
-                 info_1['observation_start'].iat[-1],
-                 info_1['observation_end'].iat[-1],
-                 info_1['frequency'].iat[-1],
-                 info_1['units'].iat[-1],
-                 info_1['seasonal_adjustment'].iat[-1],
-                 info_1['last_updated'].iat[-1],
-                 info_1['notes'].iat[-1]
-             ]
-         ]
-
+         values = [['title', 'observation_start', 'observation_end', 'frequency', 'units', 'seasonal_adjustment', 'last_updated', 'notes'], #1st col
+                   [info_1['title'].iat[-1],
+                   info_1['observation_start'].iat[-1],
+                   info_1['observation_end'].iat[-1],
+                   info_1['frequency'].iat[-1],
+                   info_1['units'].iat[-1],
+                   info_1['seasonal_adjustment'].iat[-1],
+                   info_1['last_updated'].iat[-1],
+                   #info_2['link'].iat[-1],
+                   info_1['notes'].iat[-1]]]
          fig = go.Figure(data=[go.Table(
-             columnorder=[1,2],
-             columnwidth=[100,450],
-             header=dict(
-                 values=[['<b>CATEGORY</b>'], ['<b>DESCRIPTION</b>']],
-                 line_color='white',
-                 fill_color='#3366CC',
-                 align=['center'],
-                 font=dict(color='white', size=13),
-                 height=35
-             ),
-             cells=dict(
-                 values=values,
-                 line_color='#707070',
-                 fill=dict(color=['#F5F5F5', 'white']),
-                 align=['left'],
-                 font=dict(color='#1f1f1f', size=13),
-                 height=32
-             ))
-         ])
-
-         fig.update_layout(
-             margin=dict(r=5, l=5, t=5, b=0),
-             height=140
-         )
-
+                columnorder = [1,2],
+                columnwidth = [150,500],
+                header = dict(
+                     values = [['<b>CATEGORY</b>'],['<b>DESCRIPTION</b>']],
+                     line_color='white',
+                     fill_color='#E8E8E8',
+                     align=['left'],
+                     font=dict(color='black', size=12),
+                     height=50),
+                cells=dict(
+                     values=values,
+                     line_color='white',
+                     fill=dict(color=['white', '#E8E8E8']),
+                     align=['left'],
+                     font=dict(color='black'),
+                     font_size=12,
+                     height=40))])
+         fig.update_layout(margin=dict(r=5, l=5, t=5, b=0))
          config = {'displayModeBar': False}
+         fig.update_yaxes(visible=False, showticklabels=False)
+         fig.update_xaxes(visible=False, showticklabels=False)
 
          st.plotly_chart(fig, config=config, use_container_width=True)
+
 
 
 
