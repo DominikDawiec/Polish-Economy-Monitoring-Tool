@@ -102,107 +102,56 @@ def download_data(variable):
     info_1.replace(r'\s+', np.nan, regex=True)
     download_data.info_2 = info_2
 
+# Setting function Creating Plot
 def plot():
-    
-    with st.expander("Variable Details"):
-         st.subheader("📇 Variable Details")
+     with st.container():
+          tab1, tab2 = st.tabs(["📈 Historical Chart", "💾 Historical Data"])
+          with tab1:
+          st.subheader("📈 Historical Chart")
+          fig = px.line(timeseries, x='date', y="value")
 
-         values = [['title', 'observation_start', 'observation_end', 'frequency', 'units', 'seasonal_adjustment', 'last_updated', 'notes'], #1st col
-                   [info_1['title'].iat[-1],
-                   info_1['observation_start'].iat[-1],
-                   info_1['observation_end'].iat[-1],
-                   info_1['frequency'].iat[-1],
-                   info_1['units'].iat[-1],
-                   info_1['seasonal_adjustment'].iat[-1],
-                   info_1['last_updated'].iat[-1],
-                   #info_2['link'].iat[-1],
-                   info_1['notes'].iat[-1]]]
-         fig = go.Figure(data=[go.Table(
-                columnorder = [1,2],
-                columnwidth = [100,450],
-                header = dict(
-                     values = [['<b>CATEGORY</b>'],['<b>DESCRIPTION</b>']],
-                     line_color='black',
-                     fill_color='#5e5e5e',
-                     align=['left'],
-                     font=dict(color='white', size=12),
-                     height=40),
-                cells=dict(
-                     values=values,
-                     line_color='black',
-                     fill=dict(color=['#F5F5F5', 'white']),
-                     align=['left'],
-                     font=dict(color='black'),
-                     font_size=12,
-                     height=30))])
-         fig.update_layout(margin=dict(r=5, l=5, t=5, b=0))
-         config = {'displayModeBar': False}
-         fig.update_yaxes(visible=False, showticklabels=False)
-         fig.update_xaxes(visible=False, showticklabels=False)
-
-         st.plotly_chart(fig, config=config, use_container_width=True, height='100%')
-     
-    with st.container():
-         tab1, tab2 = st.tabs(["📈 Historical Chart", "💾 Historical Data"])
-         with tab1:
-             st.subheader("📈 Historical Chart")
-             fig = px.line(timeseries, x='date', y="value")
-
-             fig.update_layout(
-                 hovermode="x",
-                 margin=dict(r=5, l=5, t=5, b=5),
-                 xaxis=dict(
-                     rangeslider=dict(visible=True),
-                     rangeselector=dict(
-                         buttons=list([
-                             dict(count=6, label="6m", step="month", stepmode="backward"),
-                             dict(count=1, label="1y", step="year", stepmode="backward"),
-                             dict(count=5, label="5y", step="year", stepmode="backward"),
-                             dict(count=10, label="10y", step="year", stepmode="backward"),
-                             dict(step="all")]),
-                         font=dict(color="#5e5e5e")
-                     ),
-                     title=dict(text="Date", font=dict(color="#6c757d")),
-                     showgrid=False,
-                     color="#6c757d"
-                 ),
-                 yaxis=dict(
-                     title=dict(text="Value", font=dict(color="#6c757d")),
-                     showticklabels=False,
-                     showgrid=False,
-                     color="#6c757d"
-                 ),
-                 config = {'displayModeBar': False}
-             )
-
-             st.plotly_chart(fig, config=config, use_container_width=True)
-
-         with tab2:
-          st.subheader("💾 Historical Data")
-          fig = go.Figure(
-               data=[go.Table(
-                    header=dict(
-                         values=['<b>DATE<b>', '<b>VALUE<b>'],
-                         line_color='#6c757d',
-                         font=dict(color='#fff'),
-                         align=['left'],
-                         fill_color='#343a40'),
-                    cells=dict(
-                         values=[timeseries['date'], timeseries['value']],
-                         font=dict(color='black'),
-                         align=['left'],
-                         line_color='#5e5e5e',
-                         fill_color='#fff'),)])
-          
           fig.update_layout(
-               margin=dict(r=5, l=5, t=5, b=5),
-               plot_bgcolor="#fff",
-               paper_bgcolor="#fff")
+               # yaxis_title='Value',
+               # xaxis_title='Date',
+               hovermode="x")
+          
+          fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
+          fig.update_yaxes(visible=False, showticklabels=False)
           config = {'displayModeBar': False}
 
+          fig.update_xaxes(rangeslider_visible=True)
+                              
+          fig.update_xaxes(
+               rangeslider_visible=True,
+               rangeselector=dict(
+                    buttons=list([
+                         dict(count=6, label="6m", step="month", stepmode="backward"),
+                         dict(count=1, label="1y", step="year", stepmode="backward"),
+                         dict(count=5, label="5y", step="year", stepmode="backward"),
+                         dict(count=10, label="10y", step="year", stepmode="backward"),
+                         dict(step="all")])))
+          st.plotly_chart(fig, config=config, use_container_width=True)
+                
+     with tab2:
+          st.subheader("💾 Historical Data")
+     
+          fig = go.Figure(data=[go.Table(header=dict(values=['<b>DATE<b>', '<b>VALUE<b>'], 
+                                                line_color='black',
+                                                font=dict(color='white'),
+                                                align=['left'],
+                                                fill_color='#636EFA'),
+                                    cells=dict(values=[timeseries['date'], timeseries['value']], 
+                                               font=dict(color='black'),
+                                               align=['left'],
+                                               line_color='black',
+                                               fill_color='white'))])
+     
+          fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
+          config = {'displayModeBar': False}
+          
           st.plotly_chart(fig, config=config, use_container_width=True)
           
-         with st.container():
+     with st.container():
           st.subheader("📟 Key Performance Indicators")
 
          # Creating values for KPIs
