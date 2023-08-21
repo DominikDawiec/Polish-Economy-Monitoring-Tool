@@ -347,8 +347,8 @@ def forecast():
      
      forecast.prec_ci_1 = pred_ci
      
-     # Get forecast 3 years ahead in future
-     pred_uc = results.get_forecast(steps=36)
+     # Get forecast 6 months ahead in future
+     pred_uc = results.get_forecast(steps=6)
      
      # Get confidence intervals of forecasts
      pred_ci = pred_uc.conf_int()
