@@ -655,3 +655,5 @@ timeseries = timeseries.drop(columns=['values','percentage change','value differ
 
 forecast()
 forecast_plot()
+
+integrated_forecast()
