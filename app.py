@@ -319,7 +319,11 @@ def analitical_insights():
                st.plotly_chart(fig, config=config, use_container_width=True)
                
         
-def forecast():
+def forecast(timeseries=None):
+     if timeseries is None:
+          st.warning("Please provide a valid timeseries dataset.")
+          return
+
      st.subheader("🔮 Variable Forecast")
 
      def testStationarity(ts):
@@ -332,10 +336,10 @@ def forecast():
      testStationarity(timeseries.value)
 
      mod = sm.tsa.statespace.SARIMAX(timeseries,
-                                     order=(1, 1, 0),
-                                     seasonal_order=(0, 1, 1, 12),
-                                     enforce_stationarity=False,
-                                     enforce_invertibility=False)
+                                    order=(1, 1, 0),
+                                    seasonal_order=(0, 1, 1, 12),
+                                    enforce_stationarity=False,
+                                    enforce_invertibility=False)
      results = mod.fit()
 
      pred = results.get_prediction(start=pd.to_datetime('2016-01-01'), dynamic=False)
@@ -343,21 +347,13 @@ def forecast():
 
      pred_ci['predicted'] = (pred_ci['lower value'] + pred_ci['upper value']) / 2
      pred_ci['observed'] = timeseries['value']
-     pred_ci['diff, %%'] = ((pred_ci['predicted'] / pred_ci['observed']) - 1) * 100
 
-     # Visualize the prediction
-     fig1 = go.Figure()
-     fig1.add_trace(go.Scatter(x=pred_ci.index, y=pred_ci['observed'], mode='lines', name='Observed'))
-     fig1.add_trace(go.Scatter(x=pred_ci.index, y=pred_ci['predicted'], mode='lines', name='Predicted'))
-     st.plotly_chart(fig1)
-
-     # Get forecast 1 year ahead in future
-     pred_uc = results.get_forecast(steps=12)
+     # Get forecast 3 years ahead in future
+     pred_uc = results.get_forecast(steps=36)
 
      # Get confidence intervals of forecasts
-     pred_ci = pred_uc.conf_int()
-
-     pred_ci['Mean'] = (pred_ci['lower value'] + pred_ci['upper value']) / 2
+     forecast_ci = pred_uc.conf_int()
+     forecast_ci['Mean'] = (forecast_ci['lower value'] + forecast_ci['upper value']) / 2
 
      # Visualize the historical data and forecast together
      fig = go.Figure()
