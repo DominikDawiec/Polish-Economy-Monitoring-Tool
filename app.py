@@ -1,5 +1,3 @@
-SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=True
-
 import pandas as pd
 import numpy as np
 
@@ -22,6 +20,8 @@ import warnings
 
 from pylab import rcParams  
 
+import cufflinks
+
 from statsmodels.tsa.stattools import adfuller
 import statsmodels.api as sm
 
@@ -41,7 +41,7 @@ st.set_page_config(
 # Main page
 st.title("📊 Polish Economy Monitoring Tool")
 st.subheader("Real-time Monitoring and Analysis of Economic Indicators")
-st.write("Welcome to the Polish Economic Dashboard, a tool for tracking and analyzing key economic indicators for Poland. With my app, you can stay up-to-date on the latest trends in the Polish economy and make informed decisions based on real-time data.")
+st.write("Welcome to the Polish Economic Dashboard, a tool for tracking and analyzing key economic indicators for Poland. With our app, you can stay up-to-date on the latest trends in the Polish economy and make informed decisions based on real-time data.")
 
 st.subheader("Get Started")
 st.write("To start exploring the app, simply select an indicator from the dropdown menu below.")
@@ -89,7 +89,7 @@ def download_data(variable):
     timeseries['date'] = timeseries['date'].dt.date
     timeseries['value'] = pd.to_numeric(timeseries['value'],errors = 'coerce')
     timeseries = timeseries.drop(['realtime_start', 'realtime_end'], axis=1)
-    #timeseries.dropna(axis=0,how='any',thresh=None,subset=None,inplace=True)
+    timeseries.dropna(axis=0,how='any',thresh=None,subset=None,inplace=True)
     download_data.timeseries = timeseries
     
     info_1 = fred.search(variable)
@@ -321,52 +321,44 @@ def analitical_insights():
         
 def forecast():
      st.subheader("🔮 Variable Forecast")
-
+     init_notebook_mode(connected=True)
      def testStationarity(ts):
           dftest = adfuller(ts)
-          dfoutput = pd.Series(dftest[0:4], index=['Test Statistic', 'p-value', '#Lags Used', 'Number of Observations Used'])
-          for key, value in dftest[4].items():
-               dfoutput['Critical Value (%s)' % key] = value
+          dfoutput = pd.Series(dftest[0:4], index=['Test Statistic','p-value','#Lags Used','Number of Observations Used'])
+          for key,value in dftest[4].items():
+               dfoutput['Critical Value (%s)'%key] = value
           return dfoutput
-
+     
      testStationarity(timeseries.value)
-
+     
      mod = sm.tsa.statespace.SARIMAX(timeseries,
                                      order=(1, 1, 0),
                                      seasonal_order=(0, 1, 1, 12),
                                      enforce_stationarity=False,
                                      enforce_invertibility=False)
      results = mod.fit()
-
+     
      pred = results.get_prediction(start=pd.to_datetime('2016-01-01'), dynamic=False)
      pred_ci = pred.conf_int()
-
-     pred_ci['predicted'] = (pred_ci['lower value'] + pred_ci['upper value']) / 2
+     
+     pred_ci['predicted'] = (pred_ci['lower value'] + pred_ci['upper value'])/2
      pred_ci['observed'] = timeseries['value']
-     pred_ci['diff, %%'] = ((pred_ci['predicted'] / pred_ci['observed']) - 1) * 100
-
-     # Visualize the prediction
-     fig1 = go.Figure()
-     fig1.add_trace(go.Scatter(x=pred_ci.index, y=pred_ci['observed'], mode='lines', name='Observed'))
-     fig1.add_trace(go.Scatter(x=pred_ci.index, y=pred_ci['predicted'], mode='lines', name='Predicted'))
-     st.plotly_chart(fig1)
-
-     # Get forecast 6 months ahead in future
-     pred_uc = results.get_forecast(steps=6)
-
+     pred_ci['diff, %%'] = ((pred_ci['predicted'] / pred_ci['observed'])-1) * 100
+     
+     forecast.prec_ci_1 = pred_ci
+     
+     # Get forecast 3 years ahead in future
+     pred_uc = results.get_forecast(steps=36)
+     
      # Get confidence intervals of forecasts
      pred_ci = pred_uc.conf_int()
-
-     pred_ci['Mean'] = (pred_ci['lower value'] + pred_ci['upper value']) / 2
-
-     # Visualize the forecast
-     fig2 = go.Figure()
-     fig2.add_trace(go.Scatter(x=pred_ci.index, y=pred_ci['Mean'], mode='lines', name='Forecast'))
-     fig2.add_trace(go.Scatter(x=pred_ci.index, y=pred_ci['lower value'], mode='lines', name='Lower Bound', line=dict(dash='dash')))
-     fig2.add_trace(go.Scatter(x=pred_ci.index, y=pred_ci['upper value'], mode='lines', name='Upper Bound', line=dict(dash='dash')))
-     st.plotly_chart(fig2)
-
+     
+     pred_ci['Mean'] = (pred_ci['lower value'] + pred_ci['upper value'])/2
+     
+     forecast.prec_ci = pred_ci
+     
      forecast.Test_Stationary = testStationarity(timeseries.value)
+     
      forecast.Results_Summary = results.summary()
 
 def forecast_plot():
@@ -465,7 +457,8 @@ def forecast_plot():
                # Display the forecast confidence interval 2
                st.write('Forecast Confidence Interval 2:')
                st.dataframe(pred_ci)
-             
+               
+               
 def downloading_data():
     with st.container():
         st.subheader("📥 Download Data")
@@ -524,3 +517,13 @@ timeseries = timeseries.set_index(['date'])
 timeseries = timeseries.drop(columns=['values','percentage change','value difference'])
 
 forecast()
+
+#saving attributes outside function for further use
+pred_ci_1 = forecast.prec_ci_1
+pred_ci = forecast.prec_ci 
+Test_Stationary = forecast.Test_Stationary # dataframe
+Results_Summary = forecast.Results_Summary # st write
+
+forecast_plot()
+  
+downloading_data() 
