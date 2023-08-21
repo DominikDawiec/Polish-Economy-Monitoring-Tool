@@ -369,6 +369,8 @@ def forecast():
      forecast.Test_Stationary = testStationarity(timeseries.value)
      forecast.Results_Summary = results.summary()
 
+     return pred_ci, forecast.prec_ci, testStationarity(timeseries.value), results.summary()
+
 def forecast_plot():
      with st.container():
           tab1, tab2, tab3 = st.tabs(["📈 Forecast Chart", "💾 Forecast Data", "🤖 Model Details"])
@@ -524,14 +526,12 @@ timeseries_extra = timeseries #for download excel
 timeseries = timeseries.set_index(['date'])
 timeseries = timeseries.drop(columns=['values','percentage change','value difference'])
 
-forecast()
+pred_ci_1, pred_ci, Test_Stationary, Results_Summary = forecast()
 
-#saving attributes outside function for further use
-pred_ci_1 = forecast.prec_ci_1
-pred_ci = forecast.prec_ci 
-Test_Stationary = forecast.Test_Stationary # dataframe
-Results_Summary = forecast.Results_Summary # st write
+# If using the attributes elsewhere, ensure they are not None
+if Results_Summary:
+    st.write(Results_Summary)
 
+# Assuming you have forecast_plot() and downloading_data() functions defined somewhere
 forecast_plot()
-  
-downloading_data() 
+downloading_data()
