@@ -1,3 +1,5 @@
+SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=True
+
 import pandas as pd
 import numpy as np
 
