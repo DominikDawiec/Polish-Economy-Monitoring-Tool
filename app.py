@@ -41,7 +41,7 @@ st.set_page_config(
 # Main page
 st.title("📊 Polish Economy Monitoring Tool")
 st.subheader("Real-time Monitoring and Analysis of Economic Indicators")
-st.write("Welcome to the Polish Economic Dashboard, a tool for tracking and analyzing key economic indicators for Poland. With our app, you can stay up-to-date on the latest trends in the Polish economy and make informed decisions based on real-time data.")
+st.write("Welcome to the Polish Economic Dashboard, a tool for tracking and analyzing key economic indicators for Poland. With my app, you can stay up-to-date on the latest trends in the Polish economy and make informed decisions based on real-time data.")
 
 st.subheader("Get Started")
 st.write("To start exploring the app, simply select an indicator from the dropdown menu below.")
