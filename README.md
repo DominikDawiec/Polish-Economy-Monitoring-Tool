@@ -18,7 +18,7 @@ To see the website, please click on the [LINK](https://dominikdawiec-polish-econ
 
 ### Technologies
 * Python
-* Streamplit
+* Streamlit
 * Numpy, Pandas
 * Plotly
 
