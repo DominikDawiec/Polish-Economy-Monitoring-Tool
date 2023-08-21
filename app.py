@@ -460,41 +460,33 @@ def forecast_plot():
                
                
 def downloading_data():
-    with st.container():
-        st.subheader("📥 Download Data")
-        st.info('You may download data regarding chosen variable', icon="ℹ️")
-        
-        # create Excel file
-        buffer = io.BytesIO()
-        with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
-            # write each dataframe to a different worksheet
-            timeseries.to_excel(writer, sheet_name='Time Series Data')
-            forecast.prec_ci.to_excel(writer, sheet_name='Precision Intervals')
-            forecast.Test_Stationary.to_excel(writer, sheet_name='Stationarity Test Results')
-            #forecast.Results_Summary.to_excel(writer, sheet_name='Forecast Summary')
-            
-            # add additional information to a separate worksheet
-            info_df = pd.DataFrame({'Variable Name': [chosen_variable_name],
-                                    'Info 1': [info_1],
-                                    'Info 2': [info_2]})
-            info_df.to_excel(writer, sheet_name='Additional Info')
-            
-        # close the Pandas Excel writer and output the Excel file to the buffer
-        with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
-             writer.save()
-        
-        # download button
-        st.download_button(
-            label="Download Excel worksheets",
-            data=buffer,
-            file_name=f"{chosen_variable_name}.xlsx",
-            mime="application/vnd.ms-excel")
-
-
+     with st.container():
+          st.subheader("📥 Download Data")
+          st.info('You may download data regarding chosen variable', icon="ℹ️")
           
+          # create Excel file
+          buffer = io.BytesIO()
+          with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+               # write each dataframe to a different worksheet
+               timeseries.to_excel(writer, sheet_name='Time Series Data')
+               forecast.prec_ci.to_excel(writer, sheet_name='Precision Intervals')
+               forecast.Test_Stationary.to_excel(writer, sheet_name='Stationarity Test Results')
+               #forecast.Results_Summary.to_excel(writer, sheet_name='Forecast Summary')
+            
+               # add additional information to a separate worksheet
+               info_df = pd.DataFrame({'Variable Name': [chosen_variable_name],
+                                       'Info 1': [info_1],
+                                       'Info 2': [info_2]})
+               info_df.to_excel(writer, sheet_name='Additional Info')
+        
+          # download button
+          st.download_button(
+               label="Download Excel worksheets",
+               data=buffer,
+               file_name=f"{chosen_variable_name}.xlsx",
+               mime="application/vnd.ms-excel")
+
 # =====================================================================================================
-
-
 
 download_data(variable_ID)
 
