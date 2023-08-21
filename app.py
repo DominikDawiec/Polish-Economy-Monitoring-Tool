@@ -480,7 +480,8 @@ def downloading_data():
             info_df.to_excel(writer, sheet_name='Additional Info')
             
         # close the Pandas Excel writer and output the Excel file to the buffer
-        writer.save()
+        with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+             writer.save()
         
         # download button
         st.download_button(
