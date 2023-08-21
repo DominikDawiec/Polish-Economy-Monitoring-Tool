@@ -369,11 +369,6 @@ def forecast():
      forecast.Test_Stationary = testStationarity(timeseries.value)
      forecast.Results_Summary = results.summary()
 
-     # Display model info
-     st.text("Model Summary:")
-     st.write(forecast.Results_Summary.tables[0])
-     st.write(forecast.Results_Summary.tables[1])
-
 def forecast_plot():
      with st.container():
           tab1, tab2, tab3 = st.tabs(["📈 Forecast Chart", "💾 Forecast Data", "🤖 Model Details"])
@@ -529,4 +524,3 @@ timeseries = timeseries.set_index(['date'])
 timeseries = timeseries.drop(columns=['values','percentage change','value difference'])
 
 forecast()
-forecast_plot()
