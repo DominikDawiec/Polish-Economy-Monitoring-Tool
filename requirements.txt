@@ -7,3 +7,4 @@ matplotlib
 fred
 fredapi
 xlsxwriter
+statsmodels
