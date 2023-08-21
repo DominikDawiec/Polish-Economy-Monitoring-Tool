@@ -525,3 +525,4 @@ timeseries = timeseries.set_index(['date'])
 timeseries = timeseries.drop(columns=['values','percentage change','value difference'])
 
 forecast()
+forecast_plot()
