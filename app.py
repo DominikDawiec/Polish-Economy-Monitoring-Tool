@@ -320,6 +320,7 @@ def analitical_insights():
                
         
 def forecast():
+     forecast.pred_ci = pred_ci
      st.subheader("🔮 Variable Forecast")
 
      def testStationarity(ts):
@@ -525,4 +526,5 @@ timeseries = timeseries.set_index(['date'])
 timeseries = timeseries.drop(columns=['values','percentage change','value difference'])
 
 forecast()
+pred_ci = forecast.pred_ci
 forecast_plot()
