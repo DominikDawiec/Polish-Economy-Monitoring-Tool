@@ -321,45 +321,53 @@ def analitical_insights():
         
 def forecast():
      st.subheader("🔮 Variable Forecast")
-     init_notebook_mode(connected=True)
-     def testStationarity(ts):
-          dftest = adfuller(ts)
-          dfoutput = pd.Series(dftest[0:4], index=['Test Statistic','p-value','#Lags Used','Number of Observations Used'])
-          for key,value in dftest[4].items():
-               dfoutput['Critical Value (%s)'%key] = value
-          return dfoutput
-     
-     testStationarity(timeseries.value)
-     
-     mod = sm.tsa.statespace.SARIMAX(timeseries,
-                                     order=(1, 1, 0),
-                                     seasonal_order=(0, 1, 1, 12),
-                                     enforce_stationarity=False,
-                                     enforce_invertibility=False)
-     results = mod.fit()
-     
-     pred = results.get_prediction(start=pd.to_datetime('2016-01-01'), dynamic=False)
-     pred_ci = pred.conf_int()
-     
-     pred_ci['predicted'] = (pred_ci['lower value'] + pred_ci['upper value'])/2
-     pred_ci['observed'] = timeseries['value']
-     pred_ci['diff, %%'] = ((pred_ci['predicted'] / pred_ci['observed'])-1) * 100
-     
-     forecast.prec_ci_1 = pred_ci
-     
-     # Get forecast 3 years ahead in future
-     pred_uc = results.get_forecast(steps=36)
-     
-     # Get confidence intervals of forecasts
-     pred_ci = pred_uc.conf_int()
-     
-     pred_ci['Mean'] = (pred_ci['lower value'] + pred_ci['upper value'])/2
-     
-     forecast.prec_ci = pred_ci
-     
-     forecast.Test_Stationary = testStationarity(timeseries.value)
-     
-     forecast.Results_Summary = results.summary()
+
+    def testStationarity(ts):
+        dftest = adfuller(ts)
+        dfoutput = pd.Series(dftest[0:4], index=['Test Statistic', 'p-value', '#Lags Used', 'Number of Observations Used'])
+        for key, value in dftest[4].items():
+            dfoutput['Critical Value (%s)' % key] = value
+        return dfoutput
+
+    testStationarity(timeseries.value)
+
+    mod = sm.tsa.statespace.SARIMAX(timeseries,
+                                    order=(1, 1, 0),
+                                    seasonal_order=(0, 1, 1, 12),
+                                    enforce_stationarity=False,
+                                    enforce_invertibility=False)
+    results = mod.fit()
+
+    pred = results.get_prediction(start=pd.to_datetime('2016-01-01'), dynamic=False)
+    pred_ci = pred.conf_int()
+
+    pred_ci['predicted'] = (pred_ci['lower value'] + pred_ci['upper value']) / 2
+    pred_ci['observed'] = timeseries['value']
+    pred_ci['diff, %%'] = ((pred_ci['predicted'] / pred_ci['observed']) - 1) * 100
+
+    # Visualize the prediction
+    fig1 = go.Figure()
+    fig1.add_trace(go.Scatter(x=pred_ci.index, y=pred_ci['observed'], mode='lines', name='Observed'))
+    fig1.add_trace(go.Scatter(x=pred_ci.index, y=pred_ci['predicted'], mode='lines', name='Predicted'))
+    st.plotly_chart(fig1)
+
+    # Get forecast 3 years ahead in future
+    pred_uc = results.get_forecast(steps=36)
+
+    # Get confidence intervals of forecasts
+    pred_ci = pred_uc.conf_int()
+
+    pred_ci['Mean'] = (pred_ci['lower value'] + pred_ci['upper value']) / 2
+
+    # Visualize the forecast
+    fig2 = go.Figure()
+    fig2.add_trace(go.Scatter(x=pred_ci.index, y=pred_ci['Mean'], mode='lines', name='Forecast'))
+    fig2.add_trace(go.Scatter(x=pred_ci.index, y=pred_ci['lower value'], mode='lines', name='Lower Bound', line=dict(dash='dash')))
+    fig2.add_trace(go.Scatter(x=pred_ci.index, y=pred_ci['upper value'], mode='lines', name='Upper Bound', line=dict(dash='dash')))
+    st.plotly_chart(fig2)
+
+    forecast.Test_Stationary = testStationarity(timeseries.value)
+    forecast.Results_Summary = results.summary()
 
 def forecast_plot():
      with st.container():
