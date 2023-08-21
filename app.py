@@ -22,8 +22,6 @@ import warnings
 
 from pylab import rcParams  
 
-import cufflinks
-
 from statsmodels.tsa.stattools import adfuller
 import statsmodels.api as sm
 
