@@ -272,11 +272,6 @@ def analitical_insights():
                             annotation_text="Internet Bubble Crisis", annotation_position="top left",
                             annotation=dict(font_size=10, font_family="Times New Roman", textangle=90),
                             fillcolor="red", opacity=0.25, line_width=0)
-               
-               fig.add_vrect(x0="2022-02-24", x1="2022-03-31", 
-                             annotation_text="Russian invasion of Ukraine", annotation_position="top left",
-                             annotation=dict(font_size=10, font_family="Times New Roman", textangle=90),
-                             fillcolor="grey", opacity=0.25, line_width=0)
 
               st.plotly_chart(fig, config=config, use_container_width=True)
 
