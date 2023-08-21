@@ -351,8 +351,8 @@ def forecast():
      fig1.add_trace(go.Scatter(x=pred_ci.index, y=pred_ci['predicted'], mode='lines', name='Predicted'))
      st.plotly_chart(fig1)
 
-     # Get forecast 3 years ahead in future
-     pred_uc = results.get_forecast(steps=36)
+     # Get forecast 6 months ahead in future
+     pred_uc = results.get_forecast(steps=6)
 
      # Get confidence intervals of forecasts
      pred_ci = pred_uc.conf_int()
@@ -368,8 +368,6 @@ def forecast():
 
      forecast.Test_Stationary = testStationarity(timeseries.value)
      forecast.Results_Summary = results.summary()
-
-     return pred_ci, forecast.prec_ci, testStationarity(timeseries.value), results.summary()
 
 def forecast_plot():
      with st.container():
