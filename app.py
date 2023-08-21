@@ -466,7 +466,136 @@ def forecast_plot():
                st.write('Forecast Confidence Interval 2:')
                st.dataframe(pred_ci)
                
+
+def integrated_forecast(timeseries):
+     st.subheader("🔮 Variable Forecast")
+
+     # Stationarity Test
+     def testStationarity(ts):
+          dftest = adfuller(ts)
+          dfoutput = pd.Series(dftest[0:4], index=['Test Statistic', 'p-value', '#Lags Used', 'Number of Observations Used'])
+          for key, value in dftest[4].items():
+               dfoutput['Critical Value (%s)' % key] = value
+          return dfoutput
+
+     test_stationary = testStationarity(timeseries.value)
+
+     # Model
+     mod = sm.tsa.statespace.SARIMAX(timeseries,
+                                     order=(1, 1, 0),
+                                     seasonal_order=(0, 1, 1, 12),
+                                     enforce_stationarity=False,
+                                     enforce_invertibility=False)
+     results = mod.fit()
+     Results_Summary = results.summary()
+
+     # Prediction
+     pred = results.get_prediction(start=pd.to_datetime('2016-01-01'), dynamic=False)
+     pred_ci_1 = pred.conf_int()
+
+     pred_ci_1['predicted'] = (pred_ci_1['lower value'] + pred_ci_1['upper value']) / 2
+     pred_ci_1['observed'] = timeseries['value']
+     pred_ci_1['diff, %%'] = ((pred_ci_1['predicted'] / pred_ci_1['observed']) - 1) * 100
+
+     # Forecast
+     pred_uc = results.get_forecast(steps=6)
+     pred_ci = pred_uc.conf_int()
+     pred_ci['Mean'] = (pred_ci['lower value'] + pred_ci['upper value']) / 2
+
+     # Forecast Plotting
+     with st.container():
+          tab1, tab2, tab3 = st.tabs(["📈 Forecast Chart", "💾 Forecast Data", "🤖 Model Details"])
+
+          # Forecast Chart Tab
+          with tab1:
+               st.subheader("📈 Forecast Chart")
+               st.info('This forecast is based on a seasonal ARIMA model.', icon="ℹ️")
+               fig = go.Figure([
+                    go.Scatter(
+                         name='forecast',
+                         x=pred_ci.index,
+                         y=pred_ci['Mean'],
+                         mode='lines',
+                         line=dict(color='#787fde'),),
+                    go.Scatter(
+                         name='upper bound',
+                         x=pred_ci.index,
+                         y=pred_ci['upper value'],
+                         mode='lines',
+                         marker=dict(color="#a4a9ed"),
+                         line=dict(width=0),
+                         showlegend=False),
+                    go.Scatter(
+                         name='lower bound',
+                         x=pred_ci.index,
+                         y=pred_ci['lower value'],
+                         marker=dict(color="#a4a9ed"),
+                         line=dict(width=0),
+                         mode='lines',
+                         fillcolor='rgba(68, 68, 68, 0.3)',
+                         fill='tonexty',
+                         showlegend=False),
+                    go.Scatter(
+                         name='hist. value',
+                         x=timeseries.index,
+                         y=timeseries['value'],
+                         mode='lines',
+                         line=dict(color='#606bf3'),)])
                
+               fig.update_layout(hovermode="x")
+               
+               fig.update_xaxes(rangeslider_visible=True)
+               
+               fig.update_xaxes(
+                    rangeslider_visible=True,
+                    rangeselector=dict(
+                         buttons=list([
+                              dict(count=6, label="6m", step="month", stepmode="backward"),
+                              dict(count=1, label="1y", step="year", stepmode="backward"),
+                              dict(count=5, label="5y", step="year", stepmode="backward"),
+                              dict(count=10, label="10y", step="year", stepmode="backward"),
+                              dict(step="all")])))
+               
+               fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
+               fig.update_yaxes(visible=False, showticklabels=False)
+               config = {'displayModeBar': False}
+               
+               fig.update_layout(legend=dict(orientation="h",yanchor="bottom",y=1.02,xanchor="right",x=1))
+               
+               st.plotly_chart(fig, config=config, use_container_width=True)
+
+
+          # Forecast Data Tab
+          with tab2:
+               st.subheader("💾 Forecast Data")
+               st.info('This forecast is based on a seasonal ARIMA model.', icon="ℹ️")
+               
+               fig = go.Figure(data=[go.Table(header=dict(values=['<b>DATE<b>', '<b>LOWER VALUE<b>', '<b>UPPER VALUE<b>', '<b>MEAN<b>'], 
+                                                          line_color='black',
+                                                          font=dict(color='white'),
+                                                          align=['left'],
+                                                          fill_color='#808080'),
+                                              cells=dict(values=[pred_ci.index, pred_ci['lower value'], pred_ci['upper value'], pred_ci['Mean']], 
+                                                         font=dict(color='black'),
+                                                         align=['left'],
+                                                         line_color='black',
+                                                         fill_color='white'))])
+               fig.update_layout(margin=dict(r=5, l=5, t=5, b=5))
+               config = {'displayModeBar': False}
+               
+               st.plotly_chart(fig, config=config, use_container_width=True)
+
+          # Model Details Tab
+          with tab3:
+               st.write('Summary of the model results:')
+               st.code(Results_Summary)
+
+               st.write('Forecast Confidence Interval 1:')
+               st.dataframe(pred_ci_1)
+
+               st.write('Forecast Confidence Interval 2:')
+               st.dataframe(pred_ci)
+             
 def downloading_data():
     with st.container():
         st.subheader("📥 Download Data")
