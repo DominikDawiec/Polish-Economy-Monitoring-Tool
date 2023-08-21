@@ -319,11 +319,7 @@ def analitical_insights():
                st.plotly_chart(fig, config=config, use_container_width=True)
                
         
-def forecast(timeseries=None):
-     if timeseries is None:
-          st.warning("Please provide a valid timeseries dataset.")
-          return
-
+def forecast():
      st.subheader("🔮 Variable Forecast")
 
      def testStationarity(ts):
@@ -336,10 +332,10 @@ def forecast(timeseries=None):
      testStationarity(timeseries.value)
 
      mod = sm.tsa.statespace.SARIMAX(timeseries,
-                                    order=(1, 1, 0),
-                                    seasonal_order=(0, 1, 1, 12),
-                                    enforce_stationarity=False,
-                                    enforce_invertibility=False)
+                                     order=(1, 1, 0),
+                                     seasonal_order=(0, 1, 1, 12),
+                                     enforce_stationarity=False,
+                                     enforce_invertibility=False)
      results = mod.fit()
 
      pred = results.get_prediction(start=pd.to_datetime('2016-01-01'), dynamic=False)
@@ -347,29 +343,28 @@ def forecast(timeseries=None):
 
      pred_ci['predicted'] = (pred_ci['lower value'] + pred_ci['upper value']) / 2
      pred_ci['observed'] = timeseries['value']
+     pred_ci['diff, %%'] = ((pred_ci['predicted'] / pred_ci['observed']) - 1) * 100
+
+     # Visualize the prediction
+     fig1 = go.Figure()
+     fig1.add_trace(go.Scatter(x=pred_ci.index, y=pred_ci['observed'], mode='lines', name='Observed'))
+     fig1.add_trace(go.Scatter(x=pred_ci.index, y=pred_ci['predicted'], mode='lines', name='Predicted'))
+     st.plotly_chart(fig1)
 
      # Get forecast 3 years ahead in future
      pred_uc = results.get_forecast(steps=36)
 
      # Get confidence intervals of forecasts
-     forecast_ci = pred_uc.conf_int()
-     forecast_ci['Mean'] = (forecast_ci['lower value'] + forecast_ci['upper value']) / 2
+     pred_ci = pred_uc.conf_int()
 
-     # Visualize the historical data and forecast together
-     fig = go.Figure()
+     pred_ci['Mean'] = (pred_ci['lower value'] + pred_ci['upper value']) / 2
 
-     # Historical data
-     fig.add_trace(go.Scatter(x=timeseries.index, y=timeseries['value'], mode='lines', name='Historical Data'))
-
-     # Prediction data
-     fig.add_trace(go.Scatter(x=pred_ci.index, y=pred_ci['predicted'], mode='lines', name='Prediction', line=dict(dash='dot')))
-
-     # Forecast data
-     fig.add_trace(go.Scatter(x=forecast_ci.index, y=forecast_ci['Mean'], mode='lines', name='Forecast'))
-     fig.add_trace(go.Scatter(x=forecast_ci.index, y=forecast_ci['lower value'], mode='lines', name='Lower Bound', line=dict(dash='dash')))
-     fig.add_trace(go.Scatter(x=forecast_ci.index, y=forecast_ci['upper value'], mode='lines', name='Upper Bound', line=dict(dash='dash')))
-
-     st.plotly_chart(fig)
+     # Visualize the forecast
+     fig2 = go.Figure()
+     fig2.add_trace(go.Scatter(x=pred_ci.index, y=pred_ci['Mean'], mode='lines', name='Forecast'))
+     fig2.add_trace(go.Scatter(x=pred_ci.index, y=pred_ci['lower value'], mode='lines', name='Lower Bound', line=dict(dash='dash')))
+     fig2.add_trace(go.Scatter(x=pred_ci.index, y=pred_ci['upper value'], mode='lines', name='Upper Bound', line=dict(dash='dash')))
+     st.plotly_chart(fig2)
 
      forecast.Test_Stationary = testStationarity(timeseries.value)
      forecast.Results_Summary = results.summary()
