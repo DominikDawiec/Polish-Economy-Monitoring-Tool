@@ -8,3 +8,4 @@ fred
 fredapi
 xlsxwriter
 statsmodels
+cufflinks
