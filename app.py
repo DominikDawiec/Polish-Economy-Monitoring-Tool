@@ -526,12 +526,7 @@ timeseries_extra = timeseries #for download excel
 timeseries = timeseries.set_index(['date'])
 timeseries = timeseries.drop(columns=['values','percentage change','value difference'])
 
-pred_ci_1, pred_ci, Test_Stationary, Results_Summary = forecast()
+forecast()
 
-# If using the attributes elsewhere, ensure they are not None
 if Results_Summary:
     st.write(Results_Summary)
-
-# Assuming you have forecast_plot() and downloading_data() functions defined somewhere
-forecast_plot()
-downloading_data()
