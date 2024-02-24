@@ -4,8 +4,6 @@
 
 **The Polish Economy Monitoring** Tool is a web application that provides **real-time economic data** retrieved from an API and displayed in an aesthetically pleasing way. It also offers advanced **time series analysis** and **forecasting** using ARIMA models.
 
-To see the website, please click on the [LINK](https://dominikdawiec-polish-economy-monitoring-tool-app-5vn9r7.streamlitapp.com/).
-
 #### Project Status: [Active]
 
 ## Application Link
