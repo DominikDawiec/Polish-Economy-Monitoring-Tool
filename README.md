@@ -1,6 +1,6 @@
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://dominikdawiec-polish-economy-monitoring-tool-app-5vn9r7.streamlitapp.com/)
 
-# Polish-Economy-Monitoring-Engine
+# Polish Economy Monitoring Engine
 
 **The Polish Economy Monitoring** Tool is a web application that provides **real-time economic data** retrieved from an API and displayed in an aesthetically pleasing way. It also offers advanced **time series analysis** and **forecasting** using ARIMA models.
 
